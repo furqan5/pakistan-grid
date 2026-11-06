@@ -85,6 +85,17 @@ The `loads` scenario came out infeasible: load scaling up to 1.5×. The generato
 
 ## GPU
 
-The Quadro M2000M is Maxwell (sm_50). PyTorch's CUDA 12.8/12.9 builds dropped Maxwell; the cu126 builds still include it.
-The torch 2.8.0+cu126 build (2.9 GB) is installing in a separate venv (`.venv-cuda`). The CPU setup above is unchanged.
-For scale: CPU inference already takes **6 s on a 6,470-bus grid**. The slow part is the Julia/Ipopt AC-OPF, which runs on CPU only, so a GPU won't shorten the build.
+**Result: the laptop's GPU can't run GridSFM with the torch versions it allows.**
+
+- **GPU:** NVIDIA Quadro M2000M, 4 GB, Maxwell, compute capability **sm_50**. Driver 573.44 supports CUDA 12.8.
+- **Build tried:** torch 2.8.0+cu126 for Windows, a 2.9 GB wheel, in a separate venv `.venv-cuda`. The CPU venv is untouched. `torch.cuda.is_available()` returned True, but the build's arch list is `sm_61 sm_70 sm_75 sm_80 sm_86 sm_90`.
+- **Failure:** the first kernel failed with "no kernel image is available for execution on the device". torch's own warning gives a minimum capability of 6.1. So the Windows cu126 wheel of 2.8 does not include Maxwell, contrary to what PyTorch's dev-discuss notices suggested for cu126 in general.
+- **Remaining route [VERIFY]:**
+  - GridSFM pins torch ≥2.6 and <2.9, so the only option is a 2.6 or 2.7 build against CUDA 11.8 (for example torch 2.7.1+cu118), if those Windows wheels still ship sm_50. That's another ~2.7 GB download.
+  - The alternative is building torch from source with `TORCH_CUDA_ARCH_LIST=5.0`, which takes hours.
+- **Why it isn't worth it:** CPU timings per grid (`logs/timing_cpu.log`, forward pass only):
+  - 500 buses 0.47 s; 661 buses 0.73 s; 3,374 buses 2.0 s; 3,889 buses 4.2 s; 6,470 buses 5.2 s.
+  - A Pakistan-sized grid takes under 1 s per scenario, so 1,000 scenarios take about 12 min.
+  - The bottleneck is the Julia/Ipopt AC-OPF, which is CPU-only. A 4 GB Maxwell GPU would save minutes at most.
+- **Recommendation:** stay on CPU. Revisit only if fine-tuning ever becomes possible on custom data, which the current release doesn't support.
+- The unused `.venv-cuda` folder can be deleted.
