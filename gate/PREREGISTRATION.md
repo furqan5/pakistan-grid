@@ -1,6 +1,7 @@
 # Pakistan synthetic grid for a GridSFM test — pre-registered gate
 
-**Status: DRAFT v0.1, 6 Nov 2026. Not yet approved by Furqan.** It becomes binding only once he signs it off.
+**Status: DRAFT v0.2, 6 Nov 2026. Not yet approved by Furqan.**
+v0.2 adds no threshold changes. Every TSEP and NEPRA number in this file was checked by eye against the source PDFs (`day0/tsep_check.md`, `day0/per_check.md`). The S3 name list is PER FY2024-25 Figure 1 (69 stations). It becomes binding only once he signs it off.
 Any edit before the first Pakistan AC solve is allowed but gets a new dated commit. After the first Pakistan AC solve, changes are logged and the affected holdouts are reported as "post hoc".
 
 The source is `E:\Startup\reports\Pakistan grid model data.md` (Verdict section). The Day 0 by-eye checks of TSEP are in `day0/tsep_check.md`.
