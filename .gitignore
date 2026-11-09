@@ -2,3 +2,4 @@ sources/*.pdf
 *.log
 osm/raw/
 osm/build/**/*.csv
+__pycache__/
