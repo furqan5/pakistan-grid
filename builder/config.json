@@ -1,0 +1,25 @@
+{
+  "_comment": "Day 2 topology-builder tolerances and rules. Committed so every snap/merge is reproducible. Change only with a dated note in builder/CHANGELOG.md.",
+  "min_voltage_kv": 66,
+  "exclude_line_values": ["busbar", "bay"],
+  "exclude_lifecycle_keys": ["construction", "disused", "proposed", "abandoned", "demolished", "planned", "razed", "removed"],
+  "hvdc": {"voltage_kv_min": 600, "tags_frequency_zero": true},
+  "station_grouping": {
+    "touch_or_near_m": 250,
+    "same_name_stem_m": 1500
+  },
+  "endpoint_matching": {
+    "polygon_buffer_m": 75,
+    "nearest_station_m": 1000,
+    "require_voltage_match_for_nearest": true
+  },
+  "split_ways_through_stations": true,
+  "circuits_rule": "circuits tag; else cables/3 (floor, min 1); else 1. Multi-voltage ways: circuits split evenly across voltages (min 1 each).",
+  "ke_tagging": {
+    "operator_regex": "(?i)k-?electric|kesc|karachi electric",
+    "karachi_bbox_lat": [24.70, 25.30],
+    "karachi_bbox_lon": [66.65, 67.55],
+    "bbox_applies_max_kv": 220
+  },
+  "s1_counted_provenance": ["substation", "plant", "converter"]
+}

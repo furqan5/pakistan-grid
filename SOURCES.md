@@ -23,6 +23,14 @@ The PDFs are not committed to git because of their size. They are identified by 
 - MEPCO: https://mepco.com.pk/wp-content/uploads/2025/02/MEPCO-Report-PMS-LOAD-FOREACAST-2021-22.pdf
 - World Bank Annex 2: https://documents1.worldbank.org/curated/en/897291610742003819/pdf/Annex-2-Grid-Integration-Analysis.pdf
 
+## OpenStreetMap power data (Day 2)
+
+- **Source:** the Overpass API, queries in `osm/queries/`, area `ISO3166-1=PK`, admin_level 2.
+  - The area includes AJK and GB: the boundary check returned Muzaffarabad, Mirpur, Gilgit and Skardu.
+  - Retrieval time, endpoint, `timestamp_osm_base`, bytes and SHA-256 for each file are in `logs/osm_fetch.tsv`.
+  - The raw JSON is in `osm/raw/` and isn't committed because of its size.
+- **Licence:** © OpenStreetMap contributors, **ODbL 1.0** (https://www.openstreetmap.org/copyright). Any derived network that is released (bus/branch tables, PowerModels JSON) must carry ODbL share-alike and this attribution.
+
 ## Not downloaded: needs Furqan's decision
 
 - **NTDC Power System Statistics, 44th edition (2020).** Needed on Day 5 for the station and line tables 2.6, 2.8, 2.16 and 2.17. The only copy found is on a third-party mirror, energyupdate.com.pk. Options: approve the mirror download, or ask NGC for an official copy.

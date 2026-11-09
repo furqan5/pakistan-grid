@@ -1,0 +1,76 @@
+query	retrieved_utc	endpoint	http	bytes	osm_base	sha256
+boundary_check	2026-11-06T15:12:43Z	https://overpass-api.de/api/interpreter	200	5228	2026-11-06T15:11:40Z	22f04157a751024ab08da2cb2f413b7036ae77af08329fe9f2e304f96891f396
+substations	2026-11-06T15:13:31Z	https://overpass-api.de/api/interpreter	504	695		9e8d149c02b9ab7719f9e6cfdf696730c39abead6f27e39eb13793b7d2adbb82
+substations	2026-11-06T15:14:49Z	https://overpass.kumi.systems/api/interpreter	502	157		99da7e26bcd2afbe53c82ec4ad8ecb86e18cdd2667415bf0bbdb0a15d4803988
+plants	2026-11-06T15:19:38Z	https://overpass-api.de/api/interpreter	504	695		9e8d149c02b9ab7719f9e6cfdf696730c39abead6f27e39eb13793b7d2adbb82
+substations	2026-11-06T15:22:25Z	https://overpass-api.de/api/interpreter	504	695		9e8d149c02b9ab7719f9e6cfdf696730c39abead6f27e39eb13793b7d2adbb82	http504
+plants	2026-11-06T15:20:54Z	https://overpass.kumi.systems/api/interpreter	504	695		9e8d149c02b9ab7719f9e6cfdf696730c39abead6f27e39eb13793b7d2adbb82
+substations	2026-11-06T15:23:28Z	https://overpass.private.coffee/api/interpreter	504	695		9e8d149c02b9ab7719f9e6cfdf696730c39abead6f27e39eb13793b7d2adbb82	http504
+lines	2026-11-06T15:25:42Z	https://overpass-api.de/api/interpreter	504	695		9e8d149c02b9ab7719f9e6cfdf696730c39abead6f27e39eb13793b7d2adbb82
+substations	2026-11-06T15:25:45Z	https://maps.mail.ru/osm/tools/overpass/api/interpreter	504	695		9e8d149c02b9ab7719f9e6cfdf696730c39abead6f27e39eb13793b7d2adbb82	http504
+substations	2026-11-06T15:27:04Z	https://overpass.kumi.systems/api/interpreter	504	695		9e8d149c02b9ab7719f9e6cfdf696730c39abead6f27e39eb13793b7d2adbb82	http504
+substations	2026-11-06T15:30:07Z	https://overpass-api.de/api/interpreter	504	695		9e8d149c02b9ab7719f9e6cfdf696730c39abead6f27e39eb13793b7d2adbb82	http504
+lines	2026-11-06T15:27:03Z	https://overpass.kumi.systems/api/interpreter	502	157		99da7e26bcd2afbe53c82ec4ad8ecb86e18cdd2667415bf0bbdb0a15d4803988
+substations	2026-11-06T15:31:22Z	https://overpass.private.coffee/api/interpreter	504	695		9e8d149c02b9ab7719f9e6cfdf696730c39abead6f27e39eb13793b7d2adbb82	http504
+substations	2026-11-06T15:34:35Z	https://maps.mail.ru/osm/tools/overpass/api/interpreter	504	160		c9c89d274726b86306e1c97d80360f820bce86042c34c9bb2487aac4ada6d606	http504
+substations	2026-11-06T15:34:59Z	https://overpass.kumi.systems/api/interpreter	504	695		9e8d149c02b9ab7719f9e6cfdf696730c39abead6f27e39eb13793b7d2adbb82	http504
+substations	2026-11-06T15:41:30Z	https://overpass-api.de/api/interpreter	504	695		9e8d149c02b9ab7719f9e6cfdf696730c39abead6f27e39eb13793b7d2adbb82	http504
+substations	2026-11-06T15:42:42Z	https://overpass.private.coffee/api/interpreter	504	695		9e8d149c02b9ab7719f9e6cfdf696730c39abead6f27e39eb13793b7d2adbb82	http504
+substations	2026-11-06T15:47:30Z	https://maps.mail.ru/osm/tools/overpass/api/interpreter	504	160		c9c89d274726b86306e1c97d80360f820bce86042c34c9bb2487aac4ada6d606	http504
+substations	2026-11-06T15:47:52Z	https://overpass.kumi.systems/api/interpreter	502	157		99da7e26bcd2afbe53c82ec4ad8ecb86e18cdd2667415bf0bbdb0a15d4803988	http502
+substations	2026-11-06T15:55:22Z	https://overpass-api.de/api/interpreter	504	695		9e8d149c02b9ab7719f9e6cfdf696730c39abead6f27e39eb13793b7d2adbb82	http504
+substations	2026-11-06T15:56:23Z	https://overpass.private.coffee/api/interpreter	504	695		9e8d149c02b9ab7719f9e6cfdf696730c39abead6f27e39eb13793b7d2adbb82	http504
+substations	2026-11-06T16:03:09Z	https://maps.mail.ru/osm/tools/overpass/api/interpreter	504	160		c9c89d274726b86306e1c97d80360f820bce86042c34c9bb2487aac4ada6d606	http504
+substations	2026-11-06T16:03:31Z	https://overpass.kumi.systems/api/interpreter	502	157		99da7e26bcd2afbe53c82ec4ad8ecb86e18cdd2667415bf0bbdb0a15d4803988	http502
+substations	2026-11-06T16:10:57Z	https://overpass-api.de/api/interpreter	200	786802	2026-11-06T16:09:36Z	697458cb177c1165e55b75b04357c5bc817bc30fa8ce4d350e93aa4268813d16	ok
+plants	2026-11-06T16:11:40Z	https://overpass-api.de/api/interpreter	504	695		9e8d149c02b9ab7719f9e6cfdf696730c39abead6f27e39eb13793b7d2adbb82	http504
+plants	2026-11-06T16:12:55Z	https://overpass.private.coffee/api/interpreter	502	157		99da7e26bcd2afbe53c82ec4ad8ecb86e18cdd2667415bf0bbdb0a15d4803988	http502
+plants	2026-11-06T16:24:13Z	https://maps.mail.ru/osm/tools/overpass/api/interpreter	504	695		9e8d149c02b9ab7719f9e6cfdf696730c39abead6f27e39eb13793b7d2adbb82	http504
+plants	2026-11-06T16:25:24Z	https://overpass.kumi.systems/api/interpreter	504	695		9e8d149c02b9ab7719f9e6cfdf696730c39abead6f27e39eb13793b7d2adbb82	http504
+plants	2026-11-06T16:28:40Z	https://overpass-api.de/api/interpreter	502	534		8084e21e11df846a2e41bb93ddaf66961aa2ef71e9a9fc1f46debc960b303042	http502
+plants	2026-11-06T16:29:01Z	https://overpass.private.coffee/api/interpreter	504	695		9e8d149c02b9ab7719f9e6cfdf696730c39abead6f27e39eb13793b7d2adbb82	http504
+plants	2026-11-06T16:34:47Z	https://maps.mail.ru/osm/tools/overpass/api/interpreter	504	160		c9c89d274726b86306e1c97d80360f820bce86042c34c9bb2487aac4ada6d606	http504
+plants	2026-11-06T16:35:10Z	https://overpass.kumi.systems/api/interpreter	504	695		9e8d149c02b9ab7719f9e6cfdf696730c39abead6f27e39eb13793b7d2adbb82	http504
+plants	2026-11-06T16:44:10Z	https://overpass-api.de/api/interpreter	200	5284868	2026-11-06T16:43:04Z	850ee8ea5f5b7abd890c8cbb812d8e7dd3f653ebb266e9271a3ba05a30efc872	ok
+lines	2026-11-06T16:45:34Z	https://overpass-api.de/api/interpreter	502	534		8084e21e11df846a2e41bb93ddaf66961aa2ef71e9a9fc1f46debc960b303042	http502
+lines	2026-11-06T16:45:56Z	https://overpass.private.coffee/api/interpreter	504	695		9e8d149c02b9ab7719f9e6cfdf696730c39abead6f27e39eb13793b7d2adbb82	http504
+lines	2026-11-06T16:58:06Z	https://maps.mail.ru/osm/tools/overpass/api/interpreter	504	695		9e8d149c02b9ab7719f9e6cfdf696730c39abead6f27e39eb13793b7d2adbb82	http504
+lines	2026-11-06T16:59:25Z	https://overpass.kumi.systems/api/interpreter	504	695		9e8d149c02b9ab7719f9e6cfdf696730c39abead6f27e39eb13793b7d2adbb82	http504
+lines	2026-11-06T17:05:08Z	https://overpass-api.de/api/interpreter	502	534		8084e21e11df846a2e41bb93ddaf66961aa2ef71e9a9fc1f46debc960b303042	http502
+lines	2026-11-06T17:05:30Z	https://overpass.private.coffee/api/interpreter	504	695		9e8d149c02b9ab7719f9e6cfdf696730c39abead6f27e39eb13793b7d2adbb82	http504
+lines	2026-11-06T17:07:46Z	https://maps.mail.ru/osm/tools/overpass/api/interpreter	504	160		c9c89d274726b86306e1c97d80360f820bce86042c34c9bb2487aac4ada6d606	http504
+lines	2026-11-06T17:08:09Z	https://overpass.kumi.systems/api/interpreter	502	157		99da7e26bcd2afbe53c82ec4ad8ecb86e18cdd2667415bf0bbdb0a15d4803988	http502
+lines	2026-11-06T17:21:27Z	https://overpass-api.de/api/interpreter	502	534		8084e21e11df846a2e41bb93ddaf66961aa2ef71e9a9fc1f46debc960b303042	http502
+lines	2026-11-06T17:21:48Z	https://overpass.private.coffee/api/interpreter	504	695		9e8d149c02b9ab7719f9e6cfdf696730c39abead6f27e39eb13793b7d2adbb82	http504
+lines	2026-11-06T17:23:52Z	https://maps.mail.ru/osm/tools/overpass/api/interpreter	504	160		c9c89d274726b86306e1c97d80360f820bce86042c34c9bb2487aac4ada6d606	http504
+lines	2026-11-06T17:24:15Z	https://overpass.kumi.systems/api/interpreter	504	695		9e8d149c02b9ab7719f9e6cfdf696730c39abead6f27e39eb13793b7d2adbb82	http504
+lines	2026-11-06T17:31:39Z	https://overpass-api.de/api/interpreter	502	534		8084e21e11df846a2e41bb93ddaf66961aa2ef71e9a9fc1f46debc960b303042	http502
+lines	2026-11-06T17:32:01Z	https://overpass.private.coffee/api/interpreter	504	695		9e8d149c02b9ab7719f9e6cfdf696730c39abead6f27e39eb13793b7d2adbb82	http504
+lines	2026-11-06T17:36:29Z	https://maps.mail.ru/osm/tools/overpass/api/interpreter	504	695		9e8d149c02b9ab7719f9e6cfdf696730c39abead6f27e39eb13793b7d2adbb82	http504
+lines	2026-11-06T17:37:36Z	https://overpass.kumi.systems/api/interpreter	504	695		9e8d149c02b9ab7719f9e6cfdf696730c39abead6f27e39eb13793b7d2adbb82	http504
+lines	2026-11-06T17:43:49Z	https://overpass-api.de/api/interpreter	504	695		9e8d149c02b9ab7719f9e6cfdf696730c39abead6f27e39eb13793b7d2adbb82	http504
+lines	2026-11-06T17:44:55Z	https://overpass.private.coffee/api/interpreter	504	695		9e8d149c02b9ab7719f9e6cfdf696730c39abead6f27e39eb13793b7d2adbb82	http504
+lines	2026-11-06T17:51:28Z	https://maps.mail.ru/osm/tools/overpass/api/interpreter	504	160		c9c89d274726b86306e1c97d80360f820bce86042c34c9bb2487aac4ada6d606	http504
+lines	2026-11-06T17:51:50Z	https://overpass.kumi.systems/api/interpreter	502	157		99da7e26bcd2afbe53c82ec4ad8ecb86e18cdd2667415bf0bbdb0a15d4803988	http502
+lines	2026-11-06T18:01:25Z	https://overpass-api.de/api/interpreter	504	695		9e8d149c02b9ab7719f9e6cfdf696730c39abead6f27e39eb13793b7d2adbb82	http504
+lines	2026-11-06T18:02:34Z	https://overpass.private.coffee/api/interpreter	504	695		9e8d149c02b9ab7719f9e6cfdf696730c39abead6f27e39eb13793b7d2adbb82	http504
+lines	2026-11-06T18:04:47Z	https://maps.mail.ru/osm/tools/overpass/api/interpreter	504	160		c9c89d274726b86306e1c97d80360f820bce86042c34c9bb2487aac4ada6d606	http504
+lines	2026-11-06T18:05:09Z	https://overpass.kumi.systems/api/interpreter	504	695		9e8d149c02b9ab7719f9e6cfdf696730c39abead6f27e39eb13793b7d2adbb82	http504
+lines_tile0	2026-11-06T18:14:22Z	https://overpass-api.de/api/interpreter	502	534		8084e21e11df846a2e41bb93ddaf66961aa2ef71e9a9fc1f46debc960b303042	http502
+lines_tile0	2026-11-06T18:14:40Z	https://overpass.private.coffee/api/interpreter	504	695		9e8d149c02b9ab7719f9e6cfdf696730c39abead6f27e39eb13793b7d2adbb82	http504
+lines_tile0	2026-11-06T18:16:44Z	https://maps.mail.ru/osm/tools/overpass/api/interpreter	504	160		c9c89d274726b86306e1c97d80360f820bce86042c34c9bb2487aac4ada6d606	http504
+lines_tile0	2026-11-06T18:17:01Z	https://overpass.kumi.systems/api/interpreter	504	695		9e8d149c02b9ab7719f9e6cfdf696730c39abead6f27e39eb13793b7d2adbb82	http504
+lines_tile0	2026-11-06T18:20:03Z	https://overpass-api.de/api/interpreter	200	3004184		259752ed82dfc5430e74fbb3332bf28618e86dc2c6e82b7ffb1d8cab10402efb	ok
+lines_tile1	2026-11-06T18:21:13Z	https://overpass-api.de/api/interpreter	200	1039958		6759bbc260cb85e233db93cc6195b5d986650f7feb78649848b4dee550496b84	ok
+lines_tile2	2026-11-06T18:22:32Z	https://overpass-api.de/api/interpreter	502	534		8084e21e11df846a2e41bb93ddaf66961aa2ef71e9a9fc1f46debc960b303042	http502
+lines_tile2	2026-11-06T18:22:49Z	https://overpass.private.coffee/api/interpreter	200	339		d3baeabd877e98a1dce6985ebeca44f26531055dc905a8d341868600fb5bf931	ok
+lines_tile3	2026-11-06T18:26:33Z	https://overpass-api.de/api/interpreter	502	534		8084e21e11df846a2e41bb93ddaf66961aa2ef71e9a9fc1f46debc960b303042	http502
+lines_tile3	2026-11-06T18:26:49Z	https://overpass.private.coffee/api/interpreter	504	695		9e8d149c02b9ab7719f9e6cfdf696730c39abead6f27e39eb13793b7d2adbb82	http504
+lines_tile3	2026-11-06T18:30:58Z	https://maps.mail.ru/osm/tools/overpass/api/interpreter	200	4577583		f3fe00e5df4bec1db98871eb3a83a12b1825c3a9c91daee6160a8e9d5f251eeb	ok
+lines_tile4	2026-11-06T18:31:37Z	https://overpass-api.de/api/interpreter	502	534		8084e21e11df846a2e41bb93ddaf66961aa2ef71e9a9fc1f46debc960b303042	http502
+lines_tile4	2026-11-06T18:31:57Z	https://overpass.private.coffee/api/interpreter	504	695		9e8d149c02b9ab7719f9e6cfdf696730c39abead6f27e39eb13793b7d2adbb82	http504
+lines_tile4	2026-11-06T18:38:43Z	https://maps.mail.ru/osm/tools/overpass/api/interpreter	504	160		c9c89d274726b86306e1c97d80360f820bce86042c34c9bb2487aac4ada6d606	http504
+lines_tile4	2026-11-06T18:39:07Z	https://overpass.kumi.systems/api/interpreter	504	695		9e8d149c02b9ab7719f9e6cfdf696730c39abead6f27e39eb13793b7d2adbb82	http504
+lines_tile4	2026-11-06T18:42:15Z	https://overpass-api.de/api/interpreter	200	339		8f1b3ac0199056472112fbee67ac406e5440b3b417b6044246dc95e582c39414	ok
+lines_tile5	2026-11-06T18:43:06Z	https://overpass-api.de/api/interpreter	200	1901210		d0ca8f97b9ce0ef4a0a81bdb9d0d2808410abcbe1286274c8b655b65ce3f7474	ok
+lines(merged)	2026-11-09T07:02:18Z	merge of tiles0-5 (tile2 refetched from overpass-api.de; private.coffee mirror stale 2026-07-24)	200	8360739	2026-11-06T18:19:47Z..18:46:06Z	81be29f96eee29e8d351c7ef2d67bbc4cd7f55745b8b56481f7d2af1d5ba0ef0	ok

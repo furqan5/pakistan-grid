@@ -1,2 +1,4 @@
 sources/*.pdf
 *.log
+osm/raw/
+osm/build/**/*.csv
