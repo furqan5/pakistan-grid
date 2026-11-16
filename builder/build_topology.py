@@ -300,6 +300,73 @@ def build(infer: bool):
             del node_term[nid]
             stats["plant_pass_through_nodes_ignored"] += 1
 
+    # ---- Day 4: snap dangling way ends (no station nearby) to another line's node, or bridge end-to-end gaps
+    st_geoms = [s["geom"] for s in stations]
+    st_tree = STRtree(st_geoms) if st_geoms else None
+    near_m = CFG["endpoint_matching"]["nearest_station_m"]
+    wkv = {w["id"]: set(w["kvs"]) for w in ways}
+    node_ways = collections.defaultdict(set)
+    for w in ways:
+        for nid in w["nodes"]:
+            node_ways[nid].add(w["id"])
+
+    def kv_ok(a_ways, b_ways):
+        ka = set().union(*(wkv[x] for x in a_ways)) if a_ways else set()
+        kb_ = set().union(*(wkv[x] for x in b_ways)) if b_ways else set()
+        if not CFG["dangling_snap"]["require_voltage_match"] or not ka or not kb_:
+            return True
+        return bool(ka & kb_)
+
+    def has_station_nearby(nid):
+        if st_tree is None:
+            return False
+        p = Point(xy(node_ll[nid][1], node_ll[nid][0]))
+        kvs = set().union(*(wkv[x] for x in node_ways[nid]))
+        for t_i in st_tree.query(p, predicate="dwithin", distance=near_m):
+            st = stations[int(t_i)]
+            if not kvs or not st["tag_kvs"] or kvs & set(st["tag_kvs"]):
+                return True
+        return False
+
+    from scipy.spatial import cKDTree
+    all_xy = np.array([xy(node_ll[n][1], node_ll[n][0]) for n in node_ids])
+    kdt = cKDTree(all_xy)
+    idx_of = {n: i for i, n in enumerate(node_ids)}
+    cands = [n for n in way_ends if n not in node_term and use[n] == 1 and not has_station_nearby(n)]
+    cand_set = set(cands)
+    alias = {}
+    snap_rows = []
+    for n in sorted(cands):
+        if n in alias:
+            continue
+        here = all_xy[idx_of[n]]
+        best = None
+        for j in kdt.query_ball_point(here, CFG["dangling_snap"]["to_line_node_m"]):
+            m = node_ids[j]
+            if m == n or node_ways[m] & node_ways[n] or m in cand_set:
+                continue
+            if not kv_ok(node_ways[n], node_ways[m]):
+                continue
+            d = float(np.hypot(*(all_xy[j] - here)))
+            if best is None or d < best[0]:
+                best = (d, m, "snap_to_line")
+        if best is None:
+            for j in kdt.query_ball_point(here, CFG["dangling_snap"]["gap_bridge_m"]):
+                m = node_ids[j]
+                if m == n or m not in cand_set or m in alias or node_ways[m] & node_ways[n]:
+                    continue
+                if not kv_ok(node_ways[n], node_ways[m]):
+                    continue
+                d = float(np.hypot(*(all_xy[j] - here)))
+                if best is None or d < best[0]:
+                    best = (d, m, "gap_bridge")
+        if best:
+            d, m, rule = best
+            alias[n] = m
+            use[m] += 1
+            stats[f"dangling_{rule}"] += 1
+            snap_rows.append([n, m, rule, round(d, 1), ";".join(map(str, sorted(node_ways[n]))), ";".join(map(str, sorted(node_ways[m])))])
+
     # ---- split ways into segments at stations and shared nodes
     segs = []
     for w in ways:
@@ -312,7 +379,8 @@ def build(infer: bool):
                 stats["segment_skipped_inside_station"] += 1
                 continue
             L = sum(hav_m(*node_ll[nodes[k]], *node_ll[nodes[k + 1]]) for k in range(i, j))
-            segs.append({"way": w, "a": nodes[i], "b": nodes[j], "len_m": L, "n_pts": j - i + 1})
+            segs.append({"way": w, "a": alias.get(nodes[i], nodes[i]), "b": alias.get(nodes[j], nodes[j]),
+                         "len_m": L, "n_pts": j - i + 1})
     stats["segments"] = len(segs)
 
     # ---- resolve raw endpoints
@@ -322,10 +390,7 @@ def build(infer: bool):
             if s[e] not in node_term:
                 deg[s[e]] += 1
 
-    st_geoms = [s["geom"] for s in stations]
-    st_tree = STRtree(st_geoms) if st_geoms else None
     st_by_id = {s["id"]: s for s in stations}
-    near_m = CFG["endpoint_matching"]["nearest_station_m"]
     resolved = {}
 
     def terminal(nid, seg_kvs):
@@ -438,6 +503,7 @@ def build(infer: bool):
     for i, e in enumerate(ac):
         G.add_edge(bkey(e["u"], e["kv"]), bkey(e["v"], e["kv"]), key=i, **e, ways=str(e["way"]))
     collapsed = 0
+    quirks = []
     for n in [n for n in G.nodes if n.startswith("J:")]:
         if G.degree(n) == 2 and G.number_of_edges(n, n) == 0:
             (u1, _, k1, d1), (u2, _, k2, d2) = [(nb, n, k, d) for _, nb, k, d in G.edges(n, keys=True, data=True)]
@@ -445,16 +511,26 @@ def build(infer: bool):
                 continue
             new = dict(d1)
             new["len_m"] = d1["len_m"] + d2["len_m"]
-            new["circuits"] = min(d1["circuits"], d2["circuits"])
+            # Day 4: across a series joint, a tagged circuit count beats the untagged default of 1.
+            if d1["circuits_src"] == "default1" and d2["circuits_src"] != "default1":
+                new["circuits"], new["circuits_src"] = d2["circuits"], d2["circuits_src"] + "(carried)"
+            elif d2["circuits_src"] == "default1" and d1["circuits_src"] != "default1":
+                new["circuits"], new["circuits_src"] = d1["circuits"], d1["circuits_src"] + "(carried)"
+            else:
+                new["circuits"] = min(d1["circuits"], d2["circuits"])
             new["ways"] = d1["ways"] + ";" + d2["ways"]
             if d1["circuits"] != d2["circuits"]:
                 stats["series_merge_circuit_mismatch"] += 1
+                quirks.append(["circuit_mismatch", n, d1["kv"], f"{d1['ways']} ({d1['circuits']}c, {d1['circuits_src']})",
+                               f"{d2['ways']} ({d2['circuits']}c, {d2['circuits_src']})", round((d1["len_m"] + d2["len_m"]) / 1000, 2)])
             G.remove_node(n)
             G.add_edge(u1, u2, **new)
             collapsed += 1
     stats["series_joints_collapsed"] = collapsed
-    loops = list(nx.selfloop_edges(G, keys=True))
-    G.remove_edges_from(loops)
+    loops = list(nx.selfloop_edges(G, keys=True, data=True))
+    for u, v, k, d in loops:
+        quirks.append(["self_loop", u, d["kv"], d["ways"], d["name"], round(d["len_m"] / 1000, 2)])
+    G.remove_edges_from([(u, v, k) for u, v, k, _ in loops])
     stats["self_loops_dropped"] = len(loops)
 
     # transformer stubs between adjacent voltage levels of each station/plant
@@ -473,7 +549,8 @@ def build(infer: bool):
     # ---- bus table
     plant_by_id = {p["id"]: p for p in plants}
     ke_re = re.compile(CFG["ke_tagging"]["operator_regex"])
-    kb = CFG["ke_tagging"]
+    kr = CFG["ke_region"]
+    ngc_re = re.compile(kr["exclude_operator_regex"])
     buses = []
     for n in G.nodes:
         t, kv = n.rsplit("@", 1)
@@ -490,8 +567,8 @@ def build(infer: bool):
             name, op = "", ""
             prov = "tee_junction" if kind == "J" else "dangling_end"
         ke = bool(ke_re.search(op or "")) or (
-            kb["karachi_bbox_lat"][0] <= lat <= kb["karachi_bbox_lat"][1]
-            and kb["karachi_bbox_lon"][0] <= lon <= kb["karachi_bbox_lon"][1] and kv <= kb["bbox_applies_max_kv"])
+            kr["lat"][0] <= lat <= kr["lat"][1] and kr["lon"][0] <= lon <= kr["lon"][1]
+            and kv <= kr["max_kv"] and not ngc_re.search(op or ""))
         buses.append({"bus": n, "kind": kind, "ref": ref, "kv": kv, "prov": prov, "name": name,
                       "lat": round(lat, 6), "lon": round(lon, 6), "ke": int(ke)})
     bus_by = {b["bus"]: b for b in buses}
@@ -566,6 +643,8 @@ def build(infer: bool):
     wcsv("stations.csv", [{k: s[k] for k in ("id", "name", "prov", "tag_kvs", "n_members", "members", "subtypes", "operator", "lat", "lon")} for s in stations],
          ["id", "name", "prov", "tag_kvs", "n_members", "members", "subtypes", "operator", "lat", "lon"])
     wcsv("match_log.csv", log, ["way", "osm_node", "kv", "term_kind", "term_ref", "rule"])
+    wcsv("snaps.csv", snap_rows, ["dangling_node", "snapped_to_node", "rule", "dist_m", "ways_from", "ways_to"])
+    wcsv("quirks.csv", quirks, ["type", "bus", "kv", "detail_a", "detail_b", "len_km"])
 
     # ---- report
     L = []
@@ -619,6 +698,27 @@ def build(infer: bool):
     L.append(f"- With K-Electric: **{len(s1)}**")
     L.append(f"- Without K-Electric (operator tag or Karachi bbox ≤220 kV): **{len(s1_noke)}**")
     L.append("- Provisional: Days 3–4 still add station splitting checks, voltage fixes and duplicate collapse.")
+    L.append("\n## K-Electric region (working definition in config `ke_region`, [VERIFY])\n")
+    ke_tab = collections.Counter((b["kv"], b["prov"]) for b in buses if b["ke"] and b["in_main"])
+    L.append("KE buses in the main component by kV (substation / plant / tee / dangling); PER FY2024-25 KE grid stations: 500 kV 1, 220 kV 12, 132 kV 62, 66 kV 3.\n")
+    for kv in sorted({k for k, _ in ke_tab}, reverse=True):
+        L.append(f"- {kv} kV: substation {ke_tab[(kv, 'substation')]}, plant {ke_tab[(kv, 'plant')]}, "
+                 f"tee {ke_tab[(kv, 'tee_junction')]}, dangling {ke_tab[(kv, 'dangling_end')]}")
+    iface = []
+    for u, v, d in G.edges(data=True):
+        if bus_by[u]["ke"] != bus_by[v]["ke"]:
+            ke_side, other = (u, v) if bus_by[u]["ke"] else (v, u)
+            iface.append((other, ke_side, d.get("kind", "line"), d.get("kv", ""), round(d.get("len_m", 0) / 1000, 1)))
+    L.append(f"\nInterface edges between KE and the rest of the main grid: {len(iface)} (these carry TSEP's 'Export to KE').\n")
+    L.append("| NGC-side bus | KE-side bus | type | kV | km |")
+    L.append("|---|---|---|---|---|")
+    for o, k, t, kv, km_ in sorted(iface):
+        L.append(f"| {o} {bus_by[o]['name']} | {k} {bus_by[k]['name']} | {t} | {kv} | {km_} |")
+    L.append("\n## Snapping and quirks (Day 4)\n")
+    L.append(f"- Dangling ends snapped to another line's node (≤{CFG['dangling_snap']['to_line_node_m']} m): {stats['dangling_snap_to_line']}; "
+             f"end-to-end gaps bridged (≤{CFG['dangling_snap']['gap_bridge_m']} m): {stats['dangling_gap_bridge']}. Each in snaps.csv.")
+    qt = collections.Counter(q[0] for q in quirks)
+    L.append(f"- Quirks logged in quirks.csv: {dict(qt)}.")
     L.append("\n## 500 kV backbone check (PER FY2024-25 Figure 1, 20 NGC stations)\n")
     found = sum(1 for _, h, _ in backbone if h)
     inmain = sum(1 for _, _, m in backbone if m)

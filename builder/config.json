@@ -21,6 +21,20 @@
     "karachi_bbox_lon": [66.65, 67.55],
     "bbox_applies_max_kv": 220
   },
+  "dangling_snap": {
+    "_comment": "Day 4. Applied only to way ends that are not inside a station/plant, not shared, and with no station within nearest_station_m.",
+    "to_line_node_m": 150,
+    "gap_bridge_m": 500,
+    "require_voltage_match": true
+  },
+  "ke_region": {
+    "_comment": "Day 4 working definition of the K-Electric network [VERIFY]: buses at <= max_kv inside the Karachi-Hub-Gharo service box, excluding stations whose operator says NTDC/NGC/WAPDA. Checked against PER KE counts (1x500, 12x220, 62x132, 3x66 kV).",
+    "lat": [24.55, 25.90],
+    "lon": [66.30, 67.70],
+    "lon_note": "East edge moved from 67.85 to 67.70 on Day 4. At 67.85 the box cut through the Gharo-Jhimpir wind corridor, so wind-farm 132 kV yards (S0331/S0333/S0338/S0339/S0572/S0648, 67.82-68.01 E) were reported as KE interface points.",
+    "max_kv": 220,
+    "exclude_operator_regex": "(?i)ntdc|ngc|wapda|national transmission|ترسیلات"
+  },
   "s1_counted_provenance": ["substation", "plant", "converter"],
   "scored_mode": "explicit",
   "scored_mode_note": "Decided by Furqan on 16 Nov 2026: the explicit-voltage-tags build (osm/build/explicit) is the scored model; the inferred build is reported only as a sensitivity case.",
