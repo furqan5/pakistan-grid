@@ -1,0 +1,93 @@
+{
+  "_comment": "Day 6 electrical parameter rules, fixed 17 Nov 2026 BEFORE any Pakistan solve and before computing any model quantity that a holdout uses. Rationale and sources in day6/parameter_rules.md. Change only with a dated note there; after the first AC solve any change is post hoc.",
+  "base_mva": 100.0,
+  "lines": {
+    "_source": "Per-circuit 50 Hz values from the research report table (reports/Pakistan grid model data.md, 6 Nov 2026): datasheet R_ac at 75 C, GMR and diameter with assumed geometry. Ratings from TSEP 2024-34 contingency tables (flow / rating = printed %).",
+    "classes": {
+      "500": {"conductor": "quad ACSR Drake", "r_ohm_km": 0.0221, "x_ohm_km": 0.273, "b_us_km": 4.08, "rate_a_mva": 1500, "rate_note": "TSEP Table 5-2: 500 kV Gujranwala-N. Jhelum 1,500 MVA (stability-limited planning rating); datasheet thermal about 2,830"},
+      "220": {"conductor": "single ACSR Rail", "r_ohm_km": 0.0744, "x_ohm_km": 0.410, "b_us_km": 2.78, "rate_a_mva": 250, "rate_note": "research table value (TSEP Mardan-Tarbela 250 MVA); TSEP Sibbi-Quetta is 300 MVA"},
+      "132": {"conductor": "ACSR Lynx", "r_ohm_km": 0.197, "x_ohm_km": 0.404, "b_us_km": 2.80, "rate_a_mva": 112, "rate_note": "TSEP Tables 5-2/5-4: 23 of 36 reconciling 132 kV rows are 112 MVA; others 182/184/202"},
+      "66": {"conductor": "ACSR Lynx (assumed, no 66 kV source)", "r_ohm_km": 0.197, "x_ohm_km": 0.404, "b_us_km": 2.80, "rate_a_mva": 56, "rate_note": "Lynx 490 A (the current behind 112 MVA at 132 kV) at 66 kV; assumption"}
+    },
+    "voltage_class_map": {"500": "500", "230": "220", "220": "220", "132": "132", "110": "132", "66": "66"},
+    "parallel_circuits": "a branch with n circuits gets r/n, x/n, b*n, rate*n",
+    "pi_model": "exact (hyperbolic) equivalent pi for every line",
+    "rate_b_factor": 1.10,
+    "rate_c_factor": 1.25,
+    "angle_limit_deg": 30
+  },
+  "line_sensitivity_variants": {
+    "_comment": "Reported only; never replace the scored parameters.",
+    "220_twin_rail": {"r_ohm_km": 0.0372, "x_ohm_km": 0.299, "b_us_km": 3.76, "rate_a_mva": 690},
+    "132_rail": {"r_ohm_km": 0.0744, "x_ohm_km": 0.380, "b_us_km": 3.00, "rate_a_mva": 202}
+  },
+  "transformers": {
+    "_comment": "One equivalent branch per voltage pair per station (the builder's stubs). Capacity from PSS 44th Tables 2.16/2.17 (June 2019) where the station is S3-assigned (any tier), else the default. x on own base; R = X / xr_ratio.",
+    "pss_unit_split": "PSS units of 450/600/750 MVA belong to the 500/220 kV pair; units of 160/250/320 MVA to the 220/132 kV pair of the same station",
+    "defaults": {
+      "500-220": {"units": 2, "unit_mva": 750, "x_own": 0.10, "xr": 40, "source": "TSEP standard unit 750 MVA, two units initially; %X midpoint of 7.5-12 % range in research notes"},
+      "500-132": {"units": 2, "unit_mva": 250, "x_own": 0.13, "xr": 40, "source": "research notes 12-14 %"},
+      "220-132": {"units": 2, "unit_mva": 250, "x_own": 0.12, "xr": 40, "source": "TSEP standard unit 250 MVA; pandapower 220/110 kV 12 %"},
+      "132-66":  {"units": 2, "unit_mva": 40,  "x_own": 0.10, "xr": 30, "source": "assumption (no source); Microsoft US 138/69 kV 8 %"},
+      "132-110": {"units": 2, "unit_mva": 40,  "x_own": 0.10, "xr": 30, "source": "assumption; one odd OSM 110 kV tag"}
+    },
+    "pss_pair_x_own": {"500-220": 0.10, "220-132": 0.12},
+    "tap": 1.0, "tap_min": 0.9, "tap_max": 1.1, "angle_limit_deg": 60,
+    "rate_a": "total MVA of the units", "rate_b_factor": 1.10, "rate_c_factor": 1.25
+  },
+  "shunts": {
+    "_comment": "Totals are TSEP inputs I4 (Tables 5-1 and 5-10). Reactors placed now; capacitors placed on Day 8 by the rule below (they need bus loads).",
+    "mvar_convention": "Totals are NAMEPLATE MVAr at 1.0 pu voltage (PowerModels bs). TSEP's PSS/E summaries report MVAr at solved voltages (500 kV winter 1.035-1.056 pu), so delivered MVAr will differ by roughly V^2. Delivered MVAr is reported after the solve and is never iterated to match TSEP.",
+    "reactor_total_mvar": {"summer_peak": 6162, "winter_offpeak": 8211},
+    "capacitor_total_mvar": {"summer_peak": 12192, "winter_offpeak": 146},
+    "reactors_fixed_table_5_9": [
+      {"per_name": "Peshawar", "kv": 500, "mvar": 111, "tsep_name": "Sheikh Muhammadi"},
+      {"per_name": "Rawat", "kv": 500, "mvar": 111},
+      {"per_name": "West FSD", "kv": 500, "mvar": 111},
+      {"per_name": "D.G. Khan", "kv": 500, "mvar": 111},
+      {"per_name": "Shikarpur", "kv": 500, "mvar": 222},
+      {"per_name": "D.M. Jamali", "kv": 220, "mvar": 60},
+      {"per_name": "Loralai", "kv": 220, "mvar": 60},
+      {"per_name": "Zhob", "kv": 220, "mvar": 60, "note": "not a PER Figure 1 station"}
+    ],
+    "reactor_fixed_rule": "Place each Table 5-9 reactor at the bus of its S3-assigned station (any tier) at that voltage. If there is none, its MVAr joins the proportional pool, so the snapshot total is unchanged.",
+    "reactor_pool_rule": "The rest of each snapshot total goes to 500 kV buses of real stations (substation, plant, converter) in the main component, in proportion to half the total charging of the 500 kV circuits incident to the bus (each line end takes half its charging). Same placement shape in both snapshots, scaled to each total.",
+    "capacitor_rule": "Day 8: 132 kV load buses, in proportion to bus reactive load, scaled to each snapshot total (continuous MVAr; the 2 x 48 MVAr bank size is noted, not imposed)."
+  },
+  "winter_openings": {
+    "_comment": "TSEP Table 5-7 (PDF p.65): circuits opened in the winter peak and off-peak cases. Applied to the winter off-peak snapshot only. Each is mapped to model branches by endpoint names; unmapped ones are listed, not guessed.",
+    "circuits": [
+      {"kv": 500, "a": "Ghazi Barotha", "b": "Gatti", "n": 1},
+      {"kv": 500, "a": "Gujranwala", "b": "Rawat", "n": 1},
+      {"kv": 500, "a": "Gujranwala", "b": "Neelum Jhelum", "n": 1},
+      {"kv": 500, "a": "Maira", "b": "Suki Kinari", "n": 1},
+      {"kv": 500, "a": "Maira", "b": "Karot", "n": 1},
+      {"kv": 500, "a": "Maira", "b": "Islamabad West", "n": 1},
+      {"kv": 500, "a": "Tarbela", "b": "Rawat", "n": 1},
+      {"kv": 500, "a": "Tarbela", "b": "Ghazi Barotha", "n": 1},
+      {"kv": 500, "a": "Rawat", "b": "Islamabad West", "n": 1},
+      {"kv": 500, "a": "Matiari", "b": "Moro", "n": 2},
+      {"kv": 500, "a": "Moro", "b": "Rahim Yar Khan", "n": 2},
+      {"kv": 220, "a": "Kassowal", "b": "Arifwala", "n": 1},
+      {"kv": 220, "a": "Kassowal", "b": "Vehari", "n": 1},
+      {"kv": 220, "a": "KAPCO", "b": "Multan", "n": 1},
+      {"kv": 220, "a": "KAPCO", "b": "Muzaffargarh Solar", "n": 1}
+    ],
+    "rule": "Open n circuits of the direct branch(es) between the two mapped buses: a branch with c circuits keeps c - n (removed if 0). Only a direct branch counts; no path search."
+  },
+  "buses": {
+    "vmin": 0.95, "vmax": 1.08,
+    "source": "TSEP 2024-34 planning criteria (grid code), normal operating conditions: voltage within +8 % / -5 % for nominal voltages up to 500 kV. Contingency band +/-10 % is not used for the base cases."
+  },
+  "dcline": {
+    "_comment": "Matiari-Lahore +/-660 kV LCC bipole, 4,000 MW (NEPRA tariff revision, Business Recorder 10 Mar 2018), 887 km in the build.",
+    "f_bus": "S:S0675@500", "t_bus": "S:S0789@500",
+    "pmin_mw": 0, "pmax_mw": 4000,
+    "setpoint_mw": {"summer_peak": 4000, "winter_offpeak": 2000},
+    "setpoint_rule": "Transfer is FIXED at the snapshot set-point (pmin = pmax = set-point). Summer 4,000 MW: TSEP p.34 text (input I3). Winter off-peak 2,000 MW: TSEP Figure 5-9 annotation 'Power Flow on Matiari-Lahore HVDC Link = 2000 MW' (PDF p.70), added to I3.",
+    "loss0_mw": 0.0, "loss1": 0.034,
+    "loss_note": "NTDC-reported actual T&T loss on the PMLTC HVDC line, Nov 2024: 19.528 GWh = 3.391 % (Express Tribune, 8 Jan 2025); NEPRA allows actual losses up to 4.3 % (Business Recorder, 10 Mar 2018). Linear in transfer, no fixed term; the November figure is at partial loading, so the split between fixed and variable loss is unknown.",
+    "q_range_mvar": 200, "q_note": "LCC terminals with switched filters: small net exchange assumed (+/-5 % of rating); assumption",
+    "vf": 1.0, "vt": 1.0
+  }
+}

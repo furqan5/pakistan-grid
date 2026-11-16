@@ -1,6 +1,6 @@
 # Pakistan synthetic grid for a GridSFM test — pre-registered gate
 
-**Status: DRAFT v0.3, 16 Nov 2026 (v0.2: 6 Nov). Not yet approved by Furqan.** v0.3 adds the S3 match rule; it changes no thresholds.
+**Status: DRAFT v0.4, 17 Nov 2026 (v0.3: 16 Nov; v0.2: 6 Nov). Not yet approved by Furqan.** v0.3 added the S3 match rule. v0.4 adds the winter HVDC input and a proposed loss definition for H1 and H4. Neither version changes a threshold.
 v0.2 adds no threshold changes. Every TSEP and NEPRA number in this file was checked by eye against the source PDFs (`day0/tsep_check.md`, `day0/per_check.md`). The S3 name list is PER FY2024-25 Figure 1 (69 stations). It becomes binding only once he signs it off.
 Any edit before the first Pakistan AC solve is allowed but gets a new dated commit. After the first Pakistan AC solve, changes are logged and the affected holdouts are reported as "post hoc".
 
@@ -25,7 +25,7 @@ The thresholds were designed in that report, not taken from a source, except whe
 |---|---|---|---|
 | I1 | Load 27,097 MW / 16,017 MVAr (PF ≈ 0.861) | Load 8,774 MW / 4,082 MVAr (PF ≈ 0.907) | TSEP T5-1, T5-10 |
 | I2 | KE export 2,050 MW / 795 MVAr | KE export 1,001 MW / 68 MVAr | TSEP T5-1, T5-10 |
-| I3 | HVDC Matiari–Lahore 4,000 MW | not extracted | TSEP p.34 text |
+| I3 | HVDC Matiari–Lahore 4,000 MW | 2,000 MW (added 17 Nov 2026) | TSEP p.34 text; winter: Figure 5-9 annotation, PDF p.70 |
 | I4 | Reactors 6,162 MVAr; capacitors 12,192 MVAr | Reactors 8,211 MVAr; capacitors 146 MVAr | TSEP T5-1, T5-10 |
 | I5 | DISCO shares from Table 2-1 (2026-27 column), scaled to I1 | same shares, scaled to I1 | TSEP T2-1 |
 
@@ -103,6 +103,19 @@ The thresholds were designed in that report, not taken from a source, except whe
 | H6 | Multan, D.G. Khan and Guddu 747 voltages at winter off-peak | in top third of 500 kV bus voltages | NEPRA PER 2023-24 Table 13 | reported only |
 | H7 | Voltages and flows at buses name-matched to World Bank Annex 2 | median V error and flow-sign agreement reported; no pass mark (different years) | WB Annex 2 (2021) | reported only |
 | H8 | *(proposed on Day 0, needs sign-off)* 20 key 500 kV bus voltages at winter off-peak | median abs. error reported; no pass mark (values read by eye from a plot, ±0.003 pu) | TSEP Fig 5-8 | reported only |
+
+### Loss definition for H1 and H4 (proposed 17 Nov 2026, v0.4 draft, needs sign-off)
+
+- **TSEP's losses are generation minus load minus KE export.** Its balances close exactly:
+  - summer: 30,180 = 27,097 + 2,050 + 1,033;
+  - winter off-peak: 9,982 = 8,774 + 1,001 + 207.
+  
+  So TSEP's losses include any HVDC loss.
+- **Proposal.** Compute model losses as (Σ generator P − Σ load P) / Σ generator P, with KE export counted as load. Shunt conductances are zero, so they don't enter.
+  - The dcline loss is then included automatically.
+  - It is also reported as its own line next to H1 and H4.
+- **Parameters.** These are fixed in `builder/parameters.json` before the first solve: lines, transformers, shunt rules, bus limits 0.95–1.08 pu, and the HVDC set-points and losses. Reasons are in `day6/parameter_rules.md`.
+  - The 132 kV Rail variant is reported next to H1 and H4 for comparison only. It can't replace the scored result.
 
 ## Decision rule
 
