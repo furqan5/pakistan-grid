@@ -73,8 +73,10 @@ def alias_matches(alias, name):
 
 
 def lev1(a, b):
+    """Exactly one edit apart, as the rule says. (The first run, 16 Nov, also accepted identical words, so a
+    generic word such as 'power' paired TPS M.garh with a Karachi plant in the reported-only tier.)"""
     if abs(len(a) - len(b)) > 1 or a == b:
-        return a == b
+        return False
     if len(a) == len(b):
         return sum(x != y for x, y in zip(a, b)) == 1
     if len(a) > len(b):
