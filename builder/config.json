@@ -22,6 +22,8 @@
     "bbox_applies_max_kv": 220
   },
   "s1_counted_provenance": ["substation", "plant", "converter"],
+  "scored_mode": "explicit",
+  "scored_mode_note": "Decided by Furqan on 16 Nov 2026: the explicit-voltage-tags build (osm/build/explicit) is the scored model; the inferred build is reported only as a sensitivity case.",
   "plant_terminal_rule": "Day 3: a plant polygon is a terminal only for way END nodes or nodes shared by >=2 ways; lines merely crossing a plant polygon are not split there.",
   "inference_station_rules_use": "station tag_kvs + voltages of incident lines with a TAGGED voltage (Day 3). Day 2 also counted inferred line voltages, which let inferences cascade; tag_kvs-only (tried Day 3) left 3,204 km unknown because only 27% of substations carry a voltage tag.",
   "station_name_hints": {

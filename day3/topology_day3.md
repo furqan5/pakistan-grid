@@ -54,7 +54,11 @@ There are 111 (explicit) or 149 (inferred) 220 kV substation buses, against 61 o
 
 So the gap to 61 is mostly a definitional difference: OSM substations include plant switchyards, while NGC's count is grid stations. It isn't a topology error. S3 (Day 5) matches only the 69 named NGC stations, so it isn't affected.
 
-## Decision needed (builder mode, before any solve)
+## Decision (16 Nov 2026): explicit-tags build is the scored model
+
+Furqan chose the **explicit-tags build**. Gate checks S1, S3 and S4 and all solves use `osm/build/explicit`. The inferred build is reported only as a sensitivity case.
+
+The options as they were laid out:
 
 - **Explicit-tags mode:** the most defensible. It matches NGC at 500 kV to −0.1% and at 220 kV to +3.4%, but leaves 5,085 km of untagged line out.
 - **Inferred mode:** a more complete network (1,827 km left out), but it sits at the S4 ±10% edge at 220 kV.

@@ -13,6 +13,12 @@ The thresholds were designed in that report, not taken from a source, except whe
 - **Winter off-peak:** TSEP 2024-34 base case, January 2027 (Table 5-10), with the Table 5-7 line openings applied.
 - Both are NTDC **planning forecasts, not observations**.
 
+## Model build choice (fixed before the first Pakistan solve)
+
+- **Scored model:** the explicit-voltage-tags OSM build (`osm/build/explicit`). Decided by Furqan on 16 Nov 2026.
+  - The inferred-voltage build is reported as a sensitivity case only. Its results can't replace a failed scored check.
+  - Day 3 values on the scored build: provisional S1 896 (without KE) / 912 (with KE); 500 kV 9,308 circuit-km; 220 kV 12,819 circuit-km.
+
 ## Inputs (set from the sources; matching them proves nothing)
 
 | ID | Summer peak | Winter off-peak | Source |
