@@ -17,6 +17,12 @@
 
 **Day 5 no-go:** not triggered. S1 passes and S3 is at least 60.
 
+**These are the recorded G1 values.** If a later rebuild changes buses or components (for example the Day 6 topology follow-ups):
+- rerun S1, S3 and S4;
+- report the new values next to these, never in their place.
+
+Any S3 change caused by a station-grouping change is post hoc and must be labelled that way. An example is merging an unnamed 220 kV yard into a nearby named 132 kV station, which would turn the Sialkot or Loralai misses into hits.
+
 ## What the S3 failure means
 
 - **Calibrated label ruled out.** Under the decision rule as written, "Go: Pakistan-calibrated" needs S1–S3 to pass. A failed S3 rules that label out, whatever V1–V2 and the holdouts show later.
@@ -44,12 +50,12 @@
 - **Where both ends mapped, the OSM path matches the PSS route closely.** 55 of 72 rows are within 10%. Many are within 2%: Multan–Yousafwala 161.7 vs 161 km, NKI–Jamshoro 155 vs 156, Muzaffargarh–Guddu 257.5 vs 256.
 - **No circuit corrections.** All 29 checked double-circuit rows (27 distinct corridors) already carry at least 2 circuits on every hop in OSM, from `circuits` or `cables` tags. The correction rule changed nothing, so S4 stays as above.
 - **Paths much longer than the PSS route.** These are not gate items; they are topology follow-ups for Day 6.
-  - **Missing direct links in OSM.** For each, there is no dangling end within 97 km of either station, and the inferred build doesn't close the gap. In the model, Nishatabad 220 kV has only one line, 2 km to Gatti.
+  - **Direct links absent from the 220 kV layer of both builds.** For each, there is no dangling 220 kV end within 97 km of either station. In the model, Nishatabad 220 kV has only one line, 2 km to Gatti. Not yet ruled out: the line is mapped in OSM but has a wrong voltage tag, or it ends at an adjacent polygon. Day 6 checks both.
     - Samundri Road–Nishatabad: 23 km route, OSM path 177 km.
     - New Kot Lakhpat–Bund Road: 18 km route, path 80 km.
     - KSK–Bandala: 101 km route, path 398 km.
     - Peshawar–Nowshera: 50 km route, path 82 km.
-  - **Changed since 2019.** Port Qasim–Jamshoro (132 vs 226 km) and Port Qasim–Dadu (285 vs 336 km) were rerouted into the Matiari converter. OSM names the line "Port Qasim CFPP – Matiari I & II".
+  - **Probably changed since 2019.** OSM line names indicate that Port Qasim–Jamshoro (132 vs 226 km) and Port Qasim–Dadu (285 vs 336 km) now run into the Matiari converter ("Port Qasim CFPP – Matiari I & II") [VERIFY].
   - **PSS-side inconsistency.** Multan–T.T. Singh is listed twice, at 82 and 65 km, but the stations are 137 km apart in a straight line. Neither row can be a full Multan–T.T. Singh route.
 - **Checks on the doubtful scored pairs.** These are reported only; no pair was removed.
   - **Sarfraz Nagar (S0115):**

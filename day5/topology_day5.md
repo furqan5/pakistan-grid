@@ -18,7 +18,7 @@
 5. **PSS per-line check** (`builder/check_pss_lines.py`, rules committed in `44a10db` before the first run).
    - 72 rows checked; 55 have the OSM path within 10% of the PSS route.
    - **No circuit corrections were needed.**
-   - Four missing direct 220 kV links were found and are listed for Day 6.
+   - Four direct 220 kV links are absent from the 220 kV layer of both builds. Whether they are unmapped, carry a wrong voltage tag or end at an adjacent polygon is a Day 6 check.
 6. **HVDC.** `dclines.csv` now gives each terminal's AC bus: Matiari `S:S0675@500` ↔ Lahore `S:S0789@500`.
 
 ## G1 summary
