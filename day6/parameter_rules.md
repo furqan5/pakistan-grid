@@ -33,7 +33,7 @@ All values live in `builder/parameters.json`. This note gives the reasons. The o
 
 ## Transformers
 
-- **Branches.** One equivalent branch per voltage pair per station, using the builder's stubs. There are 127 stubs: 67 at 220/132 kV, 35 at 132/66, 21 at 500/220, 2 at 500/132 and 1 at 132/110.
+- **Branches.** One equivalent branch per voltage pair per station, using the builder's stubs. There are 126 stubs (corrected from 127, which counted the CSV header): 67 at 220/132 kV, 35 at 132/66, 21 at 500/220, 2 at 500/132 and 1 at 132/110.
 - **Capacity:**
   - For stations S3 assigned to a PSS 44th station (Tables 2.16/2.17, June 2019), use the PSS units. Units of 450, 600 or 750 MVA go to the 500/220 pair; 160, 250 or 320 MVA to the 220/132 pair.
   - Otherwise use the default.
