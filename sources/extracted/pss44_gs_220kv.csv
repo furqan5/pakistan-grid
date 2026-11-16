@@ -1,0 +1,46 @@
+kv,region,sr,name,disco,province,transformers,total_mva,check_mva
+220,Lahore,1,Samundari Road FSD,FESCO,Punjab,3x160,480,480
+220,Lahore,2,Jaranwala Road FSD,FESCO,Punjab,4x160,640,640
+220,Lahore,3,Nishatabad FSD,FESCO,Punjab,4x160,640,640
+220,Lahore,4,Bandala FSD,FESCO,Punjab,1x160 + 1x250,410,410
+220,Lahore,5,T.T Singh,FESCO,Punjab,2x160 + 2x250,820,820
+220,Lahore,6,Ludewala Sargodha,FESCO,Punjab,2x160 + 1x250,570,570
+220,Lahore,7,Sailkot,GEPCO,Punjab,3x160,480,480
+220,Lahore,8,Gujrat,GEPCO,Punjab,3x250,750,750
+220,Lahore,9,Ghakhar,GEPCO,Punjab,4x160,640,640
+220,Lahore,10,Kala Shah Kaku Lahore,LESCO,Punjab,4x160,640,640
+220,Lahore,11,Ravi Lahore,LESCO,Punjab,3x250,750,750
+220,Lahore,12,Bund Road Lahore,LESCO,Punjab,4x250,1000,1000
+220,Lahore,13,New Shalamar Lahore,LESCO,Punjab,3x160,480,480
+220,Lahore,14,New KotLakhPat Lahore,LESCO,Punjab,3x250,750,750
+220,Lahore,15,Ghazi Lahore (New GIS),LESCO,Punjab,2x250,500,500
+220,Lahore,16,Sarfaraz Nagar Lahore,LESCO,Punjab,4x160,640,640
+220,Lahore,17,Okara,LESCO,Punjab,2x250,500,500
+220,Lahore,18,Wapda Town Lahore,LESCO,Punjab,3x160,480,480
+220,Lahore,19,Kassowal,MEPCO,Punjab,2x160,320,320
+220,Islamabad,1,Bannu,PESCO/TESCO,KPK,2x160 + 1x250,570,570
+220,Islamabad,2,Burhan,IESCO/PESCO,Punjab,4x250,1000,1000
+220,Islamabad,3,Daudkhel,FESCO/PESCO,Punjab,2x160,320,320
+220,Islamabad,4,Islamabad University,IESCO,Islamabad,2x250,500,500
+220,Islamabad,5,Mardan,PESCO/TESCO,KPK,3x250,750,750
+220,Islamabad,6,Sangjani,IESCO,Islamabad,4x160,640,640
+220,Islamabad,7,Shahibagh,PESCO/TESCO,KPK,4x160,640,640
+220,Islamabad,8,Mansehra,PESCO,KPK,2x250,500,500
+220,Islamabad,9,Chakdara,PESCO/TESCO,KPK,2x250,500,500
+220,Islamabad,10,DI-Khan,PESCO,KPK,2x250,500,500
+220,Islamabad,11,Nowshera,PESCO,KPK,2x250,500,500
+220,Hyderabad,1,Hala Road,HESCO,Sindh,2x160 + 1x250,570,570
+220,Hyderabad,2,Jhampir,HESCO,Sindh,3x250,750,750
+220,Hyderabad,3,T.M.Khan,HESCO,Sindh,2x160,320,320
+220,Hyderabad,4,Rohri,SEPCO,Sindh,2x250,500,500
+220,Hyderabad,5,Daharki,SEPCO,Sindh,1x160 + 1x250,410,410
+220,Quetta,1,Sibbi,QESCO,Balochistan,2x160,320,320
+220,Quetta,2,Quetta,QESCO,Balochistan,2x160 + 1x250,570,570
+220,Quetta,3,Khuzdar,QESCO,Balochistan,2x160,320,320
+220,Quetta,4,Loralai,QESCO,Balochistan,2x250,500,500
+220,Quetta,5,Dera Murad Jamali,QESCO,Balochistan,2x160,320,320
+220,Multan,1,Muzaffar Garh,MEPCO,Punjab,2x160,320,320
+220,Multan,2,Bahawal Pur,MEPCO,Punjab,1x160 + 2x250,660,660
+220,Multan,3,Vehari,MEPCO,Punjab,2x320 + 1x250,890,890
+220,Multan,4,Chishtian,MEPCO,Punjab,2x160,320,320
+220,Multan,5,Lal Sohanra,MEPCO,Punjab,1x250,250,250

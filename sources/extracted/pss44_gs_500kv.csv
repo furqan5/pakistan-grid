@@ -1,0 +1,17 @@
+kv,region,sr,name,disco,province,transformers,total_mva,check_mva
+500,Lahore,1,Gatti Faisalabad,FESCO,Punjab,4x450 + 1x600,2400,2400
+500,Lahore,2,Sheikhupura,LESCO,Punjab,4x600,2400,2400
+500,Lahore,3,Yousafwala-Sahiwal,MEPCO,Punjab,2x600,1200,1200
+500,Lahore,4,New Lahore,LESCO,Punjab,3x750,2250,2250
+500,Lahore,5,Nokhar,GEPCO,Punjab,2x600,1200,1200
+500,Islamabad,6,Rawat,IESCO,Punjab,1x750 + 3x450,2100,2100
+500,Islamabad,7,Sheikh Muhammadi,PESCO/TESCO,KPK,3x450,1350,1350
+500,Multan,8,Multan,MEPCO,Punjab,2x450,900,900
+500,Multan,9,Muzaffar Garh,MEPCO,Punjab,2x600,1200,1200
+500,Multan,10,Dera Ghazi Khan,MEPCO,Punjab,2x600,1200,1200
+500,Multan,11,Rahim Yar Khan,MEPCO,Punjab,2x600,1200,1200
+500,Hyderabad,12,Dadu,HESCO/SEPCO,Sindh,2x450 + 2x160 + 1x250,1470,1470
+500,Hyderabad,13,Guddu,SEPCO/MEPCO,Sindh,3x450,1350,1350
+500,Hyderabad,14,Jamshoro,HESCO,Sindh,2x450 + 2x160,1220,1220
+500,Hyderabad,15,North Karachi Industrial (NKI),K Electric,Sindh,2x600,1200,1200
+500,Hyderabad,16,Shikarpur,SEPCO,Sindh,2x600 + 2x160 + 1x250,1770,1770

@@ -42,8 +42,11 @@
   "inference_station_rules_use": "station tag_kvs + voltages of incident lines with a TAGGED voltage (Day 3). Day 2 also counted inferred line voltages, which let inferences cascade; tag_kvs-only (tried Day 3) left 3,204 km unknown because only 27% of substations carry a voltage tag.",
   "station_name_hints": {
     "_comment": "Used only for naming/backbone/S3 reporting, never for topology. Keyed by OSM element id of a station member. Each needs confirmation [VERIFY].",
-    "w241957315": {"name": "Rawat 500 kV", "basis": "OSM name '500kV Grid Station', tags 132/220/500, at 33.479N 73.192E (Rawat area)"},
-    "w559254617": {"name": "747 Guddu 500 kV", "basis": "unnamed 500 kV polygon at 28.424N 69.703E, ~1 km from OSM 'Guddu' 500/220 kV"},
-    "w245490150": {"name": "Yousafwala 500 kV", "basis": "OSM name 'Sahiwal', tags 220/500, at 30.668N 73.171E; NGC lists Yousafwala (Sahiwal district) and no 'Sahiwal' 500 kV grid station"}
+    "w241957315": {"name": "Rawat 500 kV", "basis": "OSM name '500kV Grid Station', tags 132/220/500, at 33.479N 73.192E (Rawat area)",
+                   "pss44_16nov": "PSS 44th Table 2.16 lists 500 kV 'Rawat' (IESCO); Table 2.6 lines 'Tarbela- New Rawat', 'Rawat Neelum Jehlum'. Names only, no coordinates, so the location stays [VERIFY]."},
+    "w559254617": {"name": "747 Guddu 500 kV", "basis": "unnamed 500 kV polygon at 28.424N 69.703E, ~1 km from OSM 'Guddu' 500/220 kV",
+                   "pss44_16nov": "PSS 44th Table 2.6 (Multan region) lists a 500 kV line 'Guddu 747 - Guddu Old', Feb-14, 1 km SC + 1 km DC = 2 circuit-km, so a separate 747 yard about 1-2 km from old Guddu exists. Location stays [VERIFY]."},
+    "w245490150": {"name": "Yousafwala 500 kV", "basis": "OSM name 'Sahiwal', tags 220/500, at 30.668N 73.171E; NGC lists Yousafwala (Sahiwal district) and no 'Sahiwal' 500 kV grid station",
+                   "pss44_16nov": "PSS 44th Table 2.16 names the 500 kV station 'Yousafwala-Sahiwal' (MEPCO, 2x600 MVA), which supports the OSM 'Sahiwal' = Yousafwala reading. Location stays [VERIFY]."}
   }
 }
