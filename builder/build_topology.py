@@ -645,8 +645,14 @@ def build(infer: bool):
     wcsv("buses.csv", buses, ["bus", "kind", "ref", "kv", "prov", "name", "lat", "lon", "ke", "in_main"])
     wcsv("branches.csv", branches, ["from", "to", "kv", "kv_src", "circuits", "circuits_src", "len_km", "cable", "ways", "name"])
     wcsv("transformers.csv", trafos, ["hv_bus", "lv_bus", "hv_kv", "lv_kv"])
-    wcsv("dclines.csv", [[e["way"], f"{e['u'][0]}:{e['u'][1]}", f"{e['v'][0]}:{e['v'][1]}", e["kv"] or "", round(e["len_m"] / 1000, 2), e["name"]] for e in dc],
-         ["way", "from", "to", "kv", "len_km", "name"])
+    # Day 5: each DC terminal is tied to the highest-voltage AC bus of its converter station (PowerModels dcline f_bus/t_bus).
+    def ac_bus(t):
+        kvs = sorted((int(b["kv"]) for b in buses if b["kind"] == t[0] and b["ref"] == t[1]), reverse=True)
+        return f"{t[0]}:{t[1]}@{kvs[0]}" if kvs else ""
+
+    wcsv("dclines.csv", [[e["way"], f"{e['u'][0]}:{e['u'][1]}", f"{e['v'][0]}:{e['v'][1]}", e["kv"] or "", round(e["len_m"] / 1000, 2), e["name"],
+                          ac_bus(e["u"]), ac_bus(e["v"])] for e in dc],
+         ["way", "from", "to", "kv", "len_km", "name", "ac_from", "ac_to"])
     wcsv("stations.csv", [{k: s[k] for k in ("id", "name", "prov", "tag_kvs", "n_members", "members", "subtypes", "operator", "lat", "lon", "all_names")} for s in stations],
          ["id", "name", "prov", "tag_kvs", "n_members", "members", "subtypes", "operator", "lat", "lon", "all_names"])
     wcsv("plants.csv", plants, ["id", "osm", "name", "source", "operator", "lat", "lon", "all_names"])
