@@ -1,6 +1,6 @@
 # Pakistan synthetic grid for a GridSFM test — pre-registered gate
 
-**Status: DRAFT v0.2, 6 Nov 2026. Not yet approved by Furqan.**
+**Status: DRAFT v0.3, 16 Nov 2026 (v0.2: 6 Nov). Not yet approved by Furqan.** v0.3 adds the S3 match rule; it changes no thresholds.
 v0.2 adds no threshold changes. Every TSEP and NEPRA number in this file was checked by eye against the source PDFs (`day0/tsep_check.md`, `day0/per_check.md`). The S3 name list is PER FY2024-25 Figure 1 (69 stations). It becomes binding only once he signs it off.
 Any edit before the first Pakistan AC solve is allowed but gets a new dated commit. After the first Pakistan AC solve, changes are logged and the affected holdouts are reported as "post hoc".
 
@@ -37,6 +37,52 @@ The thresholds were designed in that report, not taken from a source, except whe
 | S2 | Share of load and of installed generation in the main component | ≥ 98% each | design | Fix islands |
 | S3 | NGC 500/220 kV stations matched by name | ≥ 65 of 69 | NEPRA PER FY2024-25 | **No-go** if < 60 |
 | S4 | Model circuit-km at 500 kV and at 220 kV (NGC + KE) | within ±10% of ≈ 9,320 and ≈ 12,400 | NEPRA PER FY2024-25 | Correct circuits before solving (calibration, not a holdout) |
+
+### S3 match rule (added 16 Nov 2026, v0.3 draft, fixed before S3 was first scored)
+
+- **Reference list.** The 69 stations of PER FY2024-25 Figure 1 at their PER voltage: 20 at 500 kV, 49 at 220 kV.
+- **Aliases.** `gate/s3_aliases.csv` gives each station's aliases with a source for each.
+  - The sources are PER Figure 1, the PSS 44th station and line tables, and plain abbreviation expansions (FSD = Faisalabad, T.T. = Toba Tek, and so on).
+  - Three aliases rest on the structure of the two lists, not on a document that states the equivalence: Peshawar ↔ Sheikh Muhammadi, Safdar Nagar ↔ Sarfaraz Nagar and Bandial ↔ Bandala. They are marked "structural [VERIFY]".
+  - **What OSM names were already seen.** The table was written from the documents, but the 500 kV half isn't blind:
+    - The Day 3 backbone check had already shown OSM names such as "Faisalabad West", "New Dadu" and "Sahiwal", with 500 kV at 19 of 20 by the Day 3 aliases.
+    - The Day 4 K-Electric section printed some 220 kV names: N.K.I, Baldia and Jhimpir II.
+    - No other 220 kV OSM name was looked at.
+    - The bare alias `sahiwal` was left out on purpose. Every other row keeps the station part of a compound PSS name and drops the city; for Yousafwala, `sahiwal` would have turned a known location hint into a name match.
+  - The table isn't edited after scoring. Any later change is reported as post hoc.
+- **Self-test.** `python builder/score_s3.py --selftest` must pass before scoring. Every station has to match its own PER spelling and every PSS spelling quoted in its source column. On 16 Nov it passed: 129 spellings, 0 failures.
+- **Candidates.** Buses of the scored build (`osm/build/explicit`) at the station's PER voltage:
+  - Substation and converter buses can be matched to any station.
+  - Plant buses can be matched only to the three PER entries that are plant switchyards: TPS M.garh, S.Y. Guddu and NGPS.
+- **Names compared.** Every `name`, `name:en`, `alt_name`, `official_name`, `old_name` and `short_name` value across all OSM members of the station or plant (`all_names` in `stations.csv` and `plants.csv`).
+  - Name counts before scoring (scored build, main component):
+    - 220 kV: 68 station buses carry a Latin-script name and 41 carry none.
+    - 500 kV: 23 named, 24 unnamed.
+    - No candidate has a non-Latin name only.
+  - Unnamed stations can only be found by location hint, so they don't count toward the scored S3.
+- **Name normalisation**, applied the same way to both sides:
+  1. lower-case and fold accents;
+  2. turn punctuation into spaces and split into words;
+  3. merge runs of single letters ("N. K. I" → "nki");
+  4. map lone roman numerals i–iv to 1–4;
+  5. inside each word, drop an "h" that follows a consonant and collapse doubled letters ("Ghakkar" and "Gakhar" both → "gakar").
+- **Name match.** An alias matches a bus name if every word of the alias appears as a whole word in the name. It also matches if the alias, with spaces removed, is at least 6 characters long and appears inside the name with spaces removed.
+- **One to one.** Each bus can serve at most one station at a given voltage. The S3 count is the size of the maximum bipartite matching between stations and buses.
+- **Scored S3 = name matches only, to buses in the main component.** The gate says "matched by name".
+  - These are reported but don't count:
+    - name matches anywhere in the build;
+    - near-misses, meaning one edit within a word of 5 or more letters;
+    - location hints from `builder/config.json`.
+  - A hint never counts toward the scored S3.
+- **Output.** `s3_report.md` and `s3_matches.csv` in the build folder list, for every station:
+  - the bus assigned;
+  - the alias and OSM name that matched;
+  - the tier;
+  - the coordinates;
+  - whether a structural alias was used.
+  
+  The report also states how many scored matches rely on a structural alias. Doubtful pairs are reported, never removed.
+- **Proposed, needs sign-off.** The decision rule doesn't say what happens when S3 lands between 60 and 64, which fails the ≥65 pass mark but is above the no-go line. Proposal: treat it like a failed scored holdout. The test is relabelled "synthetic Pakistan-topology" and the build continues.
 
 ## Solvability (Day 10)
 

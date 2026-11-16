@@ -1,0 +1,70 @@
+per_name,kv,region,aliases,source,identity
+Rawat,500,Islamabad,rawat|new rawat,PER Fig 1; PSS44 T2.16 'Rawat'; T2.6 'Tarbela- New Rawat',named
+Peshawar,500,Islamabad,peshawar|sheikh muhammadi,PER Fig 1; PSS44 T2.16 'Sheikh Muhammadi' (PESCO); T2.6 'Tarbela- Sheikh Muhammadi Peshawar',structural [VERIFY]: PSS 2019 and PER 2025 each list exactly two Islamabad-region 500 kV stations
+Gatti,500,Lahore,gatti,PER Fig 1; PSS44 T2.16 'Gatti Faisalabad',named
+Nokhar,500,Lahore,nokhar,PER Fig 1; PSS44 T2.16,named
+S.K.P,500,Lahore,skp|sheikhupura|lahore skp,PER Fig 1; PSS44 T2.16 'Sheikhupura'; T2.6 'QATPL-Lahore(Skp)',named
+New Lahore,500,Lahore,new lahore,PER Fig 1; PSS44 T2.16,named
+West FSD,500,Lahore,west fsd|west faisalabad|faisalabad west,PER Fig 1; FSD = Faisalabad as used in PSS44 T2.17 (Samundari Road FSD),named
+Yousafwala,500,Lahore,yousafwala|yousafwala sahiwal,PER Fig 1; PSS44 T2.16 'Yousafwala-Sahiwal',named
+Multan,500,Multan,multan,PER Fig 1; PSS44 T2.16,named
+M.garh,500,Multan,mgarh|muzaffargarh|muzaffar garh|muzafargarh,PER Fig 1; PSS44 T2.16 'Muzaffar Garh'; T2.6 'Muzafargarh-H.B.Shah',named
+D.G. Khan,500,Multan,dg khan|dera ghazi khan,PER Fig 1; PSS44 T2.16 'Dera Ghazi Khan',named
+RYK,500,Multan,ryk|rahim yar khan|ry khan,PER Fig 1; PSS44 T2.16 'Rahim Yar Khan'; T2.6 'R.Y Khan',named
+TPS M.garh,500,Multan,tps mgarh|tps muzaffargarh|thermal power station muzaffargarh,PER Fig 1; PSS44 T2.8 'TPS-M/Garh-Multan' (TPS = thermal power station),named
+Dadu,500,Hyderabad,dadu,PER Fig 1; PSS44 T2.16,named
+Guddu,500,Hyderabad,guddu|guddu old,PER Fig 1; PSS44 T2.16; T2.6 'Guddu 747 - Guddu Old',named
+Jamshoro,500,Hyderabad,jamshoro,PER Fig 1; PSS44 T2.16,named
+NKI,500,Hyderabad,nki|north karachi industrial,PER Fig 1; PSS44 T2.16 'North Karachi Industrial (NKI)',named
+Shikarpur,500,Hyderabad,shikarpur,PER Fig 1; PSS44 T2.16,named
+747 Guddu,500,Hyderabad,747 guddu|guddu 747,PER Fig 1; PSS44 T2.6 'Guddu 747 - R.Y Khan',named
+Moro,500,Hyderabad,moro,PER Fig 1; PSS44 T2.6 'Jamshoro- Moro',named
+Bannu,220,Islamabad,bannu|domale bannu,PER Fig 1; PSS44 T2.17; T2.8 'Mari Daudkhel - Domale Bannu',named
+Burhan,220,Islamabad,burhan,PER Fig 1; PSS44 T2.17,named
+Daudkhel,220,Islamabad,daudkhel|mari daudkhel,PER Fig 1; PSS44 T2.17; T2.8,named
+ISPR,220,Islamabad,ispr|sangjani,PER Fig 1; PSS44 T2.17 'Sangjani'; T2.8 'Sangjani (ISPR)',named
+Mardan,220,Islamabad,mardan,PER Fig 1; PSS44 T2.17,named
+Nowshera,220,Islamabad,nowshera,PER Fig 1; PSS44 T2.17,named
+Shahibagh,220,Islamabad,shahibagh|shahi bagh,PER Fig 1; PSS44 T2.17; T2.8 'Chakdara-ShahiBagh',named
+University,220,Islamabad,university|islamabad university,PER Fig 1; PSS44 T2.17 'Islamabad University',named
+Mansehra,220,Islamabad,mansehra|new mansehra,PER Fig 1; PSS44 T2.17; T2.8 'New Mansehra',named
+Chakdara,220,Islamabad,chakdara,PER Fig 1; PSS44 T2.17,named
+D.I. Khan,220,Islamabad,di khan|dera ismail khan,PER Fig 1; PSS44 T2.17 'DI-Khan'; D.I. = Dera Ismail,named
+Band,220,Lahore,band|band road|bund road,PER Fig 1; PSS44 T2.17 'Bund Road Lahore',named
+Ghakkar,220,Lahore,ghakkar|ghakhar|gakkhar|new ghakkar,PER Fig 1; PSS44 T2.17 'Ghakhar'; T2.8 'New GKR - Gakkhar'; T2.6 'New Ghakkar',named
+Jaranwala,220,Lahore,jaranwala|jaranwala road|jwr,PER Fig 1; PSS44 T2.17 'Jaranwala Road FSD'; T2.8 'Gatti JWR',named
+KSK,220,Lahore,ksk|kala shah kaku,PER Fig 1; PSS44 T2.17 'Kala Shah Kaku Lahore',named
+Ludewala,220,Lahore,ludewala|lwala,PER Fig 1; PSS44 T2.17 'Ludewala Sargodha'; T2.8 'Gatti-L/Wala',named
+N.K.L.P,220,Lahore,nklp|new kot lakhpat|new kotlakhpat,PER Fig 1; PSS44 T2.17 'New KotLakhPat Lahore'; T2.8 'New Kot Lakhpat',named
+Shalamar,220,Lahore,shalamar|new shalamar,PER Fig 1; PSS44 T2.17 'New Shalamar Lahore',named
+Nishatabad,220,Lahore,nishatabad,PER Fig 1; PSS44 T2.17,named
+Ravi,220,Lahore,ravi,PER Fig 1; PSS44 T2.17 'Ravi Lahore',named
+Sammundri,220,Lahore,sammundri|samundari road|samundri road|srd,PER Fig 1; PSS44 T2.17 'Samundari Road FSD'; T2.8 'T.T.Singh-SRD',named
+Safdar Nagar,220,Lahore,safdar nagar|sarfaraz nagar|sarfraz nagar,PER Fig 1; PSS44 T2.17 'Sarfaraz Nagar Lahore'; T2.8 'Sarfraz Nagar',structural [VERIFY]: no 'Safdar Nagar' in PSS; Lahore-region lists otherwise correspond one to one
+Sialkot,220,Lahore,sialkot|sailkot|skt,PER Fig 1; PSS44 T2.17 'Sailkot'; T2.8 'GKR - SKT',named
+Wapda Town,220,Lahore,wapda town,PER Fig 1; PSS44 T2.17,named
+Ghazi Road,220,Lahore,ghazi road|ghazi lahore,PER Fig 1; PSS44 T2.17 'Ghazi Lahore (New GIS)'. Plain ghazi excluded (Ghazi Barotha has 220 kV),named
+Bandial,220,Lahore,bandial|bandala,PER Fig 1; PSS44 T2.17 'Bandala FSD'; T2.8 'Bandala-Gatti',structural [VERIFY]: no 'Bandial' in PSS; Lahore-region lists otherwise correspond one to one
+T.T. Singh,220,Lahore,tt singh|toba tek singh,PER Fig 1; PSS44 T2.17 'T.T Singh'; T.T. = Toba Tek,named
+Gujrat,220,Lahore,gujrat,PER Fig 1; PSS44 T2.17,named
+Lalian,220,Lahore,lalian,PER Fig 1 (not in PSS44; built after June 2019),named
+Kassowal,220,Lahore,kassowal,PER Fig 1; PSS44 T2.17,named
+Okara,220,Lahore,okara|new okara,PER Fig 1; PSS44 T2.17; T2.8 'New Okara',named
+Bahawalpur,220,Multan,bahawalpur|bahawal pur,PER Fig 1; PSS44 T2.17 'Bahawal Pur',named
+M.garh,220,Multan,mgarh|muzaffargarh|muzaffar garh|muzafargarh,PER Fig 1; PSS44 T2.17 'Muzaffar Garh'; T2.8 'M/Garh G/S',named
+Vehari,220,Multan,vehari,PER Fig 1; PSS44 T2.17,named
+Chistian,220,Multan,chistian|chishtian,PER Fig 1; PSS44 T2.17 'Chishtian',named
+Lal Sohanra,220,Multan,lal sohanra|laal sohanra,PER Fig 1; PSS44 T2.17; T2.8 'Laal Sohanra',named
+NGPS,220,Multan,ngps,PER Fig 1; PSS44 T2.8 'Multan - N.G.P.S',named
+Hala Road,220,Hyderabad,hala road,PER Fig 1; PSS44 T2.17,named
+Rohri,220,Hyderabad,rohri,PER Fig 1; PSS44 T2.17,named
+T.M.K,220,Hyderabad,tmk|tm khan|tando muhammad khan,PER Fig 1; PSS44 T2.17 'T.M.Khan'; T.M. = Tando Muhammad,named
+Daharki,220,Hyderabad,daharki,PER Fig 1; PSS44 T2.17,named
+Jhimpir 1,220,Hyderabad,jhimpir|jhimpir 1|jhampir,PER Fig 1; PSS44 T2.17 'Jhampir',named
+Jhimpir 2,220,Hyderabad,jhimpir 2,PER Fig 1 (not in PSS44; built after June 2019),named
+S.Y. Guddu,220,Hyderabad,sy guddu|guddu,PER Fig 1 (S.Y. = switchyard); PSS44 T2.6 'Guddu Old',named
+Quetta,220,Quetta,quetta,PER Fig 1; PSS44 T2.17,named
+Sibbi,220,Quetta,sibbi|sibi,PER Fig 1; PSS44 T2.17 'Sibbi',named
+Khuzdar,220,Quetta,khuzdar,PER Fig 1; PSS44 T2.17,named
+Loralai,220,Quetta,loralai,PER Fig 1; PSS44 T2.17,named
+D.M. Jamali,220,Quetta,dm jamali|dera murad jamali,PER Fig 1; PSS44 T2.17 'Dera Murad Jamali',named
