@@ -21,5 +21,13 @@
     "karachi_bbox_lon": [66.65, 67.55],
     "bbox_applies_max_kv": 220
   },
-  "s1_counted_provenance": ["substation", "plant", "converter"]
+  "s1_counted_provenance": ["substation", "plant", "converter"],
+  "plant_terminal_rule": "Day 3: a plant polygon is a terminal only for way END nodes or nodes shared by >=2 ways; lines merely crossing a plant polygon are not split there.",
+  "inference_station_rules_use": "station tag_kvs + voltages of incident lines with a TAGGED voltage (Day 3). Day 2 also counted inferred line voltages, which let inferences cascade; tag_kvs-only (tried Day 3) left 3,204 km unknown because only 27% of substations carry a voltage tag.",
+  "station_name_hints": {
+    "_comment": "Used only for naming/backbone/S3 reporting, never for topology. Keyed by OSM element id of a station member. Each needs confirmation [VERIFY].",
+    "w241957315": {"name": "Rawat 500 kV", "basis": "OSM name '500kV Grid Station', tags 132/220/500, at 33.479N 73.192E (Rawat area)"},
+    "w559254617": {"name": "747 Guddu 500 kV", "basis": "unnamed 500 kV polygon at 28.424N 69.703E, ~1 km from OSM 'Guddu' 500/220 kV"},
+    "w245490150": {"name": "Yousafwala 500 kV", "basis": "OSM name 'Sahiwal', tags 220/500, at 30.668N 73.171E; NGC lists Yousafwala (Sahiwal district) and no 'Sahiwal' 500 kV grid station"}
+  }
 }

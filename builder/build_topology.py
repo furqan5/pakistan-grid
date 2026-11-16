@@ -288,10 +288,17 @@ def build(infer: bool):
         for nid, (_, tid) in best.items():
             node_term[nid] = (kind, tid)
 
-    assign_inside(stations, "S")
-    assign_inside(plants, "P")
-
     use = collections.Counter(n for w in ways for n in set(w["nodes"]))
+    way_ends = {w["nodes"][0] for w in ways} | {w["nodes"][-1] for w in ways}
+
+    assign_inside(stations, "S")
+    before_plants = set(node_term)
+    assign_inside(plants, "P")
+    # Day 3: a plant polygon only terminates a line that ends (or branches) inside it.
+    for nid in [n for n, t in node_term.items() if t[0] == "P" and n not in before_plants]:
+        if nid not in way_ends and use[nid] < 2:
+            del node_term[nid]
+            stats["plant_pass_through_nodes_ignored"] += 1
 
     # ---- split ways into segments at stations and shared nodes
     segs = []
@@ -364,13 +371,11 @@ def build(infer: bool):
 
     # ---- voltage inference for untagged AC edges
     def station_levels(t):
-        if t[0] == "S":
-            base = set(st_by_id[t[1]]["tag_kvs"])
-        elif t[0] == "P":
-            base = set()
-        else:
+        # Day 3: station tag voltages plus voltages of incident lines whose voltage is TAGGED.
+        # Inferred line voltages are never counted, so an inference cannot cascade through stations.
+        if t[0] != "S":
             return set()
-        return base | {e["kv"] for e in inc[t] if e["kv"]}
+        return set(st_by_id[t[1]]["tag_kvs"]) | {e["kv"] for e in inc[t] if e["kv"] and e["kv_src"] == "tag"}
 
     inc = collections.defaultdict(list)
     for e in edges:
@@ -411,7 +416,19 @@ def build(infer: bool):
             stats[f"kv_inferred:{e['kv_src']}"] += 1
 
     ac = [e for e in edges if e["kv"] and not e["hvdc"]]
-    dc = [e for e in edges if e["hvdc"]]
+    dc_raw = [e for e in edges if e["hvdc"]]
+    # Day 3: collapse DC pieces joined at plain junctions into end-to-end links between stations.
+    D = nx.MultiGraph()
+    for e in dc_raw:
+        D.add_edge(e["u"], e["v"], len_m=e["len_m"], ways=str(e["way"]), kv=e["kv"], name=e["name"])
+    for n in [n for n in D.nodes if n[0] == "J"]:
+        if D.degree(n) == 2 and D.number_of_edges(n, n) == 0:
+            (a_, _, d1), (b_, _, d2) = [(nb, n, d) for _, nb, d in D.edges(n, data=True)]
+            D.remove_node(n)
+            D.add_edge(a_, b_, len_m=d1["len_m"] + d2["len_m"], ways=d1["ways"] + ";" + d2["ways"], kv=d1["kv"], name=d1["name"] or d2["name"])
+    dc = [{"u": u, "v": v, "kv": d["kv"], "len_m": d["len_m"], "way": d["ways"], "name": d["name"]} for u, v, d in D.edges(data=True)]
+    stats["dc_pieces_raw"] = len(dc_raw)
+    stats["dc_links_after_collapse"] = len(dc)
 
     # ---- buses, then collapse degree-2 junctions (series joints)
     def bkey(t, kv):
@@ -513,10 +530,18 @@ def build(infer: bool):
     s1_noke = [b for b in s1 if not b["ke"]]
     main500 = per_kv.get(500, (0, 0, [], set()))[3]
     backbone = []
+    hints = {k: v for k, v in CFG.get("station_name_hints", {}).items() if not k.startswith("_")}
+    for st in stations:
+        st["hint"] = "; ".join(hints[m]["name"] + " [hint]" for m in st["members"].split(";") if m in hints)
+
+    def norm(s):
+        return re.sub(r"[^a-z0-9]", "", s.lower())
+
     st500 = [st for st in stations if f"S:{st['id']}@500" in bus_by]
     for label, aliases in NGC_500KV.items():
-        hits = [st for st in st500 if any(a in st["name"].lower() for a in aliases)]
-        backbone.append((label, [f"{h['id']} {h['name']}" for h in hits],
+        hits = [st for st in st500 if any(norm(a) in norm(st["name"] + " " + st["hint"]) for a in aliases if norm(a))]
+        hits = [st for st in hits if not (label in ("Guddu",) and "747" in st["hint"])]
+        backbone.append((label, [f"{h['id']} {h['name'] or '(unnamed)'}{' / ' + h['hint'] if h['hint'] else ''}" for h in hits],
                          any(f"S:{h['id']}@500" in main500 for h in hits)))
 
     # ---- km by voltage
@@ -558,7 +583,20 @@ def build(infer: bool):
         row = [tab[(kv, p)] for p in prov_order]
         inm = sum(1 for b in buses if b["kv"] == kv and b["in_main"])
         L.append(f"| {kv} | " + " | ".join(map(str, row)) + f" | {sum(row)} | {inm} |")
-    L.append(f"\nTransformer stubs (adjacent levels within a station/plant): {len(trafos)}. HVDC/DC edges: {len(dc)}.")
+    inferred_only = collections.Counter()
+    for n in G.nodes:
+        srcs = [d.get("kv_src") for _, _, d in G.edges(n, data=True) if d.get("kind") != "transformer"]
+        if srcs and all(s != "tag" for s in srcs):
+            inferred_only[bus_by[n]["kv"]] += 1
+    L.append("\nBuses whose every line has an inferred (not tagged) voltage: "
+             + (", ".join(f"{kv} kV: {c}" for kv, c in sorted(inferred_only.items(), reverse=True)) or "none"))
+    L.append(f"\nTransformer stubs (adjacent levels within a station/plant): {len(trafos)}. DC links: {len(dc)} (from {stats['dc_pieces_raw']} raw pieces).")
+    for e in dc:
+        def tname(t):
+            if t[0] == "S":
+                return f"{t[1]} {st_by_id[t[1]]['name']}"
+            return f"{t[0]}:{t[1]}"
+        L.append(f"- {tname(e['u'])} ↔ {tname(e['v'])}: {e['len_m'] / 1000:,.1f} km, {len(str(e['way']).split(';'))} OSM ways")
     L.append("\n## Line km by voltage (AC branches after series collapse)\n")
     L.append("| kV | route km | circuit km | branches |")
     L.append("|---|---|---|---|")
