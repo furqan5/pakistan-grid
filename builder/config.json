@@ -35,6 +35,22 @@
     "max_kv": 220,
     "exclude_operator_regex": "(?i)ntdc|ngc|wapda|national transmission|ترسیلات"
   },
+  "pss_line_check": {
+    "_comment": "Day 5, fixed before the first run (16 Nov 2026). Cross-check of PSS 44th line rows (data to June 2019) against the scored build. Geometry flags and pair checks are reported only; circuit corrections follow correct_rule and go to builder/circuit_overrides.csv.",
+    "too_far_ratio": 1.10,
+    "too_far_note": "flag a matched pair if the straight-line distance exceeds 1.10 x the PSS route km (a route can't be shorter than the straight line)",
+    "too_close_factor": 2.0,
+    "too_close_plus_km": 10,
+    "too_close_note": "flag if the PSS route km exceeds 2 x straight-line + 10 km",
+    "corridor_tolerance": 0.10,
+    "correct_rule": "Change an OSM circuit count only when all hold: every PSS row for the endpoint pair is fully double-circuit (single-circuit route 0, double-circuit route > 0, two circuits in the row); the shortest OSM path at that voltage is within corridor_tolerance of the PSS route km; and the hop is a single OSM branch whose count is the untagged default (default1). Then set that branch's ways to 2 circuits. Applied once; S4 recomputed once afterwards.",
+    "endpoint_aliases": {
+      "gkr": "ghakkar", "new gkr": "new ghakkar", "new lhr": "new lahore", "y/wala": "yousafwala",
+      "terbela": "tarbela", "ghazi brotha": "ghazi barotha", "barotha": "ghazi barotha",
+      "h.b.shah": "haveli bahadur shah", "neelum jehlum": "neelum jhelum", "chashnupp": "chashma",
+      "m/garh g/s": "muzaffargarh", "laal sohanra": "lal sohanra", "altas p/h": "atlas"
+    }
+  },
   "s1_counted_provenance": ["substation", "plant", "converter"],
   "scored_mode": "explicit",
   "scored_mode_note": "Decided by Furqan on 16 Nov 2026: the explicit-voltage-tags build (osm/build/explicit) is the scored model; the inferred build is reported only as a sensitivity case.",
