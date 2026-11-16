@@ -35,6 +35,9 @@ R_EARTH = 6371008.8
 COS0 = math.cos(math.radians(30.0))
 
 # PER FY2024-25 Figure 1: the 20 NGC 500 kV grid stations, with name aliases seen in OSM/NTDC usage.
+# Day 5: every name-like tag kept per station/plant member, for the S3 name match (gate/PREREGISTRATION.md).
+NAME_KEYS = ("name", "name:en", "alt_name", "official_name", "old_name", "short_name")
+
 NGC_500KV = {
     "Rawat": ["rawat", "rewat"], "Peshawar": ["peshawar"], "Gatti": ["gatti"], "Nokhar": ["nokhar"],
     "S.K.P (Sheikhupura)": ["sheikhupura", "skp", "s.k.p"], "New Lahore": ["new lahore", "lahore new"],
@@ -179,6 +182,7 @@ def build(infer: bool):
         feats.append({
             "osm": f"{el['type'][0]}{el['id']}", "geom": g, "tags": tags,
             "name": tags.get("name:en") or tags.get("name") or "", "kvs": [k for k in parse_kv(tags.get("voltage"))],
+            "all_names": [tags[k] for k in NAME_KEYS if tags.get(k)],
             "subtype": tags.get("substation", ""), "operator": tags.get("operator", ""),
         })
     stats["substation_features"] = len(feats)
@@ -203,7 +207,8 @@ def build(infer: bool):
     for sid, members in enumerate(sorted(groups.values(), key=lambda m: min(m))):
         fs = [feats[i] for i in members]
         names = [f["name"] for f in fs if f["name"]]
-        name = max(set(names), key=lambda n: (names.count(n), len(n))) if names else ""
+        # Day 5: tie-break on the name itself; before this, ties followed Python's per-process string hashing.
+        name = max(sorted(set(names)), key=lambda n: (names.count(n), len(n), n)) if names else ""
         geom = unary_union([f["geom"] for f in fs])
         c = geom.centroid
         lon, lat = lonlat(c.x, c.y)
@@ -214,6 +219,7 @@ def build(infer: bool):
             "id": f"S{sid:04d}", "name": name, "members": ";".join(f["osm"] for f in fs), "n_members": len(fs),
             "geom": geom, "lat": lat, "lon": lon, "tag_kvs": sorted({k for f in fs for k in f["kvs"] if k >= min_kv}),
             "subtypes": ";".join(subtypes), "operator": ";".join(ops), "prov": prov,
+            "all_names": " | ".join(dict.fromkeys(n for f in fs for n in f["all_names"])),
         })
     stats["stations_after_grouping"] = len(stations)
 
@@ -230,6 +236,7 @@ def build(infer: bool):
             "name": tags.get("name:en") or tags.get("name") or "", "source": tags.get("plant:source", ""),
             "output": tags.get("plant:output:electricity", ""), "operator": tags.get("operator", ""),
             "tag_kvs": sorted({k for k in parse_kv(tags.get("voltage")) if k >= min_kv}), "prov": "plant",
+            "all_names": " | ".join(dict.fromkeys(tags[k] for k in NAME_KEYS if tags.get(k))),
         })
     stats["plants"] = len(plants)
 
@@ -640,8 +647,9 @@ def build(infer: bool):
     wcsv("transformers.csv", trafos, ["hv_bus", "lv_bus", "hv_kv", "lv_kv"])
     wcsv("dclines.csv", [[e["way"], f"{e['u'][0]}:{e['u'][1]}", f"{e['v'][0]}:{e['v'][1]}", e["kv"] or "", round(e["len_m"] / 1000, 2), e["name"]] for e in dc],
          ["way", "from", "to", "kv", "len_km", "name"])
-    wcsv("stations.csv", [{k: s[k] for k in ("id", "name", "prov", "tag_kvs", "n_members", "members", "subtypes", "operator", "lat", "lon")} for s in stations],
-         ["id", "name", "prov", "tag_kvs", "n_members", "members", "subtypes", "operator", "lat", "lon"])
+    wcsv("stations.csv", [{k: s[k] for k in ("id", "name", "prov", "tag_kvs", "n_members", "members", "subtypes", "operator", "lat", "lon", "all_names")} for s in stations],
+         ["id", "name", "prov", "tag_kvs", "n_members", "members", "subtypes", "operator", "lat", "lon", "all_names"])
+    wcsv("plants.csv", plants, ["id", "osm", "name", "source", "operator", "lat", "lon", "all_names"])
     wcsv("match_log.csv", log, ["way", "osm_node", "kv", "term_kind", "term_ref", "rule"])
     wcsv("snaps.csv", snap_rows, ["dangling_node", "snapped_to_node", "rule", "dist_m", "ways_from", "ways_to"])
     wcsv("quirks.csv", quirks, ["type", "bus", "kv", "detail_a", "detail_b", "len_km"])
