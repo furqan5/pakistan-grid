@@ -70,7 +70,7 @@ def main(build_dir):
                 near = sorted((d, b) for d, b in dists if b["kv"] == kv and d <= 20)
                 if near:
                     d, bus = near[0]
-                    how = f"documented {kv} kV, nearest {kv} kV bus"
+                    how = f"crosswalk voltage {kv} kV (see basis), nearest {kv} kV bus"
                 else:
                     flags.append(f"{r['name']}: no {kv} kV bus within 20 km; general rule used")
         if bus is None:
