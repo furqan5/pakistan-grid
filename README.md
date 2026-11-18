@@ -6,13 +6,13 @@ It is a two-week side research project with a pre-registered go/no-go gate. It i
 
 ## Status (18 Nov 2026)
 
-- **Days 0–7 of 14 are done:** sources, GridSFM install check, topology builder, station matching, line/transformer/shunt parameters, and generators (106 IGCEP NGC plants; 18 small plants, 660 MW, still need coordinates).
-- **Gate** (`gate/PREREGISTRATION.md`, draft v0.4): **not yet signed off**.
+- **Days 0–8 of 14 are done:** sources, GridSFM install check, topology builder, station matching, line/transformer/shunt parameters, generators (IGCEP plants placed via OSM and GEM) and loads. **Gate v1.0 signed off 18 Nov 2026.**
+- **Gate** (`gate/PREREGISTRATION.md`): **v1.0**, signed off before any solve. The choices made after their result was known are labelled post hoc.
 - **Structure checks** (`gate/G1_log.md`):
   - S1 passes: 904 buses without K-Electric, 924 with.
-  - S3 fails: 62 of 69 NGC stations matched by name, against a pass mark of 65. That is above the no-go line of 60.
+  - S2 passes: load 100%, generation 99.8%.
+  - S3 fails: 62 of 69 NGC stations matched by name, against a pass mark of 65. That is above the no-go line of 60, so the test continues as "synthetic Pakistan-topology".
   - S4 passes: circuit-km at 500 kV −0.1% and at 220 kV +3.6% against NEPRA.
-  - S2 waits for generators and loads.
 - **No power-flow solve has been run yet.** The rules that affect the scored holdouts were committed before any model quantity was computed.
   - For Days 0–6 that order rests on commit dates set on the author's laptop. The repository was first pushed on 18 Nov 2026.
   - From Day 7 on, each rules commit is pushed to GitHub **before** the run that uses it, so GitHub's push time dates the order independently.
@@ -41,7 +41,10 @@ The daily notes in `day0/` … `day6/` record each decision and why it was made.
    python builder/make_parameters.py osm/build/explicit
    python builder/extract_pss44.py        # PSS 44th tables -> sources/extracted/
    python builder/extract_igcep.py        # IGCEP Annex B-1(i), B-2 -> sources/extracted/
+   python -I builder/extract_gem.py        # GEM trackers -> sources/extracted/gem_pk.csv (needs openpyxl)
    python builder/make_generators.py osm/build/explicit
+   python builder/extract_disco_tables.py # FESCO/MEPCO station demand -> sources/extracted/
+   python builder/make_loads.py osm/build/explicit
    ```
 
    The extractors use xpdf `pdftotext -table`.
