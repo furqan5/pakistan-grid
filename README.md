@@ -13,7 +13,16 @@ It is a two-week side research project with a pre-registered go/no-go gate. It i
   - S2 passes (load 100%, generation 99.8%), **but largely by construction**: loads and generators are only placed on the main component. Without that filter, the report-only counterfactual is load 97.6%, which is **below** the 98% mark, and generation 99.5%.
   - S3 fails: 62 of 69 NGC stations matched by name, against a pass mark of 65. That is above the no-go line of 60, so the test continues as "synthetic Pakistan-topology".
   - S4 passes: circuit-km at 500 kV −0.1% and at 220 kV +3.6% against NEPRA.
-- **No power-flow solve has been run yet.** The rules that affect the scored holdouts were committed before any model quantity was computed.
+- **Solvability (Day 9, 18 Nov 2026): V1 and V2 FAIL, a no-go for the build as specified under the signed gate.**
+  - GridSFM's relaxation ladder found no rung that solves AC-OPF in either snapshot.
+  - Diagnostics trace this to OSM data gaps:
+    - an untagged 220 kV section out of Chashma;
+    - missing 220 kV links around Lahore, which force bulk power onto 132 kV;
+    - reactors sized to TSEP's totals on a network with far less line charging.
+  - The conservative conductor defaults make it worse.
+  - The 500 kV skeleton itself matches NGC within 0.03%.
+  - Details: `gate/G1_log.md` (G2) and `day9/topology_day9.md`.
+- **Order of work.** The rules that affect the scored checks were committed before any model quantity was computed.
   - For Days 0–6 that order rests on commit dates set on the author's laptop. The repository was first pushed on 18 Nov 2026.
   - From Day 7 on, each rules commit is pushed to GitHub **before** the run that uses it, so GitHub's push time dates the order independently.
 

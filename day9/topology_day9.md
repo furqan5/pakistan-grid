@@ -35,4 +35,37 @@
 
 ## Official ladder (V1/V2)
 
-*(filled in after the run)*
+- **Run:** GridSFM `solve_topo_json.jl`, 08:21–08:39 UTC. Logs are in `day9/ladder_*.txt`, pushed in 841402d.
+- **Result:** **no rung solves either snapshot.** DC-OPF solves at L5. AC-OPF is LOCALLY_INFEASIBLE at L0, AC1 and L1–L5. The pipeline warns of a SHUNT_BS_MAX clamp on one bus.
+- **AC diagnostic on copies** (`solve/diagnose_ac.jl`). Starting from L5-like relaxations, constraint families were removed one at a time:
+  - **Winter** becomes feasible once the shunts are removed.
+    - Reactors are fixed at TSEP's 8,211 MVAr nameplate, but model charging is much smaller.
+    - At Nokhar 500 kV the reactors are 805 MVAr against 488 MVAr of local half-charging; at Gatti, 643 against 246.
+  - **Summer** stays infeasible even without shunts, reactive load, thermal limits or generator Q limits. That is a real-power transfer limit through the pockets above.
+- **No assembly fault was found:**
+  - the shunt totals and signs match the declared rules (winter −8,065 MVAr net, summer +6,030);
+  - per-unit bases are consistent.
+- **Verdict:** **V1 and V2 FAIL. Under the signed gate this is a no-go for the build as specified** (`gate/G1_log.md`, G2 section).
+
+## Findings that stand regardless
+
+- **Public data reproduces the EHV skeleton very well:** 500 kV circuit-km within 0.03% of NGC, and booklet line lengths within 2% on most named corridors.
+- **It doesn't give a deliverable 132 kV network.** The causes:
+  - unnamed stations;
+  - circuit counts left untagged at junctions;
+  - missing 220 kV links;
+  - no conductor data, so the defaults are conservative.
+- **Reactors need sizing to the network that is actually modelled.** Taking TSEP's system totals onto a network with about 25% less line charging makes winter AC infeasible.
+
+## Options for Furqan (no model change made)
+
+1. **Stop.** The two-week data gate has done its job, and the findings above are the result.
+2. **Repair, labelled post hoc for good.** Use generic rules only, declared and pushed before any re-solve, never pocket-by-pocket fixes. For example:
+   - carry a tagged circuit count across a junction when the OSM line names match;
+   - size reactors to model charging rather than TSEP's totals;
+   - reconsider the 132 kV and 220 kV conductor defaults with evidence.
+   
+   Every V and H result would then carry the post-hoc label. The test would be a synthetic case and nothing more.
+3. **Ask NGC for data.** Use the documented gaps as a concrete request (`requests/data_requests_DRAFT.md`), for example circuit counts and conductors on named corridors, and 220/132 kV station supply in Lahore.
+
+A GridSFM run on the ladder output (the earlier "report-only" option) isn't possible, because no rung produced a solvable case.
