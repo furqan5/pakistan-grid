@@ -41,7 +41,19 @@ The tables are extracted by `builder/extract_pss44.py` into `sources/extracted/p
   - The raw JSON is in `osm/raw/` and isn't committed because of its size.
 - **Licence:** © OpenStreetMap contributors, **ODbL 1.0** (https://www.openstreetmap.org/copyright). Any derived network that is released (bus/branch tables, PowerModels JSON) must carry ODbL share-alike and this attribution.
 
+## Global Energy Monitor trackers (Day 7b, 18 Nov 2026)
+
+- **What it is:** `sources/gem/gem-data.zip`. Furqan downloaded it through GEM's form and moved it into `sources/`. It is 38,359,819 bytes; the SHA-256 is in `logs/downloads.tsv`.
+- **Contents:** separate trackers, not the integrated GIPT. Used here:
+  - Global Hydropower Tracker (March 2026);
+  - Global Wind Power Tracker (February 2026);
+  - Global Solar Power Tracker (February 2026);
+  - Global Bioenergy Power Tracker v4.
+- **Extraction:** `builder/extract_gem.py` writes the Pakistan rows to `sources/extracted/gem_pk.csv`.
+- **Use:** coordinates only, for 13 IGCEP plants that OSM doesn't name. IGCEP capacities are kept.
+- **Licence:** © Global Energy Monitor, **CC BY 4.0**. The bundle isn't committed.
+
 ## Not downloaded: needs Furqan's decision
 
-- **Global Energy Monitor, Global Integrated Power Tracker (Sept 2026, CC BY 4.0).** Needed on Day 7 for plant coordinates. The download form asks for name and email, so Furqan has to fill it in himself.
+- **Global Energy Monitor, Global Integrated Power Tracker.** Not needed: the separate GEM trackers (above) cover the plants OSM does not name.
 - **TSEP 2025-35 addendum (NEPRA, Aug 2025).** Optional, a newer plan. It's an open NEPRA download at https://www.nepra.org.pk/Admission%20Notices/2025/08%20Aug/TSEP%202025-2035.pdf; not fetched yet.

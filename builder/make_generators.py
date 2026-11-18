@@ -52,13 +52,20 @@ def main(build_dir):
             continue
         if dep == 0:
             out.update(status=0, how="excluded: dependable 0 MW")
+        if c["location"].startswith("EXCLUDED"):
+            out.update(how=c["location"], status=0)
+            rows.append(out)
+            continue
         if not c["location"]:
             out.update(how="UNLOCATED", status=0)
             rows.append(out)
             continue
-        kind, ref = c["location"].split(":")
-        src = S[ref] if kind == "S" else P[ref]
-        la, lo = float(src["lat"]), float(src["lon"])
+        kind, ref = c["location"].split(":", 1)
+        if kind == "GEM":  # Day 7b: coordinates from the GEM trackers, "GEM:lat,lon"
+            la, lo = (float(v) for v in ref.split(","))
+        else:
+            src = S[ref] if kind == "S" else P[ref]
+            la, lo = float(src["lat"]), float(src["lon"])
         dists = [(hav(la, lo, float(b["lat"]), float(b["lon"])), b) for b in cand]
         bus = None
         if c["doc_kv"]:

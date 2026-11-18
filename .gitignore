@@ -3,3 +3,4 @@ sources/*.pdf
 osm/raw/
 osm/build/**/*.csv
 __pycache__/
+sources/gem/

@@ -5,22 +5,22 @@ sr,name,location,doc_kv,b2_name,basis
 4,Ghazi Brotha,P:P0023,500,,OSM 'Ghazi-Barotha Hydropower Project'; PSS44 T2.6 Barotha 500 kV lines
 5,Golen Gol,P:P0402,,,OSM name
 6,Jinnah,P:P0078,,,OSM 'Jinnah Power House'
-7,Khan Khwar,,,,UNLOCATED: no OSM name match
+7,Khan Khwar,"GEM:34.9028,72.8075",,,"GEM Global Hydropower Tracker Mar 2026: 'Khan Khawar hydroelectric plant' 72 MW, L100000603028, exact. Placed 18 Nov 2026 (Day 7b), GEM bundle sources/gem/gem-data.zip; IGCEP capacity kept"
 8,Mangla,P:P0024,220,,OSM 'Mangla Hydro-Power-Plant'; PSS44 T2.8 Mangla 220 kV lines
 9,Neelum Jehlum,P:P0385,500,,OSM name; dependable 0 MW -> status 0
 10,Tarbela 1-14,S:S0036,500,,OSM substation 'Tarbela'; PSS44 T2.6 Tarbela 500 kV lines. Unit split between Tarbela's 220 and 500 kV yards unknown [VERIFY]
 11,Tarbela_Ext_04,S:S0036,500,,as Tarbela 1-14
 12,Warsak,P:P0061,,,OSM 'Warsak Hydropower Station'
-13,Gomal Zam,P:P0406,,,OSM name
+13,Gomal Zam,EXCLUDED: OSM location but no bus within 20 km; GEM has no record,,,Excluded 18 Nov 2026 (Day 7b rule amendment): OSM location but no bus within 20 km; GEM has no record; small hydro; counted as missing in S2
 14,Rasul,P:P0113,,,OSM name
-15,Dargai,,,,UNLOCATED: no OSM name match
+15,Dargai,EXCLUDED: no OSM or GEM location,,,Excluded 18 Nov 2026 (Day 7b rule amendment): no OSM or GEM location; small hydro; counted as missing in S2
 16,Nandipur,P:P6621,,,OSM 'Nandipur Hydel Power Station'
 17,Shadiwal,P:P0437,,,OSM name
 18,Chichoki,P:P0398,,,OSM 'Chichoki Malliyan Hydel Power Station'
 19,Kurram Garhi,P:P0387,,,OSM name (first of two nearby polygons)
 20,Renala,P:P1248,,,OSM name 'Renala'
-21,Chitral,,,,UNLOCATED: no OSM name match (1 MW)
-22,Jabban,,,,UNLOCATED: no OSM name match
+21,Chitral,EXCLUDED: no OSM or GEM location,,,Excluded 18 Nov 2026 (Day 7b rule amendment): no OSM or GEM location; small hydro; counted as missing in S2
+22,Jabban,EXCLUDED: no OSM or GEM location,,,Excluded 18 Nov 2026 (Day 7b rule amendment): no OSM or GEM location; small hydro; counted as missing in S2
 23,Guddu 747,S:S0207,500,Guddu-V (747),PSS44 T2.6 'Guddu 747' 500 kV; S0207 is the 747 Guddu yard by [VERIFY] location hint
 24,Nandipur,P:P0177,132,Nandipur,"OSM 'Nandipur Thermal Power Project' and generation substation S0303 (WAPDA). Connection voltage documented by the author's unpublished site internship report on the Nandipur CCPP, section 6 '132kV System': 132 kV one-and-a-half-breaker switchyard, six 132 kV lines, two busbars, four generator-transformer connections. History: first run put it at 132 kV (rule); the size flag was then resolved to 220 kV Ghakhar on an engineering guess; this document reverses that (18 Nov). OSM maps 3 of the 6 lines, so export is capped at about 416 MVA."
 25,CHASHNUPP - I,P:P0055,220,C-1,OSM 'CHASNUPP'; PSS44 T2.8 Chashnupp 220 kV lines
@@ -29,13 +29,13 @@ sr,name,location,doc_kv,b2_name,basis
 28,CHASHNUPP-IV,P:P0055,220,C-4,as C-1
 29,K-2,P:P0077,500,K-2,OSM 'KANUPP 2&3'; TSEP Fig 5-9 'K-2/K-3' on the 500 kV network
 30,K-3,P:P0077,500,K-3,as K-2
-31,Jagran - I,,,,UNLOCATED: no OSM name match
-32,Malakand - III,,,,UNLOCATED: no OSM name match
+31,Jagran - I,"GEM:34.6014,73.7623",,,"GEM Hydropower Tracker: 'Jaggran-I hydroelectric plant' 30 MW, L100001081020, exact. Placed 18 Nov 2026 (Day 7b), GEM bundle sources/gem/gem-data.zip; IGCEP capacity kept"
+32,Malakand - III,"GEM:34.5188,71.9189",,,"GEM Hydropower Tracker: 'Malakand 3 hydroelectric plant' 81 MW, L100000603035, exact. Placed 18 Nov 2026 (Day 7b), GEM bundle sources/gem/gem-data.zip; IGCEP capacity kept"
 33,New Bong,P:P0384,,,OSM 'Bong Escape Hydropower Project'
 34,Daral Khwar,P:P0593,,,OSM name
 35,Gul Pur,P:P0389,,,OSM 'Gulpur Hydropower Plant'
 36,Patrind,P:P0386,,,OSM name
-37,Ranolia,,,,UNLOCATED: no OSM name match
+37,Ranolia,EXCLUDED: no OSM or GEM location,,,Excluded 18 Nov 2026 (Day 7b rule amendment): no OSM or GEM location; small hydro; counted as missing in S2
 38,Suki Kinari,P:P6566,500,,OSM name; TSEP Table 5-7 'Maira-Suki Kinari' 500 kV
 39,Karot,P:P0436,500,,OSM name; TSEP Table 5-7 'Maira-Karot' 500 kV
 40,AGL,P:P0043,,AGL,OSM 'Attock Gen Limited - Power Plant'
@@ -69,18 +69,18 @@ sr,name,location,doc_kv,b2_name,basis
 68,Thar TEL,P:P0392,500,Thar TEL,OSM 'Thar Energy Limited (TEL)'; TSEP Fig 5-9 'TEL CFPP' on the 500 kV network
 69,Thar-I (SSRL),P:P0391,500,Thar-I (SSRL),OSM 'SSRL Thar Coal Block-I'; TSEP Fig 5-9 'SECL CFPP' on the 500 kV network
 70,Shahtaj,P:P1249,,,OSM name
-71,Almoiz,,,,UNLOCATED: no OSM name match
-72,Chanar,,,,UNLOCATED: no OSM name match
+71,Almoiz,"GEM:32.0390436,70.9772691",,,"GEM Bioenergy Power Tracker v4: 'Almoiz power station', L100001047857, exact. Placed 18 Nov 2026 (Day 7b), GEM bundle sources/gem/gem-data.zip; IGCEP capacity kept"
+72,Chanar,"GEM:30.9754603,73.1478668",,,"GEM Bioenergy Tracker: 'Tandlianwala Chanar power statin', L100001047863, exact. Placed 18 Nov 2026 (Day 7b), GEM bundle sources/gem/gem-data.zip; IGCEP capacity kept"
 73,Chiniot,P:P0492,,,OSM 'Chiniot Power Limited'
 74,Fatima Energy (FEL),P:P0426,,,OSM 'Fatima Energy'
-75,Hamza,,,,UNLOCATED: no OSM name match
-76,JDW - II,,,,UNLOCATED: OSM has only JDW-III
+75,Hamza,"GEM:28.6875182,70.7444844",,,"GEM Bioenergy Tracker: 'Hamza Sugar Biomass power station', L100001018584, exact. Placed 18 Nov 2026 (Day 7b), GEM bundle sources/gem/gem-data.zip; IGCEP capacity kept"
+76,JDW - II,"GEM:28.0475817,69.3212815",,,"GEM Bioenergy Tracker: 'JDW Sugar Mill power station' unit 2, L100001018583, exact (same site as unit 3). Placed 18 Nov 2026 (Day 7b), GEM bundle sources/gem/gem-data.zip; IGCEP capacity kept"
 77,JDW - III,P:P0919,,,OSM 'JDW-III CoGen Power Plant'
-78,Ryk_Mills,,,,UNLOCATED: no OSM name match
-79,Thal_Layyah,,,,UNLOCATED: no OSM name match
+78,Ryk_Mills,"GEM:28.9932601,70.7839308",,,"GEM Bioenergy Tracker: 'RYK Sugar Mill power station', L100001047861, exact. Placed 18 Nov 2026 (Day 7b), GEM bundle sources/gem/gem-data.zip; IGCEP capacity kept"
+79,Thal_Layyah,"GEM:30.9861,70.9497",,,"GEM Bioenergy Tracker: 'Layyah Sugar Mills power station', L100000200708, exact. Placed 18 Nov 2026 (Day 7b), GEM bundle sources/gem/gem-data.zip; IGCEP capacity kept"
 80,Act/Tapal Wind,P:P6606,,,OSM 'Tapal Wind Energy'
-81,Artistic_Wind,,,,UNLOCATED: no OSM name match
-82,Artistic_Wind-2,,,,UNLOCATED: no OSM name match
+81,Artistic_Wind,"GEM:24.9543,67.8666",,,"GEM Global Wind Power Tracker Feb 2026: 'Artistic Energy wind farm' phase 1, L100000900722, exact. Placed 18 Nov 2026 (Day 7b), GEM bundle sources/gem/gem-data.zip; IGCEP capacity kept"
+82,Artistic_Wind-2,"GEM:24.997,67.8685",,,"GEM Wind Tracker: 'Artistic Energy wind farm' phase 2, L100000900722, exact. Placed 18 Nov 2026 (Day 7b), GEM bundle sources/gem/gem-data.zip; IGCEP capacity kept"
 83,Dawood,P:P6605,,,OSM 'Hydrochina Dawood Power'
 84,Din Wind Energy,P:P6632,,,OSM 'Din Energy'
 85,FFC,P:P6609,,,OSM 'FFC Energy | JWEE'
@@ -109,13 +109,13 @@ sr,name,location,doc_kv,b2_name,basis
 108,Tricon_A,P:P6637,,,OSM 'Tricon Boston A'
 109,Tricon_B,P:P6638,,,OSM 'Tricon Boston B'
 110,Tricon_C,P:P6639,,,OSM 'Tricon Boston C'
-111,UEP,,,,UNLOCATED: no OSM name match
+111,UEP,"GEM:25.106,67.837",,,"GEM Wind Tracker: 'UEP wind farm' 99 MW, L100000900728, exact. Placed 18 Nov 2026 (Day 7b), GEM bundle sources/gem/gem-data.zip; IGCEP capacity kept"
 112,Yunus,P:P6617,,,OSM 'Lucky Star Yunus'
 113,Zephyr,P:P6627,,,OSM 'Zephyr Power'
 114,Zorlu_Wind,P:P6611,,,OSM 'Zorlu Enerji Pakistan'
 115,Liberty Wind-II,P:P6607,,,OSM 'Liberty Wind Power 2'
 116,Helios,P:P0617,,,OSM polygon named for Helios and Meridian
-117,HNDS,,,,UNLOCATED: no OSM name match
+117,HNDS,"GEM:27.4019,69.0071",,,"GEM Global Solar Power Tracker Feb 2026: 'Sukkur solar farm' phase '2 - HNDS' 50 MW, L100000801425, exact. Placed 18 Nov 2026 (Day 7b), GEM bundle sources/gem/gem-data.zip; IGCEP capacity kept"
 118,Meridian,P:P0617,,,as Helios
 119,Appolo Solar,P:P0118,,,OSM 'Appolo Solar Development'
 120,Best,P:P0120,,,OSM 'Best Green Energy'
