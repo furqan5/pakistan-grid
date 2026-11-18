@@ -34,9 +34,9 @@ Rules: builder/parameters.json `generators` (commit 42c7533, pushed before this 
 
 ## Connection
 
-- By voltage: 500 kV 25 plants / 23,180 MW, 220 kV 29 plants / 5,835 MW, 132 kV 50 plants / 3,972 MW, 66 kV 0 plants / 0 MW
-- Connection distance > 5 km: Chashma 10.24 km (S:S0987@220); Kurram Garhi 8.17 km (S:S0147@132); Renala 15.65 km (S:S0145@132); Nandipur 12.64 km (S:S0102@220); Sapphire 5.37 km (S:S0984@500); Chiniot 11.16 km (S:S0378@132); Din Wind Energy 8.77 km (S:S0656@132); Hawa 8.08 km (S:S0653@132); Indus 12.74 km (S:S0656@132); Jhimpir 7.3 km (S:S0653@132); Lakeside Wind 9.36 km (S:S0718@132); Liberty Wind-I 10.19 km (S:S0656@132); Master Green 15.64 km (S:S0334@132); Metro_Wind 12.8 km (S:S0718@132); NASDA Green Wind 7.79 km (S:S0718@132); Tricom 6.89 km (S:S0653@132); Liberty Wind-II 10.19 km (S:S0656@132)
-- Flags: none
+- By voltage: 500 kV 25 plants / 23,180 MW, 220 kV 28 plants / 5,310 MW, 132 kV 51 plants / 4,497 MW, 66 kV 0 plants / 0 MW
+- Connection distance > 5 km: Chashma 10.24 km (S:S0987@220); Kurram Garhi 8.17 km (S:S0147@132); Renala 15.65 km (S:S0145@132); Sapphire 5.37 km (S:S0984@500); Chiniot 11.16 km (S:S0378@132); Din Wind Energy 8.77 km (S:S0656@132); Hawa 8.08 km (S:S0653@132); Indus 12.74 km (S:S0656@132); Jhimpir 7.3 km (S:S0653@132); Lakeside Wind 9.36 km (S:S0718@132); Liberty Wind-I 10.19 km (S:S0656@132); Master Green 15.64 km (S:S0334@132); Metro_Wind 12.8 km (S:S0718@132); NASDA Green Wind 7.79 km (S:S0718@132); Tricom 6.89 km (S:S0653@132); Liberty Wind-II 10.19 km (S:S0656@132)
+- Flags: SIZE: Nandipur 525 MW at 132 kV
 
 ## Unlocated (block Day 9 until placed)
 
@@ -86,7 +86,7 @@ Rules: builder/parameters.json `generators` (commit 42c7533, pushed before this 
 | 21 | Chitral | hydro | 1 | — | UNLOCATED |  | 8 |
 | 22 | Jabban | hydro | 22 | — | UNLOCATED |  | 8 |
 | 23 | Guddu 747 | ccgt | 486 | S:S0207@500 | documented 500 kV, own bus | 0.0 | 32.811 |
-| 24 | Nandipur | ccgt | 525 | S:S0102@220 | crosswalk voltage 220 kV (see basis), nearest 220 kV bus | 12.64 | 104.266 |
+| 24 | Nandipur | ccgt | 525 | S:S0303@132 | crosswalk voltage 132 kV (see basis), nearest 132 kV bus | 0.33 | 104.266 |
 | 25 | CHASHNUPP - I | nuclear | 300 | S:S0987@220 | crosswalk voltage 220 kV (see basis), nearest 220 kV bus | 0.55 | 6.873 |
 | 26 | CHASHNUPP-II | nuclear | 300 | S:S0987@220 | crosswalk voltage 220 kV (see basis), nearest 220 kV bus | 0.55 | 6.873 |
 | 27 | CHASHNUPP-III | nuclear | 315 | S:S0987@220 | crosswalk voltage 220 kV (see basis), nearest 220 kV bus | 0.55 | 6.873 |

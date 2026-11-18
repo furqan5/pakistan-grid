@@ -120,7 +120,8 @@
       "size_check": "Flag (never silently change) any plant of >= 500 MW below 220 kV and any of >= 1,000 MW not at 500 kV; each flag is resolved in the crosswalk with its basis.",
       "unlocated": "listed with MW; they block Day 9 until placed (GEM GIPT coordinates, which Furqan has to download, or a documented location)"
     },
-    "slack": {"summer_peak": "Tarbela (largest hydro, as in the 14-day plan)", "winter_offpeak": "bus of the largest-Pmax generator in that snapshot"}
+    "slack": {"summer_peak": "Tarbela (largest hydro, as in the 14-day plan)", "winter_offpeak": "bus of the largest-Pmax generator in that snapshot"},
+    "ke_box_generators": "Declared 18 Nov 2026, before any load is placed: NGC plants (IGCEP B-1(i)) on buses that the Day 4 geometric K-Electric box flags (Dawood, FWEL-I, FWEL-II, Tenaga, Zephyr: 250 MW of Gharo wind on 220 kV) stay as NGC generators. The KE flag affects only S1's without-KE count and the Day 8 KE export placement, which uses the Day 4 interface buses only; no KE internal load is placed on these buses. The box is not moved."
   },
   "buses": {
     "vmin": 0.95, "vmax": 1.08,

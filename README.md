@@ -6,7 +6,7 @@ It is a two-week side research project with a pre-registered go/no-go gate. It i
 
 ## Status (18 Nov 2026)
 
-- **Days 0–6 of 14 are done:** sources, GridSFM install check, topology builder, station matching, line/transformer/shunt parameters.
+- **Days 0–7 of 14 are done:** sources, GridSFM install check, topology builder, station matching, line/transformer/shunt parameters, and generators (106 IGCEP NGC plants; 18 small plants, 660 MW, still need coordinates).
 - **Gate** (`gate/PREREGISTRATION.md`, draft v0.4): **not yet signed off**.
 - **Structure checks** (`gate/G1_log.md`):
   - S1 passes: 904 buses without K-Electric, 924 with.
@@ -39,7 +39,12 @@ The daily notes in `day0/` … `day6/` record each decision and why it was made.
    python builder/score_s3.py osm/build/explicit
    python builder/check_pss_lines.py osm/build/explicit
    python builder/make_parameters.py osm/build/explicit
+   python builder/extract_pss44.py        # PSS 44th tables -> sources/extracted/
+   python builder/extract_igcep.py        # IGCEP Annex B-1(i), B-2 -> sources/extracted/
+   python builder/make_generators.py osm/build/explicit
    ```
+
+   The extractors use xpdf `pdftotext -table`.
 
 The OSM extract, source PDFs and generated CSVs are not committed, because of their size and their licences.
 

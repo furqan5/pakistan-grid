@@ -37,13 +37,17 @@
   | Voltage | Plants | MW |
   |---|---|---|
   | 500 kV | 25 | 23,180 |
-  | 220 kV | 29 | 5,835 |
-  | 132 kV | 50 | 3,972 |
+  | 220 kV | 28 | 5,310 |
+  | 132 kV | 51 | 4,497 |
 
   - 33 plants use the documented connection voltage. These are the 500/220 kV plants named in the PSS line tables or TSEP Figure 5-9: K-2/K-3, the Thar plants, Port Qasim, China HUBCO, Lucky, Sahiwal, Haveli, Balloki, Bhikki, Tarbela, Ghazi Barotha, Suki Kinari, Karot, Guddu 747, Chashnupp, KAPCO, Mangla and Allai Khwar.
-- **Size-check flag, resolved after the first generator run** (the rule requires flags to be resolved in the crosswalk):
-  - Nandipur, 525 MW, first landed on 132 kV.
-  - It was moved to 220 kV Ghakhar, 12.6 km away. The reason is engineering, not a document: 525 MW can't run out over 112 MVA Lynx circuits [VERIFY].
+- **Nandipur size-check flag, resolved in the crosswalk by a document** (the rule requires flags to be resolved there):
+  - The first run put Nandipur (525 MW) on 132 kV, and the size check flagged it.
+  - I then moved it to 220 kV Ghakhar on an engineering guess: 525 MW can't run out over 112 MVA Lynx circuits.
+  - **That guess was wrong.** The author's site internship report on the Nandipur CCPP (section 6, "132kV System"; unpublished) describes a **132 kV** one-and-a-half-breaker switchyard with **six 132 kV lines**, two busbars and four generator-transformer connections.
+  - Nandipur is back at 132 kV, at the WAPDA generation substation S0303.
+  - OSM maps only 3 of the 6 lines, in both builds. The model can therefore export about 416 MVA from that bus, an OSM gap. Topology is not changed.
+  - The flag line in `generators_summary.md` stays, as a record. Its resolution is in the crosswalk.
 - **Quirk of the declared rule, logged and not changed.** "Highest voltage within 5 km" puts a few small plants on EHV buses when a large plant's yard is nearby:
   - Chichoki (13 MW) and Sapphire (204 MW) on 500 kV;
   - Halmore and Saif (200 MW each) on 500 kV;
@@ -51,6 +55,28 @@
   
   The electrical effect is small.
 - **Slack bus:** summer Tarbela 500 kV; winter China HUBCO 500 kV.
+
+## Pre-solve checks added after the run
+
+- **Deliverable summer capacity.** Each generator bus is capped at the summed rate_a of the lines and transformers attached to it. That gives **31,446 MW deliverable against 30,316 MW required, a margin of 1,130 MW** (not 1,842). The margin was 1,253 MW before Nandipur went back to 132 kV.
+  - **Local shortfalls:**
+
+    | Bus | Pmax | Export capacity |
+    |---|---|---|
+    | Mangla plant bus, linked to Mangla station S0054 by three ~1 km 220 kV ties at 250 MVA each (single-Rail default) | 960 MW | 750 MVA |
+    | Jhimpir wind collectors S0653 | 250 MW | 112 MVA |
+    | Jhimpir wind collectors S0718 | 200 MW | 112 MVA |
+    | Jhimpir wind collectors S0656 | 280 MW | 224 MVA |
+    | Uch | 549 MW | 500 MVA |
+    | Warsak | 160 MW | 112 MVA |
+    | Nandipur, S0303 132 kV (3 of 6 lines in OSM) | 539 MW (with Nandipur hydro) | 416 MVA |
+
+  - **Expectation, written before any solve:** total supply is adequate on this first-order bound. The OPF should hold back these local surpluses, not shed load. If the summer solve needs L1 or higher, the first suspects are these 132 kV wind collectors and the Lynx default at 132 kV.
+  - **No rating or conductor is changed.**
+- **Five NGC wind farms sit inside the K-Electric box.** Dawood, FWEL-I, FWEL-II, Tenaga and Zephyr (250 MW) are on 220 kV buses that the Day 4 KE box flags. How they are treated is declared in `parameters.json` (`generators.ke_box_generators`) before any load is placed:
+  - they stay as NGC generators;
+  - the KE export load goes only on the Day 4 interface buses;
+  - the box isn't moved (moving it would be post hoc for S1).
 
 ## Unlocated: 18 plants, 660 MW dependable (459 MW at summer peak). They block Day 9
 

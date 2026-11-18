@@ -22,7 +22,7 @@ sr,name,location,doc_kv,b2_name,basis
 21,Chitral,,,,UNLOCATED: no OSM name match (1 MW)
 22,Jabban,,,,UNLOCATED: no OSM name match
 23,Guddu 747,S:S0207,500,Guddu-V (747),PSS44 T2.6 'Guddu 747' 500 kV; S0207 is the 747 Guddu yard by [VERIFY] location hint
-24,Nandipur,P:P0177,220,Nandipur,OSM 'Nandipur Thermal Power Project'. Size-check flag resolved 18 Nov after the first generator run: 525 MW cannot be evacuated over 132 kV Lynx circuits (112 MVA each); no document names the voltage [VERIFY]; nearest 220 kV station Ghakhar 12.6 km
+24,Nandipur,P:P0177,132,Nandipur,"OSM 'Nandipur Thermal Power Project' and generation substation S0303 (WAPDA). Connection voltage documented by the author's unpublished site internship report on the Nandipur CCPP, section 6 '132kV System': 132 kV one-and-a-half-breaker switchyard, six 132 kV lines, two busbars, four generator-transformer connections. History: first run put it at 132 kV (rule); the size flag was then resolved to 220 kV Ghakhar on an engineering guess; this document reverses that (18 Nov). OSM maps 3 of the 6 lines, so export is capped at about 416 MVA."
 25,CHASHNUPP - I,P:P0055,220,C-1,OSM 'CHASNUPP'; PSS44 T2.8 Chashnupp 220 kV lines
 26,CHASHNUPP-II,P:P0055,220,C-2,as C-1
 27,CHASHNUPP-III,P:P0055,220,C-3,as C-1
