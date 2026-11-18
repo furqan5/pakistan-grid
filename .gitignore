@@ -4,3 +4,4 @@ osm/raw/
 osm/build/**/*.csv
 __pycache__/
 sources/gem/
+osm/build/**/case/*.json
