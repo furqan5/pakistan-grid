@@ -1,0 +1,16 @@
+[info | PowerModels]: Suppressing information and warning messages for the rest of this session.  Use the Memento package for more fine-grained control of logging.
+
+******************************************************************************
+This program contains Ipopt, a library for large-scale nonlinear optimization.
+ Ipopt is released as open source code under the Eclipse Public License (EPL).
+         For more information visit https://github.com/coin-or/Ipopt
+******************************************************************************
+
+== summer_peak: 1489 buses, 1852 branches, 117 gens, 1 dcline
+   DC-OPF               LOCALLY_INFEASIBLE     primal=INFEASIBLE_POINT  time=4.8 s  objective=981390.7
+   AC-PF (flat start)   LOCALLY_INFEASIBLE     primal=INFEASIBLE_POINT  time=53.1 s  objective=0.0
+   AC-OPF               LOCALLY_INFEASIBLE     primal=INFEASIBLE_POINT  time=15.8 s  objective=771259.7
+== winter_offpeak: 1489 buses, 1852 branches, 117 gens, 1 dcline
+   DC-OPF               LOCALLY_INFEASIBLE     primal=INFEASIBLE_POINT  time=2.3 s  objective=558698.2
+   AC-PF (flat start)   LOCALLY_INFEASIBLE     primal=INFEASIBLE_POINT  time=12.9 s  objective=0.0
+   AC-OPF               LOCALLY_INFEASIBLE     primal=INFEASIBLE_POINT  time=26.3 s  objective=449730.1
