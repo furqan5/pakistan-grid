@@ -10,7 +10,7 @@ It is a two-week side research project with a pre-registered go/no-go gate. It i
 - **Gate** (`gate/PREREGISTRATION.md`): **v1.0**, signed off before any solve. The choices made after their result was known are labelled post hoc.
 - **Structure checks** (`gate/G1_log.md`):
   - S1 passes: 904 buses without K-Electric, 924 with.
-  - S2 passes: load 100%, generation 99.8%.
+  - S2 passes (load 100%, generation 99.8%), **but largely by construction**: loads and generators are only placed on the main component. Without that filter, the report-only counterfactual is load 97.6%, which is **below** the 98% mark, and generation 99.5%.
   - S3 fails: 62 of 69 NGC stations matched by name, against a pass mark of 65. That is above the no-go line of 60, so the test continues as "synthetic Pakistan-topology".
   - S4 passes: circuit-km at 500 kV −0.1% and at 220 kV +3.6% against NEPRA.
 - **No power-flow solve has been run yet.** The rules that affect the scored holdouts were committed before any model quantity was computed.
@@ -67,6 +67,7 @@ None of them is redistributed here. `sources/extracted/` holds tables transcribe
 
 - **Code** (`builder/`): MIT, see `LICENSE`.
 - **Network data derived from OpenStreetMap**, including the build reports and any bus/branch tables or PowerModels JSON released later: © OpenStreetMap contributors, available under the [Open Database License (ODbL) 1.0](https://www.openstreetmap.org/copyright). Derived databases must keep this attribution and stay under ODbL.
+- **Plant coordinates and `sources/extracted/gem_pk.csv`** come from Global Energy Monitor's Hydropower, Wind, Solar and Bioenergy trackers: © Global Energy Monitor, [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
 - **Figures and tables taken from NTDC, NEPRA, ISMO and DISCO documents** remain those publishers' material. They are cited, not relicensed.
 
 ## Author

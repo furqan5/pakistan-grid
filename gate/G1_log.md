@@ -11,7 +11,7 @@
 | Check | Pass mark | Result | Status |
 |---|---|---|---|
 | S1: ≥66 kV buses at real stations, main component | ≥ 500 | 904 without KE, 924 with KE | **PASS** |
-| S2: share of load and generation in the main component | ≥ 98% each | Day 5: needed Day 7–8 placement. **Added 18 Nov 2026 (Day 8): load 100%, generation 99.8%** with the denominators fixed at the v1.0 sign-off (post hoc, see gate) | **PASS** (Day 8) |
+| S2: share of load and generation in the main component | ≥ 98% each | Day 5: needed Day 7–8 placement. **Added 18 Nov 2026 (Day 8): load 100%, generation 99.8%** with the denominators fixed at the v1.0 sign-off (post hoc, see gate) | **PASS** (Day 8), **but largely by construction**: the load and generator builders only use main-component buses. Report-only counterfactual without that filter: 18 off-main load stations would take about 696 MW, so load 97.6% (**below 98%**) and generation 99.5%. |
 | S3: NGC stations matched by name (PER FY2024-25 Fig. 1) | ≥ 65 of 69; no-go < 60 | **62 of 69** (500 kV 17/20, 220 kV 45/49) | **FAIL, above no-go** |
 | S4: circuit-km, NGC + KE | ±10% of ≈ 9,320 / ≈ 12,400 | 500 kV 9,310 (−0.1%); 220 kV 12,846 (+3.6%) | **PASS** |
 

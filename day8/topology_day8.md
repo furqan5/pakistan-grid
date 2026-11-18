@@ -52,11 +52,20 @@ Rules: `builder/parameters.json` → `loads`, pushed in 8c77814 **before** any l
 - **Load in the main component: 100%.** Every load station is in the main component by construction.
 - **Installed generation in the main component: 99.8%**, 35,277 of 35,355 MW. The 5 excluded hydro plants count as missing.
 - The S2 denominators were fixed at sign-off **after** earlier values had been seen (see the gate). The result is recorded in `gate/G1_log.md` next to the Day 5 values.
+- **This pass is largely by construction.** `make_loads.py` and `make_generators.py` only use main-component buses, so S2 can't easily fail.
+  - Report-only counterfactual, without that filter:
+    - **load 97.6%, below 98%.** 18 off-main 132/66 kV stations (LESCO 5, PESCO+TESCO 5, HESCO 4, QESCO 3, IESCO 1) would take about 696 MW;
+    - generation 99.5%. FFC and Zorlu wind (106 MW) would have connected to off-main buses.
+  - The logged S2 result is unchanged. S3 has already ruled out the "calibrated" label, so the decision doesn't change either.
 
 ## Before the first solve (Day 9), still to declare and push
 
 1. **Short branches:** 194 branches are under 0.5 km. Choose a minimum-impedance floor or bus merges. First check how GridSFM's `patch_model.jl` treats them.
 2. **Winter openings:** keep "direct branch only" (2 of 15 applied) or declare a path rule.
-3. **Assembly:** build the PowerModels JSON from the parameter tables for both snapshots, then run a DC-OPF smoke test.
+3. **No manual fixes, written into the gate before any solve.** The 14-day plan's Day 9–10 fix list (parallel circuits, voltage limits, shunts, openings, generator Q) conflicts with the signed gate. Only the GridSFM ladder relaxes the case. Any manual change after the first AC solve is logged as post hoc for H1–H4.
+4. **Load deliverability check, before any solve.** For each DISCO group and each load bus, compare load MVA net of capacitors with the summed rate_a of the 220/132 and 500/132 kV transformers at those stations, plus generation connected at 132 kV. Check LESCO first.
+   - Write down the ladder rung expected.
+   - Change no rating or transformer default.
+5. **Assembly.** Build the PowerModels JSON from the parameter tables for both snapshots. Points 1–4 come before even a DC-OPF smoke test, because a DC solve shows flows.
 
 The gate is signed. The holdouts H1–H8 are computed only on Day 11.
