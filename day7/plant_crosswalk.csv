@@ -1,0 +1,125 @@
+sr,name,location,doc_kv,b2_name,basis
+1,Allai Khwar,P:P0137,220,,OSM name 'Allai Khwar Hydro Power'; PSS44 T2.8 'Allai Khawar - New Mansehra' 220 kV
+2,Chashma,P:P0388,220,,OSM 'Chashma Barrage Hydro'; PSS44 T2.8 'Chashma-L/Wala' 220 kV
+3,Dubair Khwar,P:P0403,,,OSM 'Duber Khwar Hydroelectric Plant' (spelling variant)
+4,Ghazi Brotha,P:P0023,500,,OSM 'Ghazi-Barotha Hydropower Project'; PSS44 T2.6 Barotha 500 kV lines
+5,Golen Gol,P:P0402,,,OSM name
+6,Jinnah,P:P0078,,,OSM 'Jinnah Power House'
+7,Khan Khwar,,,,UNLOCATED: no OSM name match
+8,Mangla,P:P0024,220,,OSM 'Mangla Hydro-Power-Plant'; PSS44 T2.8 Mangla 220 kV lines
+9,Neelum Jehlum,P:P0385,500,,OSM name; dependable 0 MW -> status 0
+10,Tarbela 1-14,S:S0036,500,,OSM substation 'Tarbela'; PSS44 T2.6 Tarbela 500 kV lines. Unit split between Tarbela's 220 and 500 kV yards unknown [VERIFY]
+11,Tarbela_Ext_04,S:S0036,500,,as Tarbela 1-14
+12,Warsak,P:P0061,,,OSM 'Warsak Hydropower Station'
+13,Gomal Zam,P:P0406,,,OSM name
+14,Rasul,P:P0113,,,OSM name
+15,Dargai,,,,UNLOCATED: no OSM name match
+16,Nandipur,P:P6621,,,OSM 'Nandipur Hydel Power Station'
+17,Shadiwal,P:P0437,,,OSM name
+18,Chichoki,P:P0398,,,OSM 'Chichoki Malliyan Hydel Power Station'
+19,Kurram Garhi,P:P0387,,,OSM name (first of two nearby polygons)
+20,Renala,P:P1248,,,OSM name 'Renala'
+21,Chitral,,,,UNLOCATED: no OSM name match (1 MW)
+22,Jabban,,,,UNLOCATED: no OSM name match
+23,Guddu 747,S:S0207,500,Guddu-V (747),PSS44 T2.6 'Guddu 747' 500 kV; S0207 is the 747 Guddu yard by [VERIFY] location hint
+24,Nandipur,P:P0177,,Nandipur,OSM 'Nandipur Thermal Power Project'
+25,CHASHNUPP - I,P:P0055,220,C-1,OSM 'CHASNUPP'; PSS44 T2.8 Chashnupp 220 kV lines
+26,CHASHNUPP-II,P:P0055,220,C-2,as C-1
+27,CHASHNUPP-III,P:P0055,220,C-3,as C-1
+28,CHASHNUPP-IV,P:P0055,220,C-4,as C-1
+29,K-2,P:P0077,500,K-2,OSM 'KANUPP 2&3'; TSEP Fig 5-9 'K-2/K-3' on the 500 kV network
+30,K-3,P:P0077,500,K-3,as K-2
+31,Jagran - I,,,,UNLOCATED: no OSM name match
+32,Malakand - III,,,,UNLOCATED: no OSM name match
+33,New Bong,P:P0384,,,OSM 'Bong Escape Hydropower Project'
+34,Daral Khwar,P:P0593,,,OSM name
+35,Gul Pur,P:P0389,,,OSM 'Gulpur Hydropower Plant'
+36,Patrind,P:P0386,,,OSM name
+37,Ranolia,,,,UNLOCATED: no OSM name match
+38,Suki Kinari,P:P6566,500,,OSM name; TSEP Table 5-7 'Maira-Suki Kinari' 500 kV
+39,Karot,P:P0436,500,,OSM name; TSEP Table 5-7 'Maira-Karot' 500 kV
+40,AGL,P:P0043,,AGL,OSM 'Attock Gen Limited - Power Plant'
+41,Balloki,P:P0397,500,Balloki,OSM 'Balloki Power Plant'; PSS44 T2.6 'Balloki-New Lahore' 500 kV
+42,Bhikki,P:P0435,500,Bhikki,OSM 'Bhikki Power Plant'; PSS44 T2.6 QATPL 500 kV lines
+43,China HUBCO,P:P0390,500,China HUBCO,OSM 'China Power Hub Power Plant'; PSS44 T2.6 'CPHGC - Jamshoro' 500 kV
+44,Engro,P:P0029,,Engro_Qadirpur,OSM 'Engro Powergen Qadirpur Limited'
+45,Engro Thar,P:P0134,500,Engro Thar,OSM name; PSS44 T2.6 'Engro thar- Jamshoro' 500 kV
+46,FKPCL,P:P0030,,FKPCL,OSM 'Fauji Kabirwala Power Plant'
+47,Foundation,P:P0028,,Foundation,OSM 'Foundation Power Company'
+48,Halmore,P:P0056,,Halmore,OSM 'Halmore Power'
+49,Haveli,P:P0394,500,Haveli,OSM 'Haveli Bahadur Shah Power Plant'; PSS44 T2.6 H.B.Shah 500 kV lines
+50,HuB N,P:P0057,,HuB N,OSM 'Hubco Narowal Power Plant'
+51,KAPCO,P:P0021,220,KAPCO 495,OSM 'Kot Addu Power Plant'; PSS44 T2.8 KAPCO 220 kV lines
+52,Kohinoor,P:P0039,,Kohinoor,OSM 'Kohinoor Energy Power Plant'
+53,Liberty,P:P0027,,Liberty,OSM 'TNB Liberty Daharki Power Plant'; first cost tranche
+54,Liberty Tech,P:P0080,,Liberty Tech,OSM 'Faisalabad Liberty Power Tech Power Plant'
+55,Nishat C,P:P0491,,Nishat C,OSM 'Nishat Chunian Power Limited'
+56,Nishat P,P:P0045,,Nishat P,OSM 'Nishat Power Limited'
+57,Orient,P:P0044,,Orient,OSM 'Orient Power Balloki Power Plant'
+58,Port Qasim,P:P0082,500,Port Qasim,OSM 'Port Qasim Coal Power Plant'; PSS44 T2.6 Port Qasim 500 kV lines
+59,JPCL,P:P0438,500,Jamshoro Coal 2,OSM 'Jamshoro (Unit 5) Coal Power Plant'; TSEP Fig 5-9 'JAMSHORO' plant on the 500 kV network [VERIFY]
+60,Sahiwal Coal,P:P0114,500,Sahiwal Coal,OSM 'Sahiwal Coal Power Plant'; PSS44 T2.6 CFPP 500 kV lines
+61,Saif,P:P0059,,Saif,OSM 'Sahiwal Saif Power Limited Power Plant'
+62,Sapphire,P:P0422,,Saphire,OSM 'Sapphire Electric Power Plant'
+63,Trimmu,P:P0395,,Trimmu,OSM 'Jhang Trimmu Punjab Thermal Power Plant'
+64,Uch,P:P0447,,Uch,OSM 'Uch Power Plant'; first cost tranche
+65,Uch-II,S:S0583,,Uch-II,OSM substation 'Uch 2'
+66,Lucky Coal,P:P6642,500,Lucky,OSM 'Lucky Electric Power Company'; TSEP Fig 5-9 'LUCKY-CFPP' on the 500 kV network
+67,Thal Nova,P:P0393,500,Thal Nova,OSM 'ThalNova Power Thar Limited'; TSEP Fig 5-9 'THL NVA-CFPP' on the 500 kV network
+68,Thar TEL,P:P0392,500,Thar TEL,OSM 'Thar Energy Limited (TEL)'; TSEP Fig 5-9 'TEL CFPP' on the 500 kV network
+69,Thar-I (SSRL),P:P0391,500,Thar-I (SSRL),OSM 'SSRL Thar Coal Block-I'; TSEP Fig 5-9 'SECL CFPP' on the 500 kV network
+70,Shahtaj,P:P1249,,,OSM name
+71,Almoiz,,,,UNLOCATED: no OSM name match
+72,Chanar,,,,UNLOCATED: no OSM name match
+73,Chiniot,P:P0492,,,OSM 'Chiniot Power Limited'
+74,Fatima Energy (FEL),P:P0426,,,OSM 'Fatima Energy'
+75,Hamza,,,,UNLOCATED: no OSM name match
+76,JDW - II,,,,UNLOCATED: OSM has only JDW-III
+77,JDW - III,P:P0919,,,OSM 'JDW-III CoGen Power Plant'
+78,Ryk_Mills,,,,UNLOCATED: no OSM name match
+79,Thal_Layyah,,,,UNLOCATED: no OSM name match
+80,Act/Tapal Wind,P:P6606,,,OSM 'Tapal Wind Energy'
+81,Artistic_Wind,,,,UNLOCATED: no OSM name match
+82,Artistic_Wind-2,,,,UNLOCATED: no OSM name match
+83,Dawood,P:P6605,,,OSM 'Hydrochina Dawood Power'
+84,Din Wind Energy,P:P6632,,,OSM 'Din Energy'
+85,FFC,P:P6609,,,OSM 'FFC Energy | JWEE'
+86,FWEL-I,P:P6604,,,OSM 'Foundation Wind Energy 1'
+87,FWEL-II,P:P6602,,,OSM 'Foundation Wind Energy 2'
+88,Gul Ahmed,P:P6614,,,OSM 'Gul Ahmed Wind Power Limited'
+89,Gul Ahmed-II,P:P6614,,,same OSM polygon as Gul Ahmed (no separate polygon); approximate
+90,Hawa,P:P6619,,,OSM 'Hawa Energy'
+91,Indus,P:P6636,,,OSM 'Indus Wind Energy'
+92,Jhimpir,P:P6618,,,OSM 'Jhimpir Power'
+93,Lakeside Wind,P:P6630,,,OSM 'Lakeside Energy'
+94,Liberty Wind-I,P:P6607,,,OSM 'Liberty Wind Power 2' polygon (no separate Liberty Wind-I polygon); approximate
+95,Master,P:P6608,,,OSM 'Master Wind Energy'
+96,Master Green,P:P6635,,,OSM 'Master Green Energy'
+97,Metro_Wind,P:P6629,,,OSM 'Metro Wind Power'
+98,Metro_Wind-II,P:P6615,,,OSM 'Metro Power Plant' [VERIFY]
+99,NASDA Green Wind,P:P6631,,,OSM 'Nasda Green Energy'
+100,Sachal,P:P6616,,,OSM 'Sachal'
+101,Sapphire_Wind,P:P6613,,,OSM 'Sapphire Wind Power Plant'
+102,Tapal Wind-2,P:P6606,,,same OSM polygon as Tapal Wind; approximate
+103,Tenaga,P:P6603,,,OSM 'Tenaga Generasi Limited'
+104,Three_Gorges_I,P:P6610,,,OSM 'Three Gorges First Wind Farm'
+105,Three_Gorges_II,P:P6612,,,OSM 'Three Gorges Second Wind Farm'
+106,Three_Gorges_III,P:P6620,,,OSM 'Three Gorges Third Wind Farm'
+107,Tricom,P:P6634,,,OSM 'Tricom Wind Power'
+108,Tricon_A,P:P6637,,,OSM 'Tricon Boston A'
+109,Tricon_B,P:P6638,,,OSM 'Tricon Boston B'
+110,Tricon_C,P:P6639,,,OSM 'Tricon Boston C'
+111,UEP,,,,UNLOCATED: no OSM name match
+112,Yunus,P:P6617,,,OSM 'Lucky Star Yunus'
+113,Zephyr,P:P6627,,,OSM 'Zephyr Power'
+114,Zorlu_Wind,P:P6611,,,OSM 'Zorlu Enerji Pakistan'
+115,Liberty Wind-II,P:P6607,,,OSM 'Liberty Wind Power 2'
+116,Helios,P:P0617,,,OSM polygon named for Helios and Meridian
+117,HNDS,,,,UNLOCATED: no OSM name match
+118,Meridian,P:P0617,,,as Helios
+119,Appolo Solar,P:P0118,,,OSM 'Appolo Solar Development'
+120,Best,P:P0120,,,OSM 'Best Green Energy'
+121,Crest,P:P0119,,,OSM 'Crest Energy'
+122,QA_Solar,P:P0060,,,OSM 'Quaid-e-Azam Solar Power'
+123,Zhenfa,P:P6623,,,OSM 'Quaid-e-Azam Solar Park' (Zhenfa's plant is in the park) [VERIFY]
+0,Import from Iran,,,,EXCLUDED: Makran/Gwadar system off the national grid

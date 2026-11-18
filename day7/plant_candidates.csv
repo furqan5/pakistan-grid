@@ -1,0 +1,125 @@
+sr,name,fuel,dep_mw,distinct,n_hits,top
+1,Allai Khwar,Hydro,121.0,alai kwar,3,"P:P0137 [Allai Khwar Hydro Power] 34.846,73.001 buses=['220'] || P:P0403 [Duber Khwar Hydroelectric Plant] 35.106,72.995 buses=[] || P:P0593 [Daral Khwar Hydropower Project] 35.199,72.543 buses=[]"
+2,Chashma,Hydro,184.0,casma,1,"P:P0388 [Chashma Barrage Hydro] 32.436,71.369 buses=[]"
+3,Dubair Khwar,Hydro,130.0,dubair kwar,3,"P:P0137 [Allai Khwar Hydro Power] 34.846,73.001 buses=['220'] || P:P0403 [Duber Khwar Hydroelectric Plant] 35.106,72.995 buses=[] || P:P0593 [Daral Khwar Hydropower Project] 35.199,72.543 buses=[]"
+4,Ghazi Brotha,Hydro,1450.0,gazi brota,5,"P:P0023 [Ghazi-Barotha Hydropower Project] 33.780,72.257 buses=['500'] || S:S0037 [غازی بروتھا پن بجلی منصوبہ | Ghazi Barotha Hydel Power] 33.779,72.252 buses=['220', '500'] || S:S0042 [Ghazi Road] 31.551,74.429 buses=[]"
+5,Golen Gol,Hydro,108.0,golen gol,1,"P:P0402 [Golen Gol Hydropower Project] 35.950,71.958 buses=[]"
+6,Jinnah,Hydro,36.0,jinah,1,"P:P0078 [Jinnah Power House] 32.923,71.513 buses=[]"
+7,Khan Khwar,Hydro,72.0,kan kwar,11,"P:P0137 [Allai Khwar Hydro Power] 34.846,73.001 buses=['220'] || P:P0403 [Duber Khwar Hydroelectric Plant] 35.106,72.995 buses=[] || P:P0526 [KE Aga Khan Grid Station] 24.894,67.070 buses=[]"
+8,Mangla,Hydro,960.0,mangla,2,"P:P0024 [منگلا ہائیڈرو پاور پلانٹ | Mangla Hydro-Power-Plant] 33.127,73.644 buses=['220'] || S:S0054 [Mangla HPP] 33.122,73.649 buses=['132', '220']"
+9,Neelum Jehlum,Hydro,0.0,nelum jehlum,1,"P:P0385 [Neelum-Jhelum Hydropower Station] 34.196,73.511 buses=[]"
+10,Tarbela 1-14,Hydro,3478.0,tarbela,2,"S:S0036 [Tarbela] 34.086,72.692 buses=['500', '220'] || S:S1150 [Tarbela 2] 34.069,72.717 buses=[]"
+11,Tarbela_Ext_04,Hydro,1410.0,tarbela ext,2,"S:S0036 [Tarbela] 34.086,72.692 buses=['500', '220'] || S:S1150 [Tarbela 2] 34.069,72.717 buses=[]"
+12,Warsak,Hydro,160.0,warsak,1,"P:P0061 [Warsak Hydropower Station] 34.164,71.360 buses=[]"
+13,Gomal Zam,Hydro,17.0,gomal zam,1,"P:P0406 [Gomal Zam Hydro Power Station] 32.099,69.885 buses=[]"
+14,Rasul,Hydro,22.0,rasul,1,"P:P0113 [رسول ہائیڈرو پاور پلانٹ | Rasul Hydro Power Plant] 32.694,73.562 buses=['132']"
+15,Dargai,Hydro,20.0,dargai,0,
+16,Nandipur,Hydro,14.0,nandipur,2,"P:P0177 [نندی پور تھرمل پاور پروجیکٹ | Nandipur Thermal Power Project] 32.244,74.269 buses=[] || P:P6621 [Nandipur Hydel Power Station] 32.242,74.265 buses=[]"
+17,Shadiwal,Hydro,14.0,sadiwal,1,"P:P0437 [Shadiwal Hydropower Plant] 32.511,74.010 buses=[]"
+18,Chichoki,Hydro,13.0,cicoki,1,"P:P0398 [Chichoki Malliyan Hydel Power Station] 31.794,74.115 buses=[]"
+19,Kurram Garhi,Hydro,4.0,kuram gari,4,"P:P0387 [Kurram Garhi Hydropower Plant] 33.018,70.566 buses=[] || P:P6622 [Kurram Garhi Hydropower Plant] 33.033,70.532 buses=[] || P:P0440 [Kurram Tangi  Powerhouse IV] 33.209,70.444 buses=[]"
+20,Renala,Hydro,1.0,renala,1,"P:P1248 [Renala] 30.883,73.598 buses=[]"
+21,Chitral,Hydro,1.0,citral,0,
+22,Jabban,Hydro,22.0,jaban,0,
+23,Guddu 747,Gas,486.0,gudu 747,2,"P:P0025 [Guddu Thermal Power Station] 28.428,69.697 buses=['132'] || S:S0052 [Guddu] 28.431,69.694 buses=['500', '220', '132']"
+24,Nandipur,RLNG,525.0,nandipur,2,"P:P0177 [نندی پور تھرمل پاور پروجیکٹ | Nandipur Thermal Power Project] 32.244,74.269 buses=[] || P:P6621 [Nandipur Hydel Power Station] 32.242,74.265 buses=[]"
+25,CHASHNUPP - I,Nuclear,300.0,casnup,1,"P:P0055 [Chamsa Nuclear Power Complex | CHASNUPP] 32.387,71.467 buses=[]"
+26,CHASHNUPP-II,Nuclear,300.0,casnup,1,"P:P0055 [Chamsa Nuclear Power Complex | CHASNUPP] 32.387,71.467 buses=[]"
+27,CHASHNUPP-III,Nuclear,315.0,casnup,1,"P:P0055 [Chamsa Nuclear Power Complex | CHASNUPP] 32.387,71.467 buses=[]"
+28,CHASHNUPP-IV,Nuclear,315.0,casnup,1,"P:P0055 [Chamsa Nuclear Power Complex | CHASNUPP] 32.387,71.467 buses=[]"
+29,K-2,Nuclear,1030.0,,0,
+30,K-3,Nuclear,1030.0,,0,
+31,Jagran - I,Hydro,30.0,jagran,0,
+32,Malakand - III,Hydro,81.0,malakand,0,
+33,New Bong,Hydro,84.0,bong,1,"P:P0384 [Bong Escape Hydropower Project] 33.089,73.713 buses=[]"
+34,Daral Khwar,Hydro,37.0,daral kwar,3,"P:P0593 [Daral Khwar Hydropower Project] 35.199,72.543 buses=[] || P:P0137 [Allai Khwar Hydro Power] 34.846,73.001 buses=['220'] || P:P0403 [Duber Khwar Hydroelectric Plant] 35.106,72.995 buses=[]"
+35,Gul Pur,Hydro,103.0,gul pur,4,"P:P0034 [Gul Ahmed Energy Oil Power Plant] 24.850,67.146 buses=[] || P:P0918 [Gul Ahmed Textile Mills Lasani Unit] 24.845,67.215 buses=[] || P:P6614 [Gul Ahmed Wind Power Limited] 25.159,67.951 buses=[]"
+36,Patrind,Hydro,149.0,patrind,1,"P:P0386 [Patrind Hydropower Plant] 34.335,73.452 buses=['110x']"
+37,Ranolia,Hydro,17.0,ranolia,0,
+38,Suki Kinari,Hydro,883.0,suki kinari,2,"P:P6566 [Suki Kinari Hydro-Power] 34.662,73.473 buses=['500'] || P:P6645 [Suki Kinari Hydropower Project Dam] 34.846,73.555 buses=[]"
+39,Karot,Hydro,713.0,karot,1,"P:P0436 [Karot Hydropower Project] 33.598,73.608 buses=[]"
+40,AGL,RFO,156.0,agl,0,
+41,Balloki,RLNG,1157.0,baloki,2,"P:P0044 [Orient Power Balloki Power Plant] 31.188,73.890 buses=[] || P:P0397 [Balloki Power Plant] 31.036,73.927 buses=[]"
+42,Bhikki,RLNG,1130.0,biki,1,"P:P0435 [بھکھی پاور پلانٹ | Bhikki Power Plant] 31.603,73.905 buses=[]"
+43,China HUBCO,Imp. Coal,1249.0,cina hubco,2,"P:P0390 [China Power Hub Power Plant | HUBCO Coal Power Project] 24.918,66.687 buses=[] || P:P0057 [Hubco Narowal Power Plant] 32.059,74.781 buses=[]"
+44,Engro,Gas,215.0,engro,2,"P:P0029 [Engro Powergen Qadirpur Limited | Engro Energy CCGT Power Pl] 28.026,69.365 buses=[] || P:P0134 [Engro Thar Coal Power Project] 24.813,70.395 buses=[]"
+45,Engro Thar,Local Coal,602.0,engro tar,6,"P:P0134 [Engro Thar Coal Power Project] 24.813,70.395 buses=[] || P:P0029 [Engro Powergen Qadirpur Limited | Engro Energy CCGT Power Pl] 28.026,69.365 buses=[] || P:P0391 [Thar Block I Power Plant | SSRL Thar Coal Block-I] 24.711,70.302 buses=['500']"
+46,FKPCL,RLNG,151.0,fkpcl,0,
+47,Foundation,Gas,174.0,foundation,5,"P:P0017 [Fauji Foundation Hospital] 34.001,71.532 buses=[] || P:P0028 [Foundation Power Company] 27.981,69.673 buses=[] || P:P0429 [Fauji Foundation Hospital Main Building] 31.500,74.395 buses=[]"
+48,Halmore,RLNG,200.0,halmore,1,"P:P0056 [Halmore Power] 31.633,73.870 buses=[]"
+49,Haveli,RLNG,1180.0,haveli,1,"P:P0394 [Haveli Bahadur Shah Power Plant] 31.126,72.190 buses=[]"
+50,HuB N,RFO,216.0,hub,3,"P:P0009 [Hub Power Plant | Hub River Power Plant] 24.906,66.695 buses=[] || P:P0390 [China Power Hub Power Plant | HUBCO Coal Power Project] 24.918,66.687 buses=[] || P:P0629 [Hub Hub District solar project] 25.053,66.870 buses=[]"
+51,KAPCO,RLNG,495.0,kapco,0,
+52,Kohinoor,RFO,124.0,kohinor,1,"P:P0039 [Kohinoor Energy Power Plant] 31.263,74.189 buses=['132']"
+53,Liberty,Gas,222.0,liberty,4,"P:P0027 [TNB Liberty Daharki Power Plant] 28.032,69.637 buses=[] || P:P0080 [Faisalabad Liberty Power Tech Power Plant] 31.699,73.210 buses=[] || P:P6607 [Liberty Wind Power 2 | Noor Solar Energy] 24.921,67.760 buses=[]"
+54,Liberty Tech,RFO,196.139,liberty tec,5,"P:P0080 [Faisalabad Liberty Power Tech Power Plant] 31.699,73.210 buses=[] || P:P0027 [TNB Liberty Daharki Power Plant] 28.032,69.637 buses=[] || P:P0148 [Crescent Power Tech Ltd.] 31.591,73.549 buses=[]"
+55,Nishat C,RFO,196.0,nisat,2,"P:P0045 [نشاط پاور لمیٹڈ | Nishat Power Limited] 31.123,73.903 buses=[] || P:P0491 [نشاط چونیاں پاور لمٹیڈ | Nishat Chunian Power Limited (NCPL)] 31.124,73.904 buses=[]"
+56,Nishat P,RFO,195.0,nisat,2,"P:P0045 [نشاط پاور لمیٹڈ | Nishat Power Limited] 31.123,73.903 buses=[] || P:P0491 [نشاط چونیاں پاور لمٹیڈ | Nishat Chunian Power Limited (NCPL)] 31.124,73.904 buses=[]"
+57,Orient,RLNG,206.0,orient,1,"P:P0044 [Orient Power Balloki Power Plant] 31.188,73.890 buses=[]"
+58,Port Qasim,Imp. Coal,1243.0,port qasim,2,"P:P0082 [Port Qasim Coal Power Plant] 24.784,67.371 buses=['500'] || P:P0022 [Bin Qasim Power Plant] 24.784,67.360 buses=[]"
+59,JPCL,Imp. Coal,620.0,jpcl,0,
+60,Sahiwal Coal,Imp. Coal,1231.0,sahiwal coal,10,"P:P0114 [Sahiwal Coal Power Plant | Sahiwal Coal Power Project] 30.715,73.233 buses=[] || P:P0038 [Lakhra Coal Power Plant] 25.705,68.283 buses=['132'] || P:P0059 [Sahiwal Saif Power Limited Power Plant] 30.696,73.261 buses=[]"
+61,Saif,RLNG,204.0,saif,1,"P:P0059 [Sahiwal Saif Power Limited Power Plant] 30.696,73.261 buses=[]"
+62,Sapphire,RLNG,204.0,sapire,3,"P:P0206 [Sapphire Fibres Ltd Unit No.03] 31.587,73.789 buses=[] || P:P0422 [Sapphire Electric Power Plant] 31.760,74.035 buses=[] || P:P6613 [Sapphire Wind Power Plant | SWPCL] 25.100,67.929 buses=[]"
+63,Trimmu,RLNG,1244.0,trimu,2,"P:P0395 [Jhang Trimmu Punjab Thermal Power Plant] 31.115,72.188 buses=[] || P:P0396 [Trimmu Hydropower Project] 31.147,72.140 buses=[]"
+64,Uch,Gas,549.0,,0,
+65,Uch-II,Gas,355.0,,0,
+66,Lucky Coal,Local Coal,607.0,lucky coal,12,"P:P0038 [Lakhra Coal Power Plant] 25.705,68.283 buses=['132'] || P:P0082 [Port Qasim Coal Power Plant] 24.784,67.371 buses=['500'] || P:P0114 [Sahiwal Coal Power Plant | Sahiwal Coal Power Project] 30.715,73.233 buses=[]"
+67,Thal Nova,Local Coal,301.0,tal nova,0,
+68,Thar TEL,Local Coal,301.0,tar tel,5,"P:P0392 [Thar Energy Limited (TEL)] 24.806,70.402 buses=[] || P:P0134 [Engro Thar Coal Power Project] 24.813,70.395 buses=[] || P:P0391 [Thar Block I Power Plant | SSRL Thar Coal Block-I] 24.711,70.302 buses=['500']"
+69,Thar-I (SSRL),Local Coal,1214.0,tar srl,5,"P:P0391 [Thar Block I Power Plant | SSRL Thar Coal Block-I] 24.711,70.302 buses=['500'] || P:P0134 [Engro Thar Coal Power Project] 24.813,70.395 buses=[] || P:P0392 [Thar Energy Limited (TEL)] 24.806,70.402 buses=[]"
+70,Shahtaj,Bagasse,32.0,sahtaj,1,"P:P1249 [Shahtaj] 32.589,73.454 buses=[]"
+71,Almoiz,Bagasse,36.0,almoiz,0,
+72,Chanar,Bagasse,21.0,canar,0,
+73,Chiniot,Bagasse,63.0,ciniot,1,"P:P0492 [چنیوٹ پاور | Chiniot Power Limited] 31.612,72.761 buses=[]"
+74,Fatima Energy (FEL),Bagasse,108.0,fatima fel,2,"P:P0308 [Fatima Spinning & Weaving Mills Ltd] 30.098,71.200 buses=[] || P:P0426 [Fatima Energy | Fatima Kot Addu Power Plant] 30.295,70.968 buses=[]"
+75,Hamza,Bagasse,15.0,hamza,0,
+76,JDW - II,Bagasse,25.0,jdw,1,"P:P0919 [JDW-III CoGen Power Plant] 28.048,69.321 buses=[]"
+77,JDW - III,Bagasse,26.0,jdw,1,"P:P0919 [JDW-III CoGen Power Plant] 28.048,69.321 buses=[]"
+78,Ryk_Mills,Bagasse,30.0,ryk mils,9,"P:P0146 [Shams Textile Mills Unit # 2] 31.589,73.548 buses=[] || P:P0147 [Shams Textile Mills Unit # 3] 31.590,73.549 buses=[] || P:P0201 [Riaz Textile Mills Ltd] 31.591,73.802 buses=[]"
+79,Thal_Layyah,Bagasse,24.0,tal layah,0,
+80,Act/Tapal Wind,Wind,30.0,act tapal,2,"P:P0031 [Tapal Energy Power Plant] 25.000,66.907 buses=['132'] || P:P6606 [Tapal Wind Energy] 24.952,67.855 buses=[]"
+81,Artistic_Wind,Wind,50.0,artistic,0,
+82,Artistic_Wind-2,Wind,50.0,artistic,0,
+83,Dawood,Wind,50.0,dawod,1,"P:P6605 [Hydrochina Dawood Power] 24.672,67.495 buses=[]"
+84,Din Wind Energy,Wind,50.0,din,1,"P:P6632 [Din Energy] 24.940,67.769 buses=[]"
+85,FFC,Wind,50.0,,0,
+86,FWEL-I,Wind,50.0,fwel,2,"P:P6602 [Foundation Wind Energy 2 | Green Power (Private) Limited | F] 24.574,67.462 buses=[] || P:P6604 [Foundation Wind Energy 1 | Beacon_Energy_Limited_(BEL) | FWE] 24.610,67.400 buses=[]"
+87,FWEL-II,Wind,50.0,fwel,2,"P:P6602 [Foundation Wind Energy 2 | Green Power (Private) Limited | F] 24.574,67.462 buses=[] || P:P6604 [Foundation Wind Energy 1 | Beacon_Energy_Limited_(BEL) | FWE] 24.610,67.400 buses=[]"
+88,Gul Ahmed,Wind,50.0,gul ahmed,4,"P:P0034 [Gul Ahmed Energy Oil Power Plant] 24.850,67.146 buses=[] || P:P0918 [Gul Ahmed Textile Mills Lasani Unit] 24.845,67.215 buses=[] || P:P6614 [Gul Ahmed Wind Power Limited] 25.159,67.951 buses=[]"
+89,Gul Ahmed-II,Wind,50.0,gul ahmed,4,"P:P0034 [Gul Ahmed Energy Oil Power Plant] 24.850,67.146 buses=[] || P:P0918 [Gul Ahmed Textile Mills Lasani Unit] 24.845,67.215 buses=[] || P:P6614 [Gul Ahmed Wind Power Limited] 25.159,67.951 buses=[]"
+90,Hawa,Wind,50.0,hawa,1,"P:P6619 [Hawa Energy] 25.143,68.055 buses=[]"
+91,Indus,Wind,50.0,indus,1,"P:P6636 [Indus Wind Energy] 24.924,67.732 buses=[]"
+92,Jhimpir,Wind,50.0,jimpir,3,"P:P6618 [Jhimpir Power] 25.138,68.049 buses=[] || S:S0650 [Jhimpir] 25.114,67.869 buses=['220', '132'] || S:S0772 [Jhimpir II] 25.049,67.866 buses=['220']"
+93,Lakeside Wind,Wind,50.0,lakeside,1,"P:P6630 [Lakeside Energy] 25.011,67.731 buses=[]"
+94,Liberty Wind-I,Wind,50.0,liberty,4,"P:P0027 [TNB Liberty Daharki Power Plant] 28.032,69.637 buses=[] || P:P0080 [Faisalabad Liberty Power Tech Power Plant] 31.699,73.210 buses=[] || P:P6607 [Liberty Wind Power 2 | Noor Solar Energy] 24.921,67.760 buses=[]"
+95,Master,Wind,50.0,master,2,"P:P6608 [Master Wind Energy | MWEL] 25.090,68.000 buses=[] || P:P6635 [Master Green Energy] 25.383,68.136 buses=[]"
+96,Master Green,Wind,50.0,master gren,5,"P:P6635 [Master Green Energy] 25.383,68.136 buses=[] || P:P0120 [Best Green Energy] 29.301,71.836 buses=[] || P:P6602 [Foundation Wind Energy 2 | Green Power (Private) Limited | F] 24.574,67.462 buses=[]"
+97,Metro_Wind,Wind,50.0,metro,2,"P:P6615 [Metro Power Plant] 25.171,67.969 buses=[] || P:P6629 [Metro Wind Power] 24.991,67.704 buses=[]"
+98,Metro_Wind-II,Wind,60.0,metro,2,"P:P6615 [Metro Power Plant] 25.171,67.969 buses=[] || P:P6629 [Metro Wind Power] 24.991,67.704 buses=[]"
+99,NASDA Green Wind,Wind,50.0,nasda gren,4,"P:P6631 [Nasda Green Energy] 25.005,67.753 buses=[] || P:P0120 [Best Green Energy] 29.301,71.836 buses=[] || P:P6602 [Foundation Wind Energy 2 | Green Power (Private) Limited | F] 24.574,67.462 buses=[]"
+100,Sachal,Wind,50.0,sacal,1,"P:P6616 [Sachal | SHL] 25.139,67.934 buses=[]"
+101,Sapphire_Wind,Wind,50.0,sapire,3,"P:P0206 [Sapphire Fibres Ltd Unit No.03] 31.587,73.789 buses=[] || P:P0422 [Sapphire Electric Power Plant] 31.760,74.035 buses=[] || P:P6613 [Sapphire Wind Power Plant | SWPCL] 25.100,67.929 buses=[]"
+102,Tapal Wind-2,Wind,50.0,tapal,2,"P:P0031 [Tapal Energy Power Plant] 25.000,66.907 buses=['132'] || P:P6606 [Tapal Wind Energy] 24.952,67.855 buses=[]"
+103,Tenaga,Wind,50.0,tenaga,1,"P:P6603 [Tenaga Generasi Limited] 24.613,67.430 buses=[]"
+104,Three_Gorges_I,Wind,50.0,tre gorges,3,"P:P6610 [Three Gorges First Wind Farm | TGF] 25.080,67.943 buses=[] || P:P6612 [Three Gorges Second Wind Farm] 25.118,67.917 buses=[] || P:P6620 [Three Gorges Third Wind Farm] 25.129,67.923 buses=[]"
+105,Three_Gorges_II,Wind,50.0,tre gorges,3,"P:P6610 [Three Gorges First Wind Farm | TGF] 25.080,67.943 buses=[] || P:P6612 [Three Gorges Second Wind Farm] 25.118,67.917 buses=[] || P:P6620 [Three Gorges Third Wind Farm] 25.129,67.923 buses=[]"
+106,Three_Gorges_III,Wind,50.0,tre gorges,3,"P:P6610 [Three Gorges First Wind Farm | TGF] 25.080,67.943 buses=[] || P:P6612 [Three Gorges Second Wind Farm] 25.118,67.917 buses=[] || P:P6620 [Three Gorges Third Wind Farm] 25.129,67.923 buses=[]"
+107,Tricom,Wind,50.0,tricom,1,"P:P6634 [Tricom Wind Power] 25.113,68.063 buses=[]"
+108,Tricon_A,Wind,50.0,tricon,3,"P:P6637 [Tricon Boston A] 25.064,67.836 buses=[] || P:P6638 [Tricon Boston B] 25.050,67.832 buses=[] || P:P6639 [Tricon Boston C] 25.047,67.815 buses=[]"
+109,Tricon_B,Wind,50.0,tricon,3,"P:P6637 [Tricon Boston A] 25.064,67.836 buses=[] || P:P6638 [Tricon Boston B] 25.050,67.832 buses=[] || P:P6639 [Tricon Boston C] 25.047,67.815 buses=[]"
+110,Tricon_C,Wind,50.0,tricon,3,"P:P6637 [Tricon Boston A] 25.064,67.836 buses=[] || P:P6638 [Tricon Boston B] 25.050,67.832 buses=[] || P:P6639 [Tricon Boston C] 25.047,67.815 buses=[]"
+111,UEP,Wind,99.0,uep,0,
+112,Yunus,Wind,50.0,yunus,1,"P:P6617 [Lucky Star Yunus | LKY] 25.146,67.949 buses=[]"
+113,Zephyr,Wind,50.0,zepyr,1,"P:P6627 [Zephyr Power] 24.705,67.478 buses=[]"
+114,Zorlu_Wind,Wind,56.0,zorlu,1,"P:P6611 [Zorlu Enerji Pakistan | JWPP] 25.057,67.985 buses=[]"
+115,Liberty Wind-II,Wind,50.0,liberty,4,"P:P0027 [TNB Liberty Daharki Power Plant] 28.032,69.637 buses=[] || P:P0080 [Faisalabad Liberty Power Tech Power Plant] 31.699,73.210 buses=[] || P:P6607 [Liberty Wind Power 2 | Noor Solar Energy] 24.921,67.760 buses=[]"
+116,Helios,Solar PV,50.0,helios,1,"P:P0617 [Helios Power (Pvt.) Limited (Phase 3), Meridian Energy (Pvt.] 27.409,69.014 buses=['66']"
+117,HNDS,Solar PV,50.0,hnds,0,
+118,Meridian,Solar PV,50.0,meridian,1,"P:P0617 [Helios Power (Pvt.) Limited (Phase 3), Meridian Energy (Pvt.] 27.409,69.014 buses=['66']"
+119,Appolo Solar,Solar PV,100.0,apolo,1,"P:P0118 [Appolo Solar Development] 29.312,71.840 buses=[]"
+120,Best,Solar PV,100.0,best,1,"P:P0120 [Best Green Energy] 29.301,71.836 buses=[]"
+121,Crest,Solar PV,100.0,crest,1,"P:P0119 [Crest Energy] 29.303,71.819 buses=['132']"
+122,QA_Solar,Solar PV,100.0,,0,
+123,Zhenfa,Solar PV,100.0,zenfa,0,
+0,Import from Iran,Import,100.0,import from iran,0,

@@ -1,0 +1,125 @@
+sr,name,fuel,section,installed_mw,dependable_mw
+1,Allai Khwar,Hydro,WAPDA Hydro,121.0,121.0
+2,Chashma,Hydro,WAPDA Hydro,184.0,184.0
+3,Dubair Khwar,Hydro,WAPDA Hydro,130.0,130.0
+4,Ghazi Brotha,Hydro,WAPDA Hydro,1450.0,1450.0
+5,Golen Gol,Hydro,WAPDA Hydro,108.0,108.0
+6,Jinnah,Hydro,WAPDA Hydro,96.0,36.0
+7,Khan Khwar,Hydro,WAPDA Hydro,72.0,72.0
+8,Mangla,Hydro,WAPDA Hydro,1070.0,960.0
+9,Neelum Jehlum,Hydro,WAPDA Hydro,969.0,0.0
+10,Tarbela 1-14,Hydro,WAPDA Hydro,3478.0,3478.0
+11,Tarbela_Ext_04,Hydro,WAPDA Hydro,1410.0,1410.0
+12,Warsak,Hydro,WAPDA Hydro,243.0,160.0
+13,Gomal Zam,Hydro,Small Hydro,17.0,17.0
+14,Rasul,Hydro,Small Hydro,22.0,22.0
+15,Dargai,Hydro,Small Hydro,20.0,20.0
+16,Nandipur,Hydro,Small Hydro,14.0,14.0
+17,Shadiwal,Hydro,Small Hydro,14.0,14.0
+18,Chichoki,Hydro,Small Hydro,13.0,13.0
+19,Kurram Garhi,Hydro,Small Hydro,4.0,4.0
+20,Renala,Hydro,Small Hydro,1.0,1.0
+21,Chitral,Hydro,Small Hydro,1.0,1.0
+22,Jabban,Hydro,Small Hydro,22.0,22.0
+23,Guddu 747,Gas,GENCOs,747.0,486.0
+24,Nandipur,RLNG,GENCOs,525.0,525.0
+25,CHASHNUPP - I,Nuclear,Nuclear,325.0,300.0
+26,CHASHNUPP-II,Nuclear,Nuclear,325.0,300.0
+27,CHASHNUPP-III,Nuclear,Nuclear,340.0,315.0
+28,CHASHNUPP-IV,Nuclear,Nuclear,340.0,315.0
+29,K-2,Nuclear,Nuclear,1100.0,1030.0
+30,K-3,Nuclear,Nuclear,1100.0,1030.0
+31,Jagran - I,Hydro,Hydro IPPs,30.0,30.0
+32,Malakand - III,Hydro,Hydro IPPs,81.0,81.0
+33,New Bong,Hydro,Hydro IPPs,84.0,84.0
+34,Daral Khwar,Hydro,Hydro IPPs,37.0,37.0
+35,Gul Pur,Hydro,Hydro IPPs,103.0,103.0
+36,Patrind,Hydro,Hydro IPPs,150.0,149.0
+37,Ranolia,Hydro,Hydro IPPs,18.0,17.0
+38,Suki Kinari,Hydro,Hydro IPPs,884.0,883.0
+39,Karot,Hydro,Hydro IPPs,720.0,713.0
+40,AGL,RFO,Thermal IPPs,165.0,156.0
+41,Balloki,RLNG,Thermal IPPs,1223.0,1157.0
+42,Bhikki,RLNG,Thermal IPPs,1186.0,1130.0
+43,China HUBCO,Imp. Coal,Thermal IPPs,1320.0,1249.0
+44,Engro,Gas,Thermal IPPs,217.0,215.0
+45,Engro Thar,Local Coal,Thermal IPPs,660.0,602.0
+46,FKPCL,RLNG,Thermal IPPs,157.0,151.0
+47,Foundation,Gas,Thermal IPPs,178.0,174.0
+48,Halmore,RLNG,Thermal IPPs,215.0,200.0
+49,Haveli,RLNG,Thermal IPPs,1231.0,1180.0
+50,HuB N,RFO,Thermal IPPs,219.0,216.0
+51,KAPCO,RLNG,Thermal IPPs,495.0,495.0
+52,Kohinoor,RFO,Thermal IPPs,131.0,124.0
+53,Liberty,Gas,Thermal IPPs,235.0,222.0
+54,Liberty Tech,RFO,Thermal IPPs,200.0,196.139
+55,Nishat C,RFO,Thermal IPPs,200.0,196.0
+56,Nishat P,RFO,Thermal IPPs,200.0,195.0
+57,Orient,RLNG,Thermal IPPs,218.0,206.0
+58,Port Qasim,Imp. Coal,Thermal IPPs,1320.0,1243.0
+59,JPCL,Imp. Coal,Thermal IPPs,660.0,620.0
+60,Sahiwal Coal,Imp. Coal,Thermal IPPs,1320.0,1231.0
+61,Saif,RLNG,Thermal IPPs,209.0,204.0
+62,Sapphire,RLNG,Thermal IPPs,209.0,204.0
+63,Trimmu,RLNG,Thermal IPPs,1263.0,1244.0
+64,Uch,Gas,Thermal IPPs,586.0,549.0
+65,Uch-II,Gas,Thermal IPPs,404.0,355.0
+66,Lucky Coal,Local Coal,Thermal IPPs,660.0,607.0
+67,Thal Nova,Local Coal,Thermal IPPs,330.0,301.0
+68,Thar TEL,Local Coal,Thermal IPPs,330.0,301.0
+69,Thar-I (SSRL),Local Coal,Thermal IPPs,1320.0,1214.0
+70,Shahtaj,Bagasse,Thermal IPPs,32.0,32.0
+71,Almoiz,Bagasse,Thermal IPPs,36.0,36.0
+72,Chanar,Bagasse,Thermal IPPs,26.0,21.0
+73,Chiniot,Bagasse,Thermal IPPs,63.0,63.0
+74,Fatima Energy (FEL),Bagasse,Thermal IPPs,120.0,108.0
+75,Hamza,Bagasse,Thermal IPPs,15.0,15.0
+76,JDW - II,Bagasse,Thermal IPPs,26.0,25.0
+77,JDW - III,Bagasse,Thermal IPPs,27.0,26.0
+78,Ryk_Mills,Bagasse,Thermal IPPs,30.0,30.0
+79,Thal_Layyah,Bagasse,Thermal IPPs,25.0,24.0
+80,Act/Tapal Wind,Wind,Wind Power Projects,30.0,30.0
+81,Artistic_Wind,Wind,Wind Power Projects,50.0,50.0
+82,Artistic_Wind-2,Wind,Wind Power Projects,50.0,50.0
+83,Dawood,Wind,Wind Power Projects,50.0,50.0
+84,Din Wind Energy,Wind,Wind Power Projects,50.0,50.0
+85,FFC,Wind,Wind Power Projects,50.0,50.0
+86,FWEL-I,Wind,Wind Power Projects,50.0,50.0
+87,FWEL-II,Wind,Wind Power Projects,50.0,50.0
+88,Gul Ahmed,Wind,Wind Power Projects,50.0,50.0
+89,Gul Ahmed-II,Wind,Wind Power Projects,50.0,50.0
+90,Hawa,Wind,Wind Power Projects,50.0,50.0
+91,Indus,Wind,Wind Power Projects,50.0,50.0
+92,Jhimpir,Wind,Wind Power Projects,50.0,50.0
+93,Lakeside Wind,Wind,Wind Power Projects,50.0,50.0
+94,Liberty Wind-I,Wind,Wind Power Projects,50.0,50.0
+95,Master,Wind,Wind Power Projects,50.0,50.0
+96,Master Green,Wind,Wind Power Projects,50.0,50.0
+97,Metro_Wind,Wind,Wind Power Projects,50.0,50.0
+98,Metro_Wind-II,Wind,Wind Power Projects,60.0,60.0
+99,NASDA Green Wind,Wind,Wind Power Projects,50.0,50.0
+100,Sachal,Wind,Wind Power Projects,50.0,50.0
+101,Sapphire_Wind,Wind,Wind Power Projects,50.0,50.0
+102,Tapal Wind-2,Wind,Wind Power Projects,50.0,50.0
+103,Tenaga,Wind,Wind Power Projects,50.0,50.0
+104,Three_Gorges_I,Wind,Wind Power Projects,50.0,50.0
+105,Three_Gorges_II,Wind,Wind Power Projects,50.0,50.0
+106,Three_Gorges_III,Wind,Wind Power Projects,50.0,50.0
+107,Tricom,Wind,Wind Power Projects,50.0,50.0
+108,Tricon_A,Wind,Wind Power Projects,50.0,50.0
+109,Tricon_B,Wind,Wind Power Projects,50.0,50.0
+110,Tricon_C,Wind,Wind Power Projects,50.0,50.0
+111,UEP,Wind,Wind Power Projects,99.0,99.0
+112,Yunus,Wind,Wind Power Projects,50.0,50.0
+113,Zephyr,Wind,Wind Power Projects,50.0,50.0
+114,Zorlu_Wind,Wind,Wind Power Projects,56.0,56.0
+115,Liberty Wind-II,Wind,Wind Power Projects,50.0,50.0
+116,Helios,Solar PV,Solar Power Projects,50.0,50.0
+117,HNDS,Solar PV,Solar Power Projects,50.0,50.0
+118,Meridian,Solar PV,Solar Power Projects,50.0,50.0
+119,Appolo Solar,Solar PV,Solar Power Projects,100.0,100.0
+120,Best,Solar PV,Solar Power Projects,100.0,100.0
+121,Crest,Solar PV,Solar Power Projects,100.0,100.0
+122,QA_Solar,Solar PV,Solar Power Projects,100.0,100.0
+123,Zhenfa,Solar PV,Solar Power Projects,100.0,100.0
+0,Import from Iran,Import,Import,100.0,100.0
