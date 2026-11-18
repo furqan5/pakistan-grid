@@ -13,7 +13,9 @@ It is a two-week side research project with a pre-registered go/no-go gate. It i
   - S3 fails: 62 of 69 NGC stations matched by name, against a pass mark of 65. That is above the no-go line of 60.
   - S4 passes: circuit-km at 500 kV −0.1% and at 220 kV +3.6% against NEPRA.
   - S2 waits for generators and loads.
-- **No power-flow solve has been run yet.** The rules that affect the scored holdouts were committed before any model quantity was computed. The commit history shows that order.
+- **No power-flow solve has been run yet.** The rules that affect the scored holdouts were committed before any model quantity was computed.
+  - For Days 0–6 that order rests on commit dates set on the author's laptop. The repository was first pushed on 18 Nov 2026.
+  - From Day 7 on, each rules commit is pushed to GitHub **before** the run that uses it, so GitHub's push time dates the order independently.
 
 ## Method in one paragraph
 

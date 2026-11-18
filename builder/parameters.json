@@ -75,6 +75,53 @@
     ],
     "rule": "Open n circuits of the direct branch(es) between the two mapped buses: a branch with c circuits keeps c - n (removed if 0). Only a direct branch counts; no path search."
   },
+  "generators": {
+    "_comment": "Day 7 rules, fixed 18 Nov 2026 before the generator list was built and before any solve. Reasons in day7/generator_rules.md.",
+    "plant_list": "IGCEP 2025-35 R2 Annex B-1(i), NGC existing installed capacity as of Nov 2024 (PDF pp.149-153).",
+    "excluded": {
+      "K-Electric plants (B-1(ii))": "TSEP models KE as a net export load from NTDC (I2: 2,050 / 1,001 MW). KE's own plants serve KE's internal load, which is not in the model, so including them would double count.",
+      "Import from Iran (100 MW)": "supplies the Makran/Gwadar system, which is not connected to the national grid",
+      "dependable capacity 0": "plants with IGCEP dependable 0 MW (Neelum Jehlum, out of service) get status 0"
+    },
+    "exit_check": "Report (a) installed MW in the model vs IGCEP NGC installed (36,424 MW) less exclusions, and (b) the binding test: located and connected summer Pmax vs the summer requirement (TSEP load 27,097 + KE 2,050 + losses 1,033 + dcline loss), by region. Any unlocated plant blocks Day 9 until it is placed; it is not silently dropped. (The 14-day plan said NGC + KE; KE is excluded under the KE-as-export convention.)",
+    "snapshot_hours": {
+      "summer_peak": "evening after sunset (assumption; TSEP gives no hour). Recent NTDC summer peaks occur after sunset as rooftop solar shaves the afternoon.",
+      "winter_offpeak": "night (assumption; TSEP gives no hour). TSEP notes minimum demand is lower than expected, which net-metered solar could move to midday; not modelled."
+    },
+    "pmax": {
+      "summer_peak": {"default": "IGCEP dependable MW", "solar": 0.0, "bagasse": 0.0,
+                      "solar_note": "evening peak hour (snapshot_hours)", "bagasse_note": "outside the sugar crushing season (about Nov-Mar) [VERIFY]", "wind": 1.0},
+      "winter_offpeak": {
+        "hydro": 0.113,
+        "hydro_source": "January 2025 hydel generation 866 GWh (ProPakistani 20 Feb 2025, citing Arif Habib Ltd) = 1,164 MW average, divided by NGC hydro dependable 10,334 MW (WAPDA 8,237 + IPP 2,097)",
+        "solar": 0.0, "solar_note": "night hour (snapshot_hours)",
+        "wind": 0.15, "wind_note": "assumption, no source: January wind is weak in the Gharo-Jhimpir corridor",
+        "bagasse": 1.0, "bagasse_note": "inside the crushing season",
+        "other": 1.0
+      }
+    },
+    "pmin_fraction": {"nuclear": 0.50, "coal": 0.30, "ccgt": 0.20, "engine_rfo_gt": 0.0, "hydro": 0.0, "wind": 0.0, "solar": 0.0, "bagasse": 0.0,
+                      "source": "Microsoft GridSFM US data pipeline (arXiv 2605.04289 s3.4): 50 % nuclear, 30 % coal, 20 % gas CCGT, 0 % GT/renewables"},
+    "reactive": {"pf": {"nuclear": 0.90, "coal": 0.85, "ccgt": 0.85, "engine_rfo_gt": 0.85, "bagasse": 0.85, "hydro": 0.80, "wind": 0.95, "solar": 0.95},
+                 "qmax": "Pmax(snapshot) * tan(acos(pf))",
+                 "qmin_synchronous": -0.5, "qmin_note": "synchronous machines absorb 50 % of Qmax (midpoint of the pipeline's 40-60 %); inverter-based (wind, solar) symmetric",
+                 "source": "Microsoft GridSFM US data pipeline (arXiv 2605.04289 s3.4)"},
+    "cost": {
+      "c1_thermal": "IGCEP Annex B-2 (USD): c1 [$/MWh] = fuel cost [$/GJ] x heat rate [GJ/MWh] + variable O&M [$/MWh]. Plants with two tranches use the first (lower) tranche.",
+      "c1_fallback_usd_mwh": {"hydro": 8, "wind": 0, "solar": 0, "bagasse": 0, "nuclear": 12, "coal": 35, "ccgt": 26, "engine_rfo_gt": 80},
+      "fallback_source": "Microsoft GridSFM pipeline fallback table (arXiv 2605.04289 Table 13); bagasse 0 as take-or-pay (research notes)",
+      "c2": 0, "c0": 0,
+      "currency_note": "B-2 is already in USD, so no exchange rate is needed; the gate's dated-rate line is not used."
+    },
+    "connection": {
+      "location": "OSM power=plant (or a substation named for the plant) found by name; the name crosswalk is logged with its basis in day7/plant_crosswalk.csv",
+      "documented_voltage": "Where a document names the connection voltage, it is used: PSS 44th line tables (500 kV: CFPP/Sahiwal, QATPL/Bhikki, H.B.Shah/Haveli, HUBCO, CPHGC/China HUBCO, Engro Thar, Port Qasim, Tarbela, Ghazi Barotha, Guddu 747, Neelum Jhelum; 220 kV: Chashnupp, KAPCO, Lalpir, Pak Gen, PARCO, Mangla, Allai Khawar) and TSEP Figure 5-9 plant labels on the 500 kV network.",
+      "bus_rule": "Otherwise: among main-component substation/plant/converter buses within 5 km of the OSM location, take the highest voltage (ties: nearest). Plants under 50 MW may use 66 kV. If none within 5 km, the nearest such bus within 20 km at any voltage >= 66 kV, with the distance logged.",
+      "size_check": "Flag (never silently change) any plant of >= 500 MW below 220 kV and any of >= 1,000 MW not at 500 kV; each flag is resolved in the crosswalk with its basis.",
+      "unlocated": "listed with MW; they block Day 9 until placed (GEM GIPT coordinates, which Furqan has to download, or a documented location)"
+    },
+    "slack": {"summer_peak": "Tarbela (largest hydro, as in the 14-day plan)", "winter_offpeak": "bus of the largest-Pmax generator in that snapshot"}
+  },
   "buses": {
     "vmin": 0.95, "vmax": 1.08,
     "source": "TSEP 2024-34 planning criteria (grid code), normal operating conditions: voltage within +8 % / -5 % for nominal voltages up to 500 kV. Contingency band +/-10 % is not used for the base cases."
