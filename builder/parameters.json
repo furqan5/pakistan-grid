@@ -124,6 +124,26 @@
     "slack": {"summer_peak": "Tarbela (largest hydro, as in the 14-day plan)", "winter_offpeak": "bus of the largest-Pmax generator in that snapshot"},
     "ke_box_generators": "Declared 18 Nov 2026, before any load is placed: NGC plants (IGCEP B-1(i)) on buses that the Day 4 geometric K-Electric box flags (Dawood, FWEL-I, FWEL-II, Tenaga, Zephyr: 250 MW of Gharo wind on 220 kV) stay as NGC generators. The KE flag affects only S1's without-KE count and the Day 8 KE export placement, which uses the Day 4 interface buses only; no KE internal load is placed on these buses. The box is not moved."
   },
+  "loads": {
+    "_comment": "Day 8 rules, fixed 18 Nov 2026 before any load is placed and before any solve; pushed before builder/make_loads.py first runs.",
+    "load_stations": "Main-component substation buses (kind S, prov substation) with a 132 or 66 kV bus. Load goes on the 132 kV bus, or the 66 kV bus if the station has no 132 kV bus. Excluded: converter stations, stations whose OSM subtypes include 'generation', and stations on K-Electric-flagged buses.",
+    "disco_assignment": "Each load station takes the DISCO of the nearest (straight-line) NTDC 500/220 kV station that PSS 44th Tables 2.16/2.17 label with a DISCO and that S3 maps to a model station. A two-DISCO label takes its first DISCO, except that PESCO and TESCO are merged into one group (TESCO appears only as 'PESCO/TESCO'). The K-Electric-labelled station (NKI) is not an anchor.",
+    "disco_mw_2026_27": {"LESCO": 5701, "GEPCO": 2704, "FESCO": 3296, "IESCO": 2923, "MEPCO": 4870, "PESCO": 2899, "HESCO": 1232, "QESCO": 1172, "TESCO": 549, "SEPCO": 1034, "Gwadar": 162},
+    "disco_mw_source": "TSEP 2024-34 Table 2-1, 2026-27 column (input I5; checked by eye on Day 0)",
+    "gwadar": "Gwadar's share is not placed: Gwadar/Makran is off the national grid, consistent with excluding the 100 MW Iran import. Modelled DISCO load = I1 x (sum of the 10 grid DISCOs / sum incl. Gwadar).",
+    "total_mw": {"summer_peak": 27097, "winter_offpeak": 8774},
+    "q_over_p": {"summer_peak": 0.5911, "winter_offpeak": 0.4652, "source": "I1: 16,017/27,097 and 4,082/8,774 (pf 0.861 and 0.907), uniform at every load bus"},
+    "within_disco": {
+      "FESCO": "FESCO Demand Forecast 2023-33 Table 1-22 (maximum demand of substations, base forecast), 2026-27 column.",
+      "MEPCO": "MEPCO PMS Load Forecast 2021-22, 'Maximum Demand (MW) of Substations - Base Forecast' (PDF p.64 on; the body numbers it Table 1-27, the contents page 1-29), 2026-27 column.",
+      "rule": "For FESCO and MEPCO, each table station is matched by name (score_s3 name normalisation, whole-word alias match) to a load station assigned to that DISCO; a match must be unique. Matched stations are weighted by their table MW. The unmatched table MW is shared equally among that DISCO's unmatched load stations. All other DISCO groups: equal weight per load station. Each DISCO group is then scaled to its share of the modelled total.",
+      "same_shape_both_snapshots": true
+    },
+    "ke_export": {"summer_peak": {"mw": 2050, "mvar": 795}, "winter_offpeak": {"mw": 1001, "mvar": 68},
+                  "placement": "On the K-Electric-side bus of every branch or transformer with one KE-flagged end and one non-KE end (the Day 4 interface), in proportion to that branch's rate_a. Source I2 (TSEP Tables 5-1, 5-10)."},
+    "capacitors": "As declared on Day 6: 132 kV DISCO load buses, in proportion to bus reactive load, scaled to 12,192 MVAr (summer) and 146 MVAr (winter off-peak), nameplate at 1.0 pu. Not on KE interface buses.",
+    "exit_check": "Report DISCO-group station counts and MW per station, the FESCO/MEPCO match rates, and S2 (load and generation share in the main component, with the signed-off denominators)."
+  },
   "buses": {
     "vmin": 0.95, "vmax": 1.08,
     "source": "TSEP 2024-34 planning criteria (grid code), normal operating conditions: voltage within +8 % / -5 % for nominal voltages up to 500 kV. Contingency band +/-10 % is not used for the base cases."
