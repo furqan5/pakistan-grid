@@ -1,7 +1,7 @@
 # Pakistan synthetic grid for a GridSFM test — pre-registered gate
 
-**Status: DRAFT v0.4, 17 Nov 2026 (v0.3: 16 Nov; v0.2: 6 Nov). Not yet approved by Furqan.** v0.3 added the S3 match rule. v0.4 adds the winter HVDC input and a proposed loss definition for H1 and H4. Neither version changes a threshold.
-v0.2 adds no threshold changes. Every TSEP and NEPRA number in this file was checked by eye against the source PDFs (`day0/tsep_check.md`, `day0/per_check.md`). The S3 name list is PER FY2024-25 Figure 1 (69 stations). It becomes binding only once he signs it off.
+**Status: v1.0 SIGNED OFF by Furqan on 18 Nov 2026, before any Pakistan solve (see Sign-off). Earlier drafts: v0.4 17 Nov, v0.3 16 Nov, v0.2 6 Nov.**
+v0.2 adds no threshold changes. Every TSEP and NEPRA number in this file was checked by eye against the source PDFs (`day0/tsep_check.md`, `day0/per_check.md`). The S3 name list is PER FY2024-25 Figure 1 (69 stations). It became binding at the v1.0 sign-off (18 Nov 2026).
 Any edit before the first Pakistan AC solve is allowed but gets a new dated commit. After the first Pakistan AC solve, changes are logged and the affected holdouts are reported as "post hoc".
 
 The source is `E:\Startup\reports\Pakistan grid model data.md` (Verdict section). The Day 0 by-eye checks of TSEP are in `day0/tsep_check.md`.
@@ -35,6 +35,12 @@ The thresholds were designed in that report, not taken from a source, except whe
 |---|---|---|---|---|
 | S1 | AC buses at ≥66 kV in the main component, each tied to a real OSM substation, plant switchyard or converter. Line-ending nodes, degree-2 junctions and 11 kV buses do not count. | **≥ 500** | GridSFM floor | **No-go** at end of Day 5: switch to the PyPSA-Earth route or wait for NGC data |
 | S2 | Share of load and of installed generation in the main component | ≥ 98% each | design | Fix islands |
+
+**S2 denominators (fixed at sign-off, 18 Nov 2026; post hoc, see Sign-off).**
+- **Generation:** IGCEP 2025-35 B-1(i) NGC installed capacity (36,424 MW) less the exclusions made by design before the generator list was built: the Iran import (off-grid Makran) and dependable-0 plants (Neelum Jhelum). That leaves 35,355 MW.
+  - K-Electric's plants aren't in the denominator, because KE is modelled as an export (I2).
+  - Plants that couldn't be placed **count as missing**.
+- **Load:** the DISCO load the Day 8 rules assign (I1 scaled by I5), plus the KE export (I2). Load placed off the main component counts as missing.
 | S3 | NGC 500/220 kV stations matched by name | ≥ 65 of 69 | NEPRA PER FY2024-25 | **No-go** if < 60 |
 | S4 | Model circuit-km at 500 kV and at 220 kV (NGC + KE) | within ±10% of ≈ 9,320 and ≈ 12,400 | NEPRA PER FY2024-25 | Correct circuits before solving (calibration, not a holdout) |
 
@@ -82,7 +88,7 @@ The thresholds were designed in that report, not taken from a source, except whe
   - whether a structural alias was used.
   
   The report also states how many scored matches rely on a structural alias. Doubtful pairs are reported, never removed.
-- **Proposed, needs sign-off.** The decision rule doesn't say what happens when S3 lands between 60 and 64, which fails the ≥65 pass mark but is above the no-go line. Proposal: treat it like a failed scored holdout. The test is relabelled "synthetic Pakistan-topology" and the build continues.
+- **S3 between 60 and 64 (adopted at sign-off, 18 Nov 2026; post hoc, because S3 = 62 was already known).** This band fails the ≥65 pass mark but is above the no-go line. It is treated like a failed scored holdout: the test is relabelled "synthetic Pakistan-topology" and the build continues.
 
 ## Solvability (Day 10)
 
@@ -90,6 +96,17 @@ The thresholds were designed in that report, not taken from a source, except whe
 |---|---|---|---|
 | V1 | GridSFM `solve_topo_json.jl` ladder rung reached at summer peak | L0, AC1, L1 or L2. L3 only with a logged root cause. L4/L5 (load shed) fails. | **No-go** at end of Day 10 |
 | V2 | Same at winter off-peak with the Table 5-7 openings | L2 or better | as V1 |
+
+**AC1 shunt rule (Day 1 proposal, adopted at sign-off 18 Nov 2026, before any Pakistan solve).**
+- **Record.** For V1 and V2, log `_dc_shunts_injected`: the count and the MVAr injected by the ladder's AC1 rung (or any later rung).
+- **Threshold.** In a snapshot, the injected shunts may total more than 5% of that snapshot's nameplate TSEP shunt total:
+  - summer: 6,162 + 12,192 = 18,354 MVAr, so the limit is 918 MVAr;
+  - winter off-peak: 8,211 + 146 = 8,357 MVAr, so the limit is 418 MVAr.
+- **If the threshold is exceeded:**
+  - that snapshot's H1, H3 and H4 are reported as "post-relaxation";
+  - **they count as not passed** for the "Pakistan-calibrated" label, because they would partly score the injected shunts instead of the built grid.
+- **Solve time.** `WALL_TIME_LIMIT` stays at the pipeline default of 900 s per rung. Each solve time is logged.
+- **Winter openings.** V2 uses the openings that map under the openings rule declared before the first solve (`builder/parameters.json` → `winter_openings`).
 
 ## Holdouts (computed once, on Day 11, against these thresholds)
 
@@ -102,9 +119,9 @@ The thresholds were designed in that report, not taken from a source, except whe
 | H5 | Rank of the Gatti 500/220 kV bank among 500/220 kV banks at summer peak | top quartile | NEPRA PER 2023-24 | reported only |
 | H6 | Multan, D.G. Khan and Guddu 747 voltages at winter off-peak | in top third of 500 kV bus voltages | NEPRA PER 2023-24 Table 13 | reported only |
 | H7 | Voltages and flows at buses name-matched to World Bank Annex 2 | median V error and flow-sign agreement reported; no pass mark (different years) | WB Annex 2 (2021) | reported only |
-| H8 | *(proposed on Day 0, needs sign-off)* 20 key 500 kV bus voltages at winter off-peak | median abs. error reported; no pass mark (values read by eye from a plot, ±0.003 pu) | TSEP Fig 5-8 | reported only |
+| H8 | *(proposed Day 0, adopted at sign-off 18 Nov 2026)* 20 key 500 kV bus voltages at winter off-peak | median abs. error reported; no pass mark (values read by eye from a plot, ±0.003 pu) | TSEP Fig 5-8 | reported only |
 
-### Loss definition for H1 and H4 (proposed 17 Nov 2026, v0.4 draft, needs sign-off)
+### Loss definition for H1 and H4 (proposed 17 Nov 2026; adopted at sign-off 18 Nov 2026, before any solve)
 
 - **TSEP's losses are generation minus load minus KE export.** Its balances close exactly:
   - summer: 30,180 = 27,097 + 2,050 + 1,033;
@@ -135,10 +152,26 @@ The thresholds were designed in that report, not taken from a source, except whe
   - agreement of the feasibility flag.
 - **Scope:** report each metric for the whole grid, the 500/220 kV subset and the 132 kV subset separately.
 - **Scenarios:** use the base snapshots plus scenarios from `gen_perturbed_data.jl`. Fix the count on Day 11 before running.
-- **Costs:** convert to USD at a dated exchange rate, recorded here before the run (rate: ____ on ____).
+- **Costs:** no exchange rate is needed. Generator costs come from IGCEP Annex B-2, which is already in USD (Day 7 rules).
 - **Comparison:** use GridSFM's published in-distribution errors for grids of similar size [VERIFY: figures still to be collected].
 - **Interpretation:** good EHV accuracy combined with bad 132 kV accuracy points to the synthetic 132 kV layer, not to Pakistan.
 
 ## Sign-off
 
-- [ ] Furqan approved this version (date: ______). Edits: ______
+- [x] **Furqan approved this version on 18 Nov 2026**, before any Pakistan solve. He gave the instruction in the working session ("do gate sign off") and delegated the open choices to Claude. Each delegated choice, and whether it was made before or after the result it affects was known:
+
+| Item | Choice | Timing |
+|---|---|---|
+| S2 denominators | NGC installed less the design exclusions; unplaced plants count as missing | **Post hoc.** The generation share had been seen under two candidate definitions (98.1% and 95.2%) before this choice. It was chosen because it matches the exclusions declared in the Day 7 rules (42c7533), which were fixed before the generator list was built. |
+| S3 between 60 and 64 | Treated as a failed scored holdout; relabelled "synthetic Pakistan-topology" | **Post hoc.** S3 = 62 was known. |
+| H1/H4 loss definition | Generation − load (KE export counted as load), so the dcline loss is included | Before any solve |
+| AC1 shunt rule | Record the injected shunts; above 5% of the TSEP nameplate shunt totals, H1/H3/H4 are "post-relaxation" and not passed | Before any solve |
+| H8 | Adopted, reported only | Before any solve |
+| Structural aliases (Safdar Nagar = Sarfraz Nagar, Bandial = Bandala, Peshawar = Sheikh Muhammadi) | **Not confirmed by this sign-off.** They stay [VERIFY]. S3 = 62 includes two of them; without them it would be 60. | — |
+
+- **Thresholds.** None changed from v0.2.
+- **Binding.** From this commit, any change to this file is logged, and an affected result is reported as post hoc.
+- **Not part of the gate document.** Three declarations must still be made in `builder/parameters.json` and pushed before the first solve:
+  - the short-branch rule;
+  - the winter-openings mapping rule;
+  - the capacitor placement (Day 8).
