@@ -73,3 +73,31 @@ Any S3 change caused by a station-grouping change is post hoc and must be labell
 - `dclines.csv` now gives each DC terminal's AC bus: Matiari converter `S:S0675@500` ↔ Lahore converter `S:S0789@500`, 887 km, ±660 kV. Both buses are in the main component.
 - TSEP's summer transfer of 4,000 MW is input I3.
 - Losses, reactive limits and the winter set-point are Day 6 work.
+
+# G2: solvability, V1/V2 (18 Nov 2026, Day 9)
+
+**Case:** as assembled under the pre-declared rules (commit 4104cfa).
+**Ladder:** GridSFM `solve_topo_json.jl`, logs in `day9/ladder_*.txt`, run 08:21–08:39 UTC, pushed in 841402d.
+
+| Check | Pass | Result | Status |
+|---|---|---|---|
+| V1: summer peak ladder rung | L0, AC1, L1 or L2 (L3 with a root cause) | **No rung solves.** DC-OPF solves at L5; AC-OPF is LOCALLY_INFEASIBLE at L0, AC1 and L1–L5. | **FAIL** |
+| V2: winter off-peak ladder rung | L2 or better | **No rung solves** (same pattern). | **FAIL** |
+
+**Decision under the signed gate: NO-GO for the build as specified.** V1 and V2 would have needed L4 or L5; in fact no rung solved at all.
+
+**Root cause.** Diagnostics on copies (`solve/diagnose_*.jl`) leave the scored case unchanged, and **found no assembly fault**:
+- **Summer: real-power transfer bottlenecks from OSM gaps and the declared defaults.**
+  - DC-OPF needs line ratings about **6.0×** their declared values to be feasible.
+  - AC-OPF stays infeasible even with thermal limits removed, voltage 0.7–1.3, unlimited generator Q, no shunts and no reactive load.
+  - **Pockets:**
+    - Chashma's 1,414 MW leaves through a 1.3 km 220 kV section OSM leaves untagged, which the model treats as single circuit;
+    - Lahore's 132 kV network (Manga, Sarfraz Nagar, Bund Road) carries bulk power because 220 kV links are missing in OSM, and LESCO's 220/132 kV supply is only 1.02× its load;
+    - Kot Addu's 132 kV lines.
+- **Winter: ratings plus reactive over-absorption.**
+  - DC-OPF needs ratings about **1.64×** declared.
+  - AC-OPF becomes feasible only when the **shunts are removed** as well.
+  - The declared rule fixes reactors at TSEP's nameplate total of 8,211 MVAr, but the model's 500 kV charging is far smaller than TSEP's network's (Nokhar: 805 MVAr of reactors against 488 MVAr of local half-charging; Gatti: 643 against 246).
+  - This is the bias recorded before any solve in `day6/topology_day6.md` (H3).
+- **No repair has been made.** Any fix chosen now would be selected after reading flows, so under the gate it is post hoc. Whether to repair is Furqan's decision.
+- **Prediction record.** The first pre-solve prediction (summer L2, winter L0/AC1) was wrong. The corrected prediction pushed before the ladder (summer L5, winter L4) was also too optimistic: no rung solved at all.
