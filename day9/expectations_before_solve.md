@@ -49,3 +49,20 @@ Transformer capacity into each DISCO group's 132 kV buses, plus 132/66 kV genera
    - Two things pull towards a pass: 5 of the 15 openings are now applied, and the winter Pmax pattern differs from TSEP's.
 4. **H1 (scored).** Summer losses are probably within 2–5% of generation. 132 kV Lynx is resistive, while the network is shorter than the real one. Low confidence.
 5. **AC power flow from a flat start may not converge.** If so, that is recorded, not fixed. The ladder's AC-OPF is the gate's measure, not the plain power flow.
+
+## Addendum, 18 Nov 2026, after the first solves and BEFORE the official ladder runs
+
+- **My pre-solve prediction was wrong.** I expected summer at L2 and winter at L0 or AC1.
+- **What happened.** Every first solve was infeasible (`day9/first_solves.log`): DC-OPF, AC power flow and AC-OPF, in both snapshots.
+- **DC diagnostics on copies** (`solve/diagnose_*.jl`; the scored case is unchanged):
+  - **Binding constraints:** branch ratings.
+  - **Smallest rating multiplier that makes DC-OPF feasible:** about **6.0 in summer** and **1.64 in winter**. The ladder's largest multiplier before load shedding is ×1.5 (L3).
+  - **The pockets that set it:**
+    - Chashma's 1,414 MW leaves through a 1.3 km 220 kV section that OSM leaves untagged, so the model treats it as single circuit (250 MVA).
+    - Lahore's 132 kV network (Manga, Sarfraz Nagar) is used as a bulk corridor: 220/132 kV supply is 1.02× load and 220 kV links are missing in OSM.
+    - Kot Addu/KAPCO's 132 kV lines.
+- **New prediction for the official ladder:**
+  - **summer: L5** (no thermal limits). Even with load capped at 70%, ×1.5 is below what's needed.
+  - **winter: L4** (load cap 70% with ×1.5).
+  - Both are a **no-go for the build** under the signed gate.
+- **No repair is made.** Any fix would be chosen after reading flows. Whether to repair, labelled post hoc, is Furqan's decision.
