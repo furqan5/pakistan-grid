@@ -108,6 +108,12 @@ The thresholds were designed in that report, not taken from a source, except whe
 - **Solve time.** `WALL_TIME_LIMIT` stays at the pipeline default of 900 s per rung. Each solve time is logged.
 - **Winter openings.** V2 uses the openings that map under the openings rule declared before the first solve (`builder/parameters.json` → `winter_openings`).
 
+**No manual fixes (added 18 Nov 2026, before any solve; logged change to v1.0).**
+- From the first solve of any kind (DC or AC), only GridSFM's `solve_topo_json.jl` ladder may relax the case.
+- The 14-day plan's Day 9–10 fix list (islands, parallel circuits, voltage limits, shunts, line openings, generator Q) is **not** applied by hand. Those choices were all fixed beforehand in `builder/parameters.json`.
+- Any manual change after the first AC solve is logged with its date and reason. H1–H4 are then reported as post hoc.
+- A bug fix in the case assembly (a field written wrongly) is not a parameter change. It is logged and the case is rebuilt from the same rules.
+
 ## Holdouts (computed once, on Day 11, against these thresholds)
 
 | ID | Quantity | Pass | Reference | Role |

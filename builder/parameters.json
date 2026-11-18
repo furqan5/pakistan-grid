@@ -73,7 +73,8 @@
       {"kv": 220, "a": "KAPCO", "b": "Multan", "n": 1},
       {"kv": 220, "a": "KAPCO", "b": "Muzaffargarh Solar", "n": 1}
     ],
-    "rule": "Open n circuits of the direct branch(es) between the two mapped buses: a branch with c circuits keeps c - n (removed if 0). Only a direct branch counts; no path search."
+    "rule": "Open n circuits of the direct branch(es) between the two mapped buses: a branch with c circuits keeps c - n (removed if 0). Only a direct branch counts; no path search.",
+    "rule_v2_18nov": "Replaces 'rule' (declared 18 Nov 2026, before any solve, on mapping grounds only and without regard to the effect on H3; its direction on H3 is known: openings reduce charging). A TSEP circuit maps if, for some pair of candidate buses at its voltage, the shortest path at that voltage passes only through tee or dangling junction buses (no other station or plant bus), so the path is that one line even when OSM splits it at tee points. Exactly one such branch set across candidate pairs is required, else the circuit is listed as unmapped. n circuits are opened on every branch of the path (r, x scaled by c/(c-n), b and rates by (c-n)/c; status 0 if c-n <= 0). Name clash: 'Matiari' is the southern HVDC terminal's AC bus S:S0675@500 (the Matiari-Lahore link's Sindh end), not the Lahore converter."
   },
   "generators": {
     "_comment": "Day 7 rules, fixed 18 Nov 2026 before the generator list was built and before any solve. Reasons in day7/generator_rules.md.",
@@ -143,6 +144,17 @@
                   "placement": "On the K-Electric-side bus of every branch or transformer with one KE-flagged end and one non-KE end (the Day 4 interface), in proportion to that branch's rate_a. Source I2 (TSEP Tables 5-1, 5-10)."},
     "capacitors": "As declared on Day 6: 132 kV DISCO load buses, in proportion to bus reactive load, scaled to 12,192 MVAr (summer) and 146 MVAr (winter off-peak), nameplate at 1.0 pu. Not on KE interface buses.",
     "exit_check": "Report DISCO-group station counts and MW per station, the FESCO/MEPCO match rates, and S2 (load and generation share in the main component, with the signed-off denominators)."
+  },
+  "assembly": {
+    "_comment": "Day 9 declarations, 18 Nov 2026, pushed before any solve (DC or AC).",
+    "short_branch_floor": {"x_min_pu": 1e-4, "applies_to": "lines (not transformers)",
+                           "rule": "If |br_x| < 1e-4 pu, set br_x = 1e-4 pu and scale br_r by the same factor (R/X kept); charging unchanged.",
+                           "basis": "Numerics only. The smallest reactance in PGLib's pglib_opf_case6470_rte (a real-network benchmark that Ipopt solves) is 8.8e-5 pu; the model went down to 6e-6 pu from yard links of 0.1 km or less. 98 branches are affected, none longer than 1.8 km. Buses are not changed, so S1-S4 stand. GridSFM's pipeline sets no floor; it only lowers x for angle feasibility, so there is no conflict."},
+    "scope": "Main component only (the S1 definition); off-main buses carry no load or generation by construction.",
+    "case_format": "PowerModels-native JSON, per_unit true, baseMVA 100, fields as in GridSFM's released delaware_model.json. Generator cost [0, c1*100, 0] with model 2, ncost 3. One file per snapshot.",
+    "initial_point": "Flat start: vm 1.0, va 0, pg = midpoint of [pmin, pmax], qg 0.",
+    "slack": "Summer: Tarbela S:S0036@500. Winter off-peak: China HUBCO S:S0692@500 (Day 7 rule).",
+    "solve_order": "DC-OPF smoke test, AC power flow from a flat start, AC-OPF (Ipopt, tol 1e-4), then GridSFM's solve_topo_json.jl ladder (L0, AC1, L1-L5, WALL_TIME_LIMIT 900 s per rung). The ladder rung is V1/V2. No manual fixes (see the gate)."
   },
   "buses": {
     "vmin": 0.95, "vmax": 1.08,
