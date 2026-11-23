@@ -156,6 +156,15 @@
     "slack": "Summer: Tarbela S:S0036@500. Winter off-peak: China HUBCO S:S0692@500 (Day 7 rule).",
     "solve_order": "DC-OPF smoke test, AC power flow from a flat start, AC-OPF (Ipopt, tol 1e-4), then GridSFM's solve_topo_json.jl ladder (L0, AC1, L1-L5, WALL_TIME_LIMIT 900 s per rung). The ladder rung is V1/V2. No manual fixes (see the gate)."
   },
+  "repair_r1": {
+    "_comment": "Post hoc repair round 1, declared 23 Nov 2026 after Furqan chose 'Repair, post hoc' and before any repaired build or solve. Rules chosen after reading Day 9 diagnostic flows; all V/H results from it are labelled 'repair round 1, post hoc'. Full text and disclosures: day9/repair_r1_rules.md; listing: day9/repair_r1_listing.md.",
+    "RP1": "Name containment: a branch adopts the higher circuit count of an adjacent same-voltage branch sharing a junction end when its OSM name contains that branch's full name. Reaches exactly the two Chashma spans (targeted fix, disclosed).",
+    "RP2": "Add PSS 44th lines whose OSM path is > 2x the PSS route and not 'too far' as synthetic double-circuit branches at the PSS route length: Samundari Road-Nishatabad, New Kot Lakhpat-Bund Road, KSK-Bandala (220 kV). Cutoff chosen after seeing ratios; excludes Port Qasim-Jamshoro 1.71 and Peshawar-Nowshera 1.65.",
+    "RP3": "Reactors: TSEP totals and Table 5-9 fixed reactors kept; pool over 500 and 220 kV station buses by local half-charging; each bus capped at its local half-charging; excess unplaced and logged.",
+    "stopping_rule": "One rebuild, one ladder run. If V1 or V2 still fails, record and stop; round 2 needs Furqan's explicit go. DC rating-multiplier diagnostic once afterwards, report only.",
+    "h3_status": "Post-repair H3 is not assessable (RP3 moves it in the passing direction); reported as such, not as pass or fail.",
+    "outputs": "params_r1/ and case_r1/; the as-specified params/ and case/ are left unchanged."
+  },
   "buses": {
     "vmin": 0.95, "vmax": 1.08,
     "source": "TSEP 2024-34 planning criteria (grid code), normal operating conditions: voltage within +8 % / -5 % for nominal voltages up to 500 kV. Contingency band +/-10 % is not used for the base cases."
