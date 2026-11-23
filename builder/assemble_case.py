@@ -25,9 +25,9 @@ def rd(path):
     return list(csv.DictReader(open(path, encoding="utf-8")))
 
 
-def main(build_dir):
+def main(build_dir, params_sub="params", case_sub="case"):
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
-    P = build_dir / "params"
+    P = build_dir / params_sub
     B = {b["bus"]: b for b in rd(build_dir / "buses.csv")}
     main_buses = sorted(k for k, b in B.items() if b["in_main"] == "1")
     idx = {k: i + 1 for i, k in enumerate(main_buses)}
@@ -200,7 +200,7 @@ def main(build_dir):
         d = dict(dcl[snap])
         d.update(index=1, f_bus=idx[d["f_bus"]], t_bus=idx[d["t_bus"]])
         case["dcline"]["1"] = d
-        out = build_dir / "case"
+        out = build_dir / case_sub
         out.mkdir(exist_ok=True)
         (out / f"pk_{snap}.json").write_text(json.dumps(case), encoding="utf-8")
         bus_kind[snap] = (len(case["bus"]), len(case["branch"]), sum(1 for x in case["gen"].values() if x["gen_status"]), len(case["load"]), len(case["shunt"]),
@@ -221,9 +221,10 @@ def main(build_dir):
     for g in sorted(P_g, key=lambda k: -P_g[k]):
         mva = math.hypot(P_g[g], Q_g[g])
         Lx.append(f"| {g} | {P_g[g]:,.0f} | {Q_g[g]:,.0f} | {mva:,.0f} | {T_g[g]:,.0f} | {G_g[g]:,.0f} | {(T_g[g] + G_g[g]) / mva:.2f} |")
-    (build_dir / "case" / "case_summary.md").write_text("\n".join(Lx) + "\n", encoding="utf-8")
+    (build_dir / case_sub / "case_summary.md").write_text("\n".join(Lx) + "\n", encoding="utf-8")
     print("\n".join(Lx))
 
 
 if __name__ == "__main__":
-    main(pathlib.Path(sys.argv[1]) if len(sys.argv) > 1 else ROOT / "osm" / "build" / "explicit")
+    a = sys.argv[1:]
+    main(pathlib.Path(a[0]) if a else ROOT / "osm" / "build" / "explicit", *(a[1:3]))

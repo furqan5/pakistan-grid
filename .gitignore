@@ -5,3 +5,5 @@ osm/build/**/*.csv
 __pycache__/
 sources/gem/
 osm/build/**/case/*.json
+osm/build/**/case_r1/*.json
+osm/build/**/case*/solutions/
