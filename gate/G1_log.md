@@ -101,3 +101,24 @@ Any S3 change caused by a station-grouping change is post hoc and must be labell
   - This is the bias recorded before any solve in `day6/topology_day6.md` (H3).
 - **No repair has been made.** Any fix chosen now would be selected after reading flows, so under the gate it is post hoc. Whether to repair is Furqan's decision.
 - **Prediction record.** The first pre-solve prediction (summer L2, winter L0/AC1) was wrong. The corrected prediction pushed before the ladder (summer L5, winter L4) was also too optimistic: no rung solved at all.
+
+## G2, repair round 1 (post hoc), 23 Nov 2026
+
+**Case.** Repair round 1 was declared in `day9/repair_r1_rules.md` and pushed (ad818f1) before the build. Expectations were pushed in 323fa01 and the case built in a72829c.
+
+**Ladder.** GridSFM `solve_topo_json.jl` on `case_r1`, 12:51–13:23 UTC. Logs: `day9/ladder_r1_*.txt`.
+
+| Check | Result | Status |
+|---|---|---|
+| V1, summer peak (repair round 1, post hoc) | **No rung solves.** DC-OPF solves at L5; AC-OPF is LOCALLY_INFEASIBLE at every level. | **FAIL** |
+| V2, winter off-peak (repair round 1, post hoc) | **No rung solves** (same pattern). | **FAIL** |
+
+- **The repair was applied as declared** (checked in `params_r1/branch_params.csv`):
+  - both Chashma sections are now 2 circuits (500 MVA);
+  - the three PSS 220 kV links are present;
+  - reactors are capped.
+- **Report-only DC rating multiplier** (`day9/repair_r1_kmin.txt`): **5.98 in summer and 1.64 in winter, unchanged.**
+  - The worst pocket was never Chashma. It is the **2 km single-circuit 132 kV link into Manga (S0562)** in Lahore's 132 kV network, which carries bulk power because Lahore's 220/132 kV supply is short.
+  - No repair rule touched it.
+- **Stopping rule applied.** This was the one declared round, so the work **stops here**. A round 2 needs Furqan's explicit go.
+- **Status:** the no-go for the build stands, for the as-specified case and after repair round 1.

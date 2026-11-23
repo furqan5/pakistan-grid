@@ -1,0 +1,320 @@
+  pk_summer_peak.json → pk_summer_peak_patched.json: no patching needed
+[info | PowerModels]: Suppressing information and warning messages for the rest of this session.  Use the Memento package for more fine-grained control of logging.
+
+******************************************************************************
+This program contains Ipopt, a library for large-scale nonlinear optimization.
+ Ipopt is released as open source code under the Eclipse Public License (EPL).
+         For more information visit https://github.com/coin-or/Ipopt
+******************************************************************************
+
+[ Info: solve: pk_summer_peak_patched.json → pk_summer_peak.solvable.json
+[ Info:   Trying L0
+[ Info:     pipeline did not save at L0, moving on
+[ Info:   Trying AC1
+[ Info:     pipeline did not save at AC1, moving on
+[ Info:   Trying L1
+[ Info:     pipeline did not save at L1, moving on
+[ Info:   Trying L2
+[ Info:     pipeline did not save at L2, moving on
+[ Info:   Trying L3
+[ Info:     pipeline did not save at L3, moving on
+[ Info:   Trying L4
+[ Info:     pipeline did not save at L4, moving on
+[ Info:   Trying L5
+[ Info:     pipeline did not save at L5, moving on
+┌ Warning:   ✗ no level produced a cold-strict solvable JSON
+└ @ Main C:\Users\furqa\src\GridSFM\power_grid\US\topology_solver_pipeline\solve_topo_json.jl:132
+
+Loading model: E:/Startup/pakistan-grid/osm/build/explicit/case_r1/pk_summer_peak_patched.json
+
+============================================================
+MODEL SUMMARY
+============================================================
+  Buses:       1489
+  Branches:    1855
+  Generators:  117
+
+  Total load:     28981.6 MW
+  Total capacity: 32540.1 MW
+  Load/capacity:  89.1%
+  Reserve margin: 12.3%
+============================================================
+
+── DC warm-start for AC-OPF ──
+  ✅ DC-OPF solved (L5) — warm-starting AC with 1489 bus angles, 99 gen dispatches
+     DC-derived shunts: 1048 capacitor(s) (+13992.0 MVAr)
+     DC-derived shunts: 322 reactor(s) (-3619.0 MVAr)
+     ⚠️ SHUNT_BS_MAX (3.0 pu) clamp kicked in on 1 bus(es) — data may be pathological
+     (preserving 823 existing shunts, +12192.0 MVAr)
+
+Running AC-OPF at L0: Strict (no progressive)
+
+============================================================
+RESULTS
+============================================================
+  Status:       LOCALLY_INFEASIBLE
+  Solve time:   34.54 sec
+
+  Total cost:   755.8 k$/hr
+  Total gen:    20063.0 MW
+  Total load:   28981.6 MW
+  Avg cost:     26.1 $/MWh
+
+  ❌ OPF did not converge at any relaxation level (L0-AC1)
+    This suggests a fundamental model issue:
+    • Check that generators have valid pmin/pmax ranges
+    • Check that bus connectivity forms a connected graph
+    • Try --verbose for detailed solver output
+============================================================
+
+Loading model: E:/Startup/pakistan-grid/osm/build/explicit/case_r1/pk_summer_peak_patched.json
+
+============================================================
+MODEL SUMMARY
+============================================================
+  Buses:       1489
+  Branches:    1855
+  Generators:  117
+
+  Total load:     28981.6 MW
+  Total capacity: 32540.1 MW
+  Load/capacity:  89.1%
+  Reserve margin: 12.3%
+============================================================
+
+── DC warm-start for AC-OPF ──
+  ✅ DC-OPF solved (L5) — warm-starting AC with 1489 bus angles, 99 gen dispatches
+     DC-derived shunts: 1048 capacitor(s) (+13992.0 MVAr)
+     DC-derived shunts: 322 reactor(s) (-3619.0 MVAr)
+     ⚠️ SHUNT_BS_MAX (3.0 pu) clamp kicked in on 1 bus(es) — data may be pathological
+     (preserving 823 existing shunts, +12192.0 MVAr)
+
+Running AC-OPF at AC1: Voltage + Q relax (no progressive)
+
+============================================================
+RESULTS
+============================================================
+  Status:       LOCALLY_INFEASIBLE
+  Solve time:   90.93 sec
+
+  Total cost:   748.5 k$/hr
+  Total gen:    20001.6 MW
+  Total load:   28981.6 MW
+  Avg cost:     25.8 $/MWh
+
+  ❌ OPF did not converge at any relaxation level (L0-AC1)
+    This suggests a fundamental model issue:
+    • Check that generators have valid pmin/pmax ranges
+    • Check that bus connectivity forms a connected graph
+    • Try --verbose for detailed solver output
+============================================================
+
+Loading model: E:/Startup/pakistan-grid/osm/build/explicit/case_r1/pk_summer_peak_patched.json
+
+============================================================
+MODEL SUMMARY
+============================================================
+  Buses:       1489
+  Branches:    1855
+  Generators:  117
+
+  Total load:     28981.6 MW
+  Total capacity: 32540.1 MW
+  Load/capacity:  89.1%
+  Reserve margin: 12.3%
+============================================================
+
+── DC warm-start for AC-OPF ──
+  ✅ DC-OPF solved (L5) — warm-starting AC with 1489 bus angles, 99 gen dispatches
+     DC-derived shunts: 1048 capacitor(s) (+13992.0 MVAr)
+     DC-derived shunts: 322 reactor(s) (-3619.0 MVAr)
+     ⚠️ SHUNT_BS_MAX (3.0 pu) clamp kicked in on 1 bus(es) — data may be pathological
+     (preserving 823 existing shunts, +12192.0 MVAr)
+
+Running AC-OPF at L1: Widen angles (no progressive)
+
+============================================================
+RESULTS
+============================================================
+  Status:       LOCALLY_INFEASIBLE
+  Solve time:   360.9 sec
+
+  Total cost:   749.0 k$/hr
+  Total gen:    20011.4 MW
+  Total load:   28981.6 MW
+  Avg cost:     25.8 $/MWh
+
+  ❌ OPF did not converge at any relaxation level (L0-AC1)
+    This suggests a fundamental model issue:
+    • Check that generators have valid pmin/pmax ranges
+    • Check that bus connectivity forms a connected graph
+    • Try --verbose for detailed solver output
+============================================================
+
+Loading model: E:/Startup/pakistan-grid/osm/build/explicit/case_r1/pk_summer_peak_patched.json
+
+============================================================
+MODEL SUMMARY
+============================================================
+  Buses:       1489
+  Branches:    1855
+  Generators:  117
+
+  Total load:     28981.6 MW
+  Total capacity: 32540.1 MW
+  Load/capacity:  89.1%
+  Reserve margin: 12.3%
+============================================================
+
+── DC warm-start for AC-OPF ──
+  ✅ DC-OPF solved (L5) — warm-starting AC with 1489 bus angles, 99 gen dispatches
+     DC-derived shunts: 1048 capacitor(s) (+13992.0 MVAr)
+     DC-derived shunts: 322 reactor(s) (-3619.0 MVAr)
+     ⚠️ SHUNT_BS_MAX (3.0 pu) clamp kicked in on 1 bus(es) — data may be pathological
+     (preserving 823 existing shunts, +12192.0 MVAr)
+
+Running AC-OPF at L2: Thermal headroom (no progressive)
+
+============================================================
+RESULTS
+============================================================
+  Status:       LOCALLY_INFEASIBLE
+  Solve time:   120.63 sec
+
+  Total cost:   793.2 k$/hr
+  Total gen:    21626.0 MW
+  Total load:   28981.6 MW
+  Avg cost:     27.4 $/MWh
+
+  ❌ OPF did not converge at any relaxation level (L0-AC1)
+    This suggests a fundamental model issue:
+    • Check that generators have valid pmin/pmax ranges
+    • Check that bus connectivity forms a connected graph
+    • Try --verbose for detailed solver output
+============================================================
+
+Loading model: E:/Startup/pakistan-grid/osm/build/explicit/case_r1/pk_summer_peak_patched.json
+
+============================================================
+MODEL SUMMARY
+============================================================
+  Buses:       1489
+  Branches:    1855
+  Generators:  117
+
+  Total load:     28981.6 MW
+  Total capacity: 32540.1 MW
+  Load/capacity:  89.1%
+  Reserve margin: 12.3%
+============================================================
+
+── DC warm-start for AC-OPF ──
+  ✅ DC-OPF solved (L5) — warm-starting AC with 1489 bus angles, 99 gen dispatches
+     DC-derived shunts: 1048 capacitor(s) (+13992.0 MVAr)
+     DC-derived shunts: 322 reactor(s) (-3619.0 MVAr)
+     ⚠️ SHUNT_BS_MAX (3.0 pu) clamp kicked in on 1 bus(es) — data may be pathological
+     (preserving 823 existing shunts, +12192.0 MVAr)
+
+Running AC-OPF at L3: Aggressive (no progressive)
+
+============================================================
+RESULTS
+============================================================
+  Status:       LOCALLY_INFEASIBLE
+  Solve time:   23.85 sec
+
+  Total cost:   780.1 k$/hr
+  Total gen:    23511.1 MW
+  Total load:   28981.6 MW
+  Avg cost:     26.9 $/MWh
+
+  ❌ OPF did not converge at any relaxation level (L0-AC1)
+    This suggests a fundamental model issue:
+    • Check that generators have valid pmin/pmax ranges
+    • Check that bus connectivity forms a connected graph
+    • Try --verbose for detailed solver output
+============================================================
+
+Loading model: E:/Startup/pakistan-grid/osm/build/explicit/case_r1/pk_summer_peak_patched.json
+
+============================================================
+MODEL SUMMARY
+============================================================
+  Buses:       1489
+  Branches:    1855
+  Generators:  117
+
+  Total load:     28981.6 MW
+  Total capacity: 32540.1 MW
+  Load/capacity:  89.1%
+  Reserve margin: 12.3%
+============================================================
+
+── DC warm-start for AC-OPF ──
+  ✅ DC-OPF solved (L5) — warm-starting AC with 1489 bus angles, 99 gen dispatches
+     DC-derived shunts: 1048 capacitor(s) (+13992.0 MVAr)
+     DC-derived shunts: 322 reactor(s) (-3619.0 MVAr)
+     ⚠️ SHUNT_BS_MAX (3.0 pu) clamp kicked in on 1 bus(es) — data may be pathological
+     (preserving 823 existing shunts, +12192.0 MVAr)
+
+Running AC-OPF at L4: Load shedding (no progressive)
+
+============================================================
+RESULTS
+============================================================
+  Status:       LOCALLY_INFEASIBLE
+  Solve time:   30.85 sec
+
+  Total cost:   683.5 k$/hr
+  Total gen:    20233.8 MW
+  Total load:   22778.1 MW
+  Avg cost:     30.0 $/MWh
+
+  ❌ OPF did not converge at any relaxation level (L0-AC1)
+    This suggests a fundamental model issue:
+    • Check that generators have valid pmin/pmax ranges
+    • Check that bus connectivity forms a connected graph
+    • Try --verbose for detailed solver output
+============================================================
+
+Loading model: E:/Startup/pakistan-grid/osm/build/explicit/case_r1/pk_summer_peak_patched.json
+
+============================================================
+MODEL SUMMARY
+============================================================
+  Buses:       1489
+  Branches:    1855
+  Generators:  117
+
+  Total load:     28981.6 MW
+  Total capacity: 32540.1 MW
+  Load/capacity:  89.1%
+  Reserve margin: 12.3%
+============================================================
+
+── DC warm-start for AC-OPF ──
+  ✅ DC-OPF solved (L5) — warm-starting AC with 1489 bus angles, 99 gen dispatches
+     DC-derived shunts: 1048 capacitor(s) (+13992.0 MVAr)
+     DC-derived shunts: 322 reactor(s) (-3619.0 MVAr)
+     ⚠️ SHUNT_BS_MAX (3.0 pu) clamp kicked in on 1 bus(es) — data may be pathological
+     (preserving 823 existing shunts, +12192.0 MVAr)
+
+Running AC-OPF at L5: Full relaxation (no progressive)
+
+============================================================
+RESULTS
+============================================================
+  Status:       LOCALLY_INFEASIBLE
+  Solve time:   42.2 sec
+
+  Total cost:   673.8 k$/hr
+  Total gen:    25505.8 MW
+  Total load:   22778.1 MW
+  Avg cost:     29.6 $/MWh
+
+  ❌ OPF did not converge at any relaxation level (L0-AC1)
+    This suggests a fundamental model issue:
+    • Check that generators have valid pmin/pmax ranges
+    • Check that bus connectivity forms a connected graph
+    • Try --verbose for detailed solver output
+============================================================

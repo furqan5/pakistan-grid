@@ -69,3 +69,15 @@
 3. **Ask NGC for data.** Use the documented gaps as a concrete request (`requests/data_requests_DRAFT.md`), for example circuit counts and conductors on named corridors, and 220/132 kV station supply in Lahore.
 
 A GridSFM run on the ladder output (the earlier "report-only" option) isn't possible, because no rung produced a solvable case.
+
+## Repair round 1 (post hoc, 23 Nov 2026)
+
+- **Process.**
+  - Furqan chose "Repair, post hoc".
+  - Rules were declared and pushed before the build (ad818f1; `day9/repair_r1_rules.md`): RP1 for the Chashma spans, RP2 for three PSS 220 kV links, RP3 to cap reactors.
+  - Expectations were pushed before the build (323fa01). They said summer would probably still fail and winter would land at L3/L4.
+- **Result: no ladder rung solves either snapshot.**
+  - The DC rating multiplier is unchanged at 5.98 (summer) and 1.64 (winter).
+  - The binding pocket is the 2 km single-circuit 132 kV link into Manga in Lahore's 132 kV network. The repair didn't target it.
+  - The winter expectation (L3/L4) was wrong.
+- **Stopped, per the declared stopping rule.** A round 2 would need Furqan's go. It would have to deal with Lahore's 132 kV supply, meaning the 220/132 kV injection points and the 132 kV conductor class, and there is no evidence in hand for either. The better route is the NGC data request.

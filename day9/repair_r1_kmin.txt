@@ -1,0 +1,4 @@
+summer_peak     L2-like (60 deg)             k_min ~ 5.98
+summer_peak     L3-like (90 deg, pmin x0.5)  k_min ~ 5.98
+winter_offpeak  L2-like (60 deg)             k_min ~ 1.64
+winter_offpeak  L3-like (90 deg, pmin x0.5)  k_min ~ 1.64
