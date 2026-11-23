@@ -7,6 +7,8 @@ Send the NGC one first. Wait until the gate passes S1–S3 before sending a foll
 
 ## 1. NGC (ex-NTDC) Transmission / Power System Planning, Lahore
 
+> **Superseded on 23 Nov 2026** by `ngc_data_request_2026-11-23.md`, a narrower request built on the Day 9 findings. The text below is kept for the record.
+
 **To:** cetrp@ntdc.com.pk [VERIFY — printed in Energies 2021, before the NGC rename; check on ntdc.gov.pk or by phone]
 **Subject:** Research request — TSEP 2024-34 base cases for an AC-OPF model test
 
