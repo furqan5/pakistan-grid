@@ -22,6 +22,10 @@ It is a two-week side research project with a pre-registered go/no-go gate. It i
   - The conservative conductor defaults make it worse.
   - The 500 kV skeleton itself matches NGC within 0.03%.
   - Details: `gate/G1_log.md` (G2) and `day9/topology_day9.md`.
+- **Repair round 1 (post hoc, 23 Nov 2026): still no solvable rung.**
+  - The fixes were declared and pushed before the build: the Chashma spans, three 220 kV links from NTDC's 2019 statistics, and capped reactors.
+  - The worst pocket turned out to be a 2 km single-circuit 132 kV link into Manga in Lahore, which no rule touched.
+  - Work stopped there under the declared one-round rule.
 - **Order of work.** The rules that affect the scored checks were committed before any model quantity was computed.
   - For Days 0–6 that order rests on commit dates set on the author's laptop. The repository was first pushed on 18 Nov 2026.
   - From Day 7 on, each rules commit is pushed to GitHub **before** the run that uses it, so GitHub's push time dates the order independently.
